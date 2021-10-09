@@ -1,0 +1,49 @@
+{
+	"name": "base-project-symbiosis-plugin",
+	"version": "0.0.1",
+	"main": "index.js",
+	"types": "index.d.ts",
+	"license": "Apache-2.0",
+	"author": "Techmmunity",
+	"description": "Base Project To A Symbiosis Plugin",
+	"homepage": "https://github.com/techmmunity/base-project-symbiosis-plugin#readme",
+	"bugs": {
+		"url": "https://github.com/techmmunity/base-project-symbiosis-plugin/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/techmmunity/base-project-symbiosis-plugin.git"
+	},
+	"keywords": [
+		"techmmunity-symbiosis"
+	],
+	"peerDependencies": {
+		"@techmmunity/symbiosis": "^0.0.1",
+		"reflect-metadata": "^0.1.13"
+	},
+	"devDependencies": {
+		"@techmmunity/eslint-config": "^5.0.1",
+		"@types/jest": "^27.0.1",
+		"@vercel/ncc": "^0.29.2",
+		"eslint": "^7.32.0",
+		"husky": "^7.0.1",
+		"jest": "^27.0.6",
+		"lint-staged": "^11.1.2",
+		"prettier": "^2.3.2",
+		"reflect-metadata": "^0.1.13",
+		"ts-jest": "^27.0.5",
+		"ts-node": "^10.2.1",
+		"typescript": "^4.3.5"
+	},
+	"scripts": {
+		"ts-node": "ts-node",
+		"test": "jest",
+		"test:cov": "jest --coverage",
+		"build": "ncc build src/index.ts -o dist -m -e reflect-metadata -e uuid",
+		"format": "eslint . --fix --quiet",
+		"lint": "eslint . --quiet",
+		"update-dependencies": "yarn upgrade-interactive --latest",
+		"husky:pre-commit": "tsc && lint-staged",
+		"lk": "yarn build && cp package.json dist/package.json && cd dist && yarn link && cd .."
+	}
+}

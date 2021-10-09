@@ -1,0 +1,26 @@
+# Must be this name, to make a pretty badge
+name: tests
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  collect-coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Dependencies
+        run: |
+          yarn
+
+      - name: Run Tests
+        run: |
+          yarn test:cov
+
+      - name: Collect Coverage
+        uses: coverallsapp/github-action@v1.1.2
+        with:
+          github-token: ${{ github.token }}
