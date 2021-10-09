@@ -1,20 +1,30 @@
 {
-	"name": "base-project-symbiosis-plugin",
+	"name": "@techmmunity/symbiosis-dynamodb",
 	"version": "0.0.1",
 	"main": "index.js",
 	"types": "index.d.ts",
 	"license": "Apache-2.0",
 	"author": "Techmmunity",
-	"description": "Base Project To A Symbiosis Plugin",
-	"homepage": "https://github.com/techmmunity/base-project-symbiosis-plugin#readme",
+	"description": "Symbiosis Plugin For DynamoDB",
+	"homepage": "https://github.com/techmmunity/symbiosis-dynamodb#readme",
 	"bugs": {
-		"url": "https://github.com/techmmunity/base-project-symbiosis-plugin/issues"
+		"url": "https://github.com/techmmunity/symbiosis-dynamodb/issues"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/techmmunity/base-project-symbiosis-plugin.git"
+		"url": "git+https://github.com/techmmunity/symbiosis-dynamodb.git"
 	},
 	"keywords": [
+		"orm",
+		"odm",
+		"nosql",
+		"dynamo",
+		"dynamodb",
+		"typeorm",
+		"typescript",
+		"database",
+		"data-mapper",
+		"object-mapper",
 		"techmmunity-symbiosis"
 	],
 	"peerDependencies": {
@@ -45,5 +55,8 @@
 		"update-dependencies": "yarn upgrade-interactive --latest",
 		"husky:pre-commit": "tsc && lint-staged",
 		"lk": "yarn build && cp package.json dist/package.json && cd dist && yarn link && cd .."
+	},
+	"dependencies": {
+		"@aws-sdk/client-dynamodb": "^3.36.0"
 	}
 }
