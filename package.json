@@ -28,8 +28,12 @@
 		"techmmunity-symbiosis"
 	],
 	"peerDependencies": {
-		"@techmmunity/symbiosis": "^0.0.1",
 		"reflect-metadata": "^0.1.13"
+	},
+	"dependencies": {
+		"@aws-sdk/client-dynamodb": "^3.36.0",
+		"@aws-sdk/util-dynamodb": "^3.36.0",
+		"@techmmunity/symbiosis": "^0.0.3"
 	},
 	"devDependencies": {
 		"@techmmunity/eslint-config": "^5.0.1",
@@ -55,8 +59,5 @@
 		"update-dependencies": "yarn upgrade-interactive --latest",
 		"husky:pre-commit": "tsc && lint-staged",
 		"lk": "yarn build && cp package.json dist/package.json && cd dist && yarn link && cd .."
-	},
-	"dependencies": {
-		"@aws-sdk/client-dynamodb": "^3.36.0"
 	}
 }

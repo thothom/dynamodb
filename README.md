@@ -4,28 +4,25 @@
 
 <div align="center">
 
-# Techmmunity - Symbiosis
+# Techmmunity - Symbiosis DynamoDB
 
 <a href="https://github.com/techmmunity/eslint-config">
-	<img src="https://img.shields.io/badge/style%20guide-Techmmunity-01d2ce?style=flat" alt="Style Guide: Techmmunity">
+	<img src="https://img.shields.io/badge/style%20guide-Techmmunity-01d2ce?style=for-the-badge" alt="Style Guide: Techmmunity">
 </a>
-<a href="https://www.codefactor.io/repository/github/techmmunity/symbiosis">
-	<img src="https://www.codefactor.io/repository/github/techmmunity/symbiosis/badge" alt="CodeFactor">
+<a href="https://www.codefactor.io/repository/github/techmmunity/symbiosis-dynamodb">
+	<img src="https://www.codefactor.io/repository/github/techmmunity/symbiosis-dynamodb/badge?style=for-the-badge" alt="CodeFactor">
 </a>
-<a href="https://deepscan.io/dashboard#view=project&tid=13883&pid=18101&bid=434906">
-	<img src="https://deepscan.io/api/teams/13883/projects/18101/branches/434906/badge/grade.svg" alt="DeepScan">
+<a href="https://coveralls.io/github/techmmunity/symbiosis-dynamodb?branch=master">
+	<img src="https://img.shields.io/coveralls/github/techmmunity/symbiosis-dynamodb/master?style=for-the-badge" alt="Coveralls">
 </a>
-<a href="https://coveralls.io/github/techmmunity/symbiosis?branch=master">
-	<img src="https://coveralls.io/repos/github/techmmunity/symbiosis/badge.svg?branch=master" alt="Coveralls">
+<a href="https://github.com/techmmunity/symbiosis-dynamodb/actions/workflows/coverage.yml">
+	<img src="https://img.shields.io/github/workflow/status/techmmunity/symbiosis-dynamodb/tests?label=tests&logo=github&style=for-the-badge" alt="Tests">
 </a>
-<a href="https://github.com/techmmunity/symbiosis/actions/workflows/coverage.yml">
-	<img src="https://github.com/techmmunity/symbiosis/actions/workflows/coverage.yml/badge.svg" alt="Tests">
+<a href="https://www.npmjs.com/package/@techmmunity/symbiosis-dynamodb">
+	<img src="https://img.shields.io/npm/v/@techmmunity/symbiosis-dynamodb.svg?color=CC3534&style=for-the-badge" alt="Npm">
 </a>
-<a href="https://www.npmjs.com/package/@techmmunity/symbiosis">
-	<img src="https://img.shields.io/npm/v/@techmmunity/symbiosis.svg?color=CC3534" alt="Npm">
-</a>
-<a href="https://www.npmjs.com/package/@techmmunity/symbiosis">
-	<img src="https://img.shields.io/npm/dw/@techmmunity/symbiosis.svg" alt="Downloads">
+<a href="https://www.npmjs.com/package/@techmmunity/symbiosis-dynamodb">
+	<img src="https://img.shields.io/npm/dw/@techmmunity/symbiosis-dynamodb.svg?style=for-the-badge" alt="Downloads">
 </a>
 
 <br>
@@ -33,9 +30,14 @@
 
 </div>
 
-Symbiosis is an [ORM](https://en.wikipedia.org/wiki/Object-relational_mapping) based on [TypeORM syntax](https://github.com/typeorm/typeorm) and [ESLint plugable approach](https://eslint.org/). Our intention here is standardize the connection and implementation of **every database** with the best performance possible, and for this, we use an plugable approach, so more people can contribute and create their on integration. This package alone can't do anything besides typing, the plugins do all the "dirt work".
+This is a DynamoDB plugin for [@techmmunity/symbiosis]().
 
-Currently it only works with TypeScript (and transpiled JavaScript), and we plan to keep this way.
+## Warning
 
-[![Discord Badge](https://img.shields.io/badge/discord-7289DA?style=for-the-badge&labelColor=7289DA&logo=discord&logoColor=white)](https://discord.gg/5hPnJzzAe2)
-[![Docs Badge](https://img.shields.io/badge/documentation-01d2ce?style=for-the-badge&labelColor=01d2ce)](https://symbiosis.techmmunity.com.br)
+DynamoDB has a very different way of modeling data compared to traditional SQL databases. We strongly recommend that you study this before using this database, so that you can take full advantage of its capabilities.
+
+### Recommended Topics
+
+- [DynamoDB Data Modeling](https://codeburst.io/dynamodb-data-modeling-7f11950b25bf)
+- [An introduction to DynamoDB data modeling](https://blog.theodo.com/2021/04/introduction-to-dynamo-db-modeling/)
+- [Querying child relationships](https://stackoverflow.com/questions/63755975/modelling-parent-child-subchild-relationships-in-dynamodb)

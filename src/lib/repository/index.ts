@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+
 /**
  * ---------------------------------------------
  * // TODO Remove this after implement the methods!
@@ -6,8 +8,10 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
+import type { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import {
+	BaseQueryOptions,
+	ClassType,
 	EntityManager,
 	FindConditions,
 	FindOneOptions,
@@ -16,60 +20,56 @@ import {
 	SymbiosisError,
 	SymbiosisErrorCodeEnum,
 } from "@techmmunity/symbiosis";
-import { BaseQueryOptions } from "../../../../symbiosis/dist/lib/repository/queries/types/query-options";
+import { find } from "./find";
+import { findOne } from "./find-one";
+import { save } from "./save";
 
-export class ExampleRepository<
+export class DynamodbRepository<
 	Entity,
 	EntityExtraMetadata,
 	ColumnExtraMetadata,
 > extends Repository<Entity, EntityExtraMetadata, ColumnExtraMetadata> {
+	private readonly tableName: string;
+
 	public constructor(
 		private readonly connectionInstance: DynamoDBClient,
 		entityManager: EntityManager<EntityExtraMetadata, ColumnExtraMetadata>,
 		entity: Entity,
 	) {
 		super(entityManager, entity);
+
+		const entityMetadata = this.entityManager.getEntityMetadata(entity);
+
+		this.tableName = entityMetadata.databaseName;
 	}
 
+	/**
+	 * This functions **CREATE** a new record if a record **WITH THE SAME ID** doesn't
+	 * exists, **BUT** also **REPLACE** a record if it has the same ID.
+	 *
+	 * @param data The entity data that you want to save to the database
+	 * @param options Options for this operation
+	 * @returns The entity as it's saved on the database
+	 */
 	public save(
-		_data: Array<Partial<Entity>> | Partial<Entity>,
-		_options?: BaseQueryOptions,
+		data: Array<ClassType<Entity>> | ClassType<Entity>,
+		options?: BaseQueryOptions,
 	): Promise<Array<Entity> | Entity> {
-		// Delete this after the method is implemented
-		throw new SymbiosisError({
-			code: SymbiosisErrorCodeEnum.NOT_IMPLEMENTED,
-			origin: "SYMBIOSIS",
-			details: ["Method `save` is not implemented yet by this plugin"],
-			message: "Method not implemented",
-		});
-
-		/*
-		 * // TODO Uncomment this when method implemented
-		 *
-		 * const dataInDatabaseFormat = this.beforeSave({
-		 * 	data: _data,
-		 * 	options: _options,
-		 * });
-		 *
-		 * // ...
-		 *
-		 * // Do Plugin Stuff Here
-		 *
-		 * // ...
-		 *
-		 *
-		 * // Just an example, do not do this.
-		 * const dataFromDatabase = dataInDatabaseFormat;
-		 *
-		 * return this.afterSave({
-		 * 	data: dataFromDatabase,
-		 * 	options: _options,
-		 * });
-		 */
+		return save(
+			this as any,
+			{
+				connectionInstance: this.connectionInstance,
+				tableName: this.tableName,
+			},
+			{
+				data,
+				options,
+			},
+		);
 	}
 
 	public insert(
-		_data: Array<Partial<Entity>> | Partial<Entity>,
+		_data: Array<ClassType<Entity>> | ClassType<Entity>,
 		_options?: BaseQueryOptions,
 	): Promise<Array<Entity> | Entity> {
 		// Delete this after the method is implemented
@@ -107,7 +107,7 @@ export class ExampleRepository<
 
 	public update(
 		_conditions: FindConditions<Entity>,
-		_data: Partial<Entity>,
+		_data: ClassType<Entity>,
 		_options?: BaseQueryOptions,
 	): Promise<Array<Entity> | Entity> {
 		// Delete this after the method is implemented
@@ -147,7 +147,7 @@ export class ExampleRepository<
 
 	public upsert(
 		_conditions: FindConditions<Entity>,
-		_data: Partial<Entity>,
+		_data: ClassType<Entity>,
 		_options?: BaseQueryOptions,
 	): Promise<Array<Entity> | Entity> {
 		// Delete this after the method is implemented
@@ -186,79 +186,37 @@ export class ExampleRepository<
 	}
 
 	public find(
-		_conditions: FindOptions<Entity>,
-		_options?: BaseQueryOptions,
+		conditions: FindOptions<Entity>,
+		options?: BaseQueryOptions,
 	): Promise<Array<Entity>> {
-		// Delete this after the method is implemented
-		throw new SymbiosisError({
-			code: SymbiosisErrorCodeEnum.NOT_IMPLEMENTED,
-			origin: "SYMBIOSIS",
-			details: ["Method `find` is not implemented yet by this plugin"],
-			message: "Method not implemented",
-		});
-
-		/*
-		 * // TODO Uncomment this when method implemented
-		 *
-		 * const dataInDatabaseFormat = this.beforeFind({
-		 * 	conditions: _conditions,
-		 * 	options: _options,
-		 * });
-		 *
-		 * // ...
-		 *
-		 * // Do Plugin Stuff Here
-		 *
-		 * // ...
-		 *
-		 *
-		 * // Just an example, do not do this.
-		 * const dataFromDatabase = dataInDatabaseFormat;
-		 *
-		 * return this.afterFind({
-		 * 	data: dataFromDatabase,
-		 * 	conditions: _conditions,
-		 * 	options: _options,
-		 * });
-		 */
+		return find(
+			this as any,
+			{
+				connectionInstance: this.connectionInstance,
+				tableName: this.tableName,
+			},
+			{
+				conditions,
+				options,
+			},
+		);
 	}
 
 	public findOne(
-		_conditions: FindOneOptions<Entity>,
-		_options?: BaseQueryOptions,
+		conditions: FindOneOptions<Entity>,
+		options?: BaseQueryOptions,
 	): Promise<Entity> {
-		// Delete this after the method is implemented
-		throw new SymbiosisError({
-			code: SymbiosisErrorCodeEnum.NOT_IMPLEMENTED,
-			origin: "SYMBIOSIS",
-			details: ["Method `findOne` is not implemented yet by this plugin"],
-			message: "Method not implemented",
-		});
-
-		/*
-		 * // TODO Uncomment this when method implemented
-		 *
-		 * const dataInDatabaseFormat = this.beforeFindOne({
-		 * 	conditions: _conditions,
-		 * 	options: _options,
-		 * });
-		 *
-		 * // ...
-		 *
-		 * // Do Plugin Stuff Here
-		 *
-		 * // ...
-		 *
-		 *
-		 * // Just an example, do not do this.
-		 * const dataFromDatabase = dataInDatabaseFormat;
-		 *
-		 * return this.afterFindOne({
-		 * 	data: dataFromDatabase,
-		 * 	conditions: _conditions,
-		 * 	options: _options,
-		 * });
-		 */
+		return findOne(
+			this as any,
+			{
+				connectionInstance: this.connectionInstance,
+				tableName: this.tableName,
+			},
+			{
+				conditions,
+				options,
+			},
+		);
 	}
 
 	public delete(
