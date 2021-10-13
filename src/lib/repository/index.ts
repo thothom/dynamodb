@@ -20,6 +20,7 @@ import {
 	SymbiosisError,
 	SymbiosisErrorCodeEnum,
 } from "@techmmunity/symbiosis";
+import { del } from "./delete";
 import { find } from "./find";
 import { findOne } from "./find-one";
 import { save } from "./save";
@@ -44,7 +45,7 @@ export class DynamodbRepository<
 	}
 
 	/**
-	 * This functions **CREATE** a new record if a record **WITH THE SAME ID** doesn't
+	 * This function **CREATE** a new record if a record **WITH THE SAME ID** doesn't
 	 * exists, **BUT** also **REPLACE** a record if it has the same ID.
 	 *
 	 * @param data The entity data that you want to save to the database
@@ -219,42 +220,30 @@ export class DynamodbRepository<
 		);
 	}
 
+	/**
+	 * This function delete a record **BY IT'S PRIMARY KEY(S)**.
+	 * - It can only delete **ONE** record at time.
+	 * - It only accepts "boolean", "number" and "string" types as values.
+	 *
+	 * @param where The PRIMARY KEYS of the record
+	 * @param options Options for this operation
+	 * @returns The count of records deleted
+	 */
 	public delete(
-		_where: FindConditions<Entity>,
-		_options?: BaseQueryOptions,
+		where: FindConditions<Entity>,
+		options?: BaseQueryOptions,
 	): Promise<number> {
-		// Delete this after the method is implemented
-		throw new SymbiosisError({
-			code: SymbiosisErrorCodeEnum.NOT_IMPLEMENTED,
-			origin: "SYMBIOSIS",
-			details: ["Method `delete` is not implemented yet by this plugin"],
-			message: "Method not implemented",
-		});
-
-		/*
-		 * // TODO Uncomment this when method implemented
-		 *
-		 * const dataInDatabaseFormat = this.beforeDelete({
-		 * 	where: _where,
-		 * 	options: _options,
-		 * });
-		 *
-		 * // ...
-		 *
-		 * // Do Plugin Stuff Here
-		 *
-		 * // ...
-		 *
-		 *
-		 * // Just an example, do not do this.
-		 * const dataFromDatabase = dataInDatabaseFormat;
-		 *
-		 * return this.afterDelete({
-		 * 	data: dataFromDatabase,
-		 * 	where: _where,
-		 * 	options: _options,
-		 * });
-		 */
+		return del(
+			this as any,
+			{
+				connectionInstance: this.connectionInstance,
+				tableName: this.tableName,
+			},
+			{
+				where,
+				options,
+			},
+		);
 	}
 
 	public softDelete(

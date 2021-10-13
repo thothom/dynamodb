@@ -28,7 +28,7 @@ export const findOne = async <Entity>(
 		options: rawOptions,
 	}: BeforeFindOneParams<Entity>,
 ) => {
-	const { conditions, options } = context.beforeFindOne({
+	const { conditions } = context.beforeFindOne({
 		conditions: rawConditions,
 		options: rawOptions,
 	});
@@ -49,8 +49,8 @@ export const findOne = async <Entity>(
 	const result = item ? unmarshall(item) : undefined;
 
 	return context.afterFindOne({
-		conditions: rawConditions,
 		dataToReturn: result as Entity,
-		options,
+		conditions: rawConditions,
+		options: rawOptions,
 	});
 };

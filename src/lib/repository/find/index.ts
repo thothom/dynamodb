@@ -25,7 +25,7 @@ export const find = async <Entity>(
 	{ tableName, connectionInstance }: Injectables,
 	{ conditions: rawConditions, options: rawOptions }: BeforeFindParams<Entity>,
 ) => {
-	const { conditions, options } = context.beforeFind({
+	const { conditions } = context.beforeFind({
 		conditions: rawConditions,
 		options: rawOptions,
 	});
@@ -44,8 +44,8 @@ export const find = async <Entity>(
 	const result = Items?.map(item => unmarshall(item));
 
 	return context.afterFind({
-		conditions: rawConditions,
 		dataToReturn: result as Array<Entity>,
-		options,
+		conditions: rawConditions,
+		options: rawOptions,
 	});
 };
