@@ -10,13 +10,21 @@ export class DynamodbConnection extends Connection<
 	EntityExtraMetadata,
 	ColumnExtraMetadata
 > {
-	public readonly connectionInstance: DynamoDBClient;
+	private _connectionInstance: DynamoDBClient;
+
+	public get connectionInstance() {
+		return this._connectionInstance;
+	}
 
 	public constructor(options: BaseConnectionOptions<DynamoDBClientConfig>) {
 		super(options);
+	}
 
-		this.connectionInstance = new DynamoDBClient(
-			options.databaseConnectionConfig || {},
+	// Disabled because the "connect" method must return a promise
+	// eslint-disable-next-line require-await
+	public async connect() {
+		this._connectionInstance = new DynamoDBClient(
+			this.options.databaseConnectionConfig || {},
 		);
 	}
 

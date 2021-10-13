@@ -32,6 +32,53 @@
 
 This is a DynamoDB plugin for [@techmmunity/symbiosis](https://github.com/techmmunity/symbiosis).
 
+## Installation
+
+With yarn
+
+```
+yarn add @techmmunity/symbiosis @techmmunity/symbiosis-dynamodb
+```
+
+With npm
+
+```
+npm i --save @techmmunity/symbiosis @techmmunity/symbiosis-dynamodb
+```
+
+## Usage
+
+```ts
+import { DynamodbConnection } from "@techmmunity/symbiosis-dynamodb";
+import { Entity, Repository } from "@techmmunity/symbiosis";
+
+@Entity()
+class Entity {
+	// ...
+}
+
+type EntityRepository = Repository<Entity>
+
+const foo = async () => {
+	const connection = new DynamodbConnection({
+		// Connection options
+		entities: [...],
+		databaseConnectionConfig: {
+			// Dynamodb connection config
+		}
+	});
+
+	await connection.connect();
+
+	const repository = connection.getRepository<Entity>(Entity);
+
+	repository.save(...)
+	repository.find(...)
+}
+
+foo();
+```
+
 ## Warning
 
 DynamoDB has a very different way of modeling data compared to traditional SQL databases. We strongly recommend that you study this before using this database, so that you can take full advantage of its capabilities.
