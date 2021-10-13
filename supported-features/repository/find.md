@@ -17,6 +17,7 @@ Supported features for `.find()` method
 | `select`                    |    ✔️     |
 | `take`                      |    ✔️     |
 | `skip`                      |    ❌     |
+| `startFrom`                 |    ✔️     |
 | `order`                     |    ❌     |
 | `withDeleted`               |    ❌     |
 
@@ -26,7 +27,7 @@ More performative finds
 
 | feature                           | supported |
 | --------------------------------- | :-------: |
-| performative find by primary key  |    ❌     |
+| performative find by primary key  |    ✔️     |
 | performative find by primary keys |    ❌     |
 | performative find by index        |    ❌     |
 | performative find by indexes      |    ❌     |

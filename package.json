@@ -33,7 +33,7 @@
 	"dependencies": {
 		"@aws-sdk/client-dynamodb": "^3.36.0",
 		"@aws-sdk/util-dynamodb": "^3.36.0",
-		"@techmmunity/symbiosis": "^0.0.3"
+		"@techmmunity/symbiosis": "^0.0.4"
 	},
 	"devDependencies": {
 		"@techmmunity/eslint-config": "^5.0.1",

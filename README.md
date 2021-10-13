@@ -30,7 +30,7 @@
 
 </div>
 
-This is a DynamoDB plugin for [@techmmunity/symbiosis]().
+This is a DynamoDB plugin for [@techmmunity/symbiosis](https://github.com/techmmunity/symbiosis).
 
 ## Warning
 

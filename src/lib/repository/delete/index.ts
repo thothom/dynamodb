@@ -6,7 +6,7 @@ import type { BeforeDeleteParams } from "@techmmunity/symbiosis/lib/repository/m
 import type { DatabaseEntity } from "@techmmunity/symbiosis/lib/types/database-entity";
 import type { ColumnExtraMetadata } from "../../types/column-extra-metadata";
 import type { EntityExtraMetadata } from "../../types/entity-extra-metadata";
-import { validatePrimaryColumns } from "./helpers/has-all-primary-columns";
+import { validatePrimaryColumns } from "./helpers/validate-primary-columns";
 
 // Used because of problems with `this` in extended classes
 interface Context<Entity> {

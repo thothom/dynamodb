@@ -11,7 +11,7 @@ import type { ColumnExtraMetadata } from "../../../types/column-extra-metadata";
 import type { EntityExtraMetadata } from "../../../types/entity-extra-metadata";
 import { getTypeof } from "../../../utils/get-typeof";
 
-interface HasAllPrimaryColumns {
+interface ValidatePrimaryColumns {
 	where: FindConditions<DatabaseEntity>;
 	primaryColumns: Array<ColumnMetadata<ColumnExtraMetadata>>;
 	entityMetadata: EntityMetadata<EntityExtraMetadata, ColumnExtraMetadata>;
@@ -86,7 +86,7 @@ export const validatePrimaryColumns = ({
 	where,
 	primaryColumns,
 	entityMetadata,
-}: HasAllPrimaryColumns) => {
+}: ValidatePrimaryColumns) => {
 	if (Array.isArray(where)) {
 		return throwDefaultError(["You can only delete one record at time."]);
 	}
