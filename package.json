@@ -28,15 +28,16 @@
 		"techmmunity-symbiosis"
 	],
 	"peerDependencies": {
+		"@techmmunity/symbiosis": "^0.0.4",
 		"reflect-metadata": "^0.1.13"
 	},
 	"dependencies": {
 		"@aws-sdk/client-dynamodb": "^3.36.0",
-		"@aws-sdk/util-dynamodb": "^3.36.0",
-		"@techmmunity/symbiosis": "^0.0.4"
+		"@aws-sdk/util-dynamodb": "^3.36.0"
 	},
 	"devDependencies": {
 		"@techmmunity/eslint-config": "^5.0.1",
+		"@techmmunity/symbiosis": "^0.0.4",
 		"@types/jest": "^27.0.1",
 		"@vercel/ncc": "^0.29.2",
 		"eslint": "^7.32.0",
@@ -53,7 +54,7 @@
 		"ts-node": "ts-node",
 		"test": "jest",
 		"test:cov": "jest --coverage",
-		"build": "ncc build src/index.ts -o dist -m -e reflect-metadata -e uuid",
+		"build": "ncc build src/index.ts -o dist -m",
 		"format": "eslint . --fix --quiet",
 		"lint": "eslint . --quiet",
 		"update-dependencies": "yarn upgrade-interactive --latest",
