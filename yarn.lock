@@ -1230,10 +1230,10 @@
     eslint-plugin-sonarjs "^0.10.0"
     typescript "^4.4.3"
 
-"@techmmunity/symbiosis@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@techmmunity/symbiosis/-/symbiosis-0.0.4.tgz#2cf6363ffe0a6d2f4fec3a40e24ceead1747f6bd"
-  integrity sha512-h5lFk6dfEbjId3yfcNMN+i3PxmjCp2TofE71ma9gy73Btw4uuy51UpOMSrUwbd07Cd10ZhnM3xymYiKPS6XWbw==
+"@techmmunity/symbiosis@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@techmmunity/symbiosis/-/symbiosis-0.0.5.tgz#693964a082c98f54ad1729b826086b03dd736a19"
+  integrity sha512-LMSgEyjBOhi8waZEznsghmqF/dlcE49fmIEBGUkZMuX2O6oc6laWNVERi5QbJePzrf3Xwzz30F1jYmY0eHT9Pw==
   dependencies:
     change-case "^4.1.2"
     dayjs "^1.10.6"
