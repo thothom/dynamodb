@@ -1,9 +1,10 @@
-import { BaseConnectionOptions, Connection } from "@techmmunity/symbiosis";
+import { Connection } from "@techmmunity/symbiosis";
 import { DynamoDBClient, DynamoDBClientConfig } from "@aws-sdk/client-dynamodb";
 import type { CustomClass } from "@techmmunity/symbiosis/lib/entity-manager/types/metadata-type";
 import { DynamodbRepository } from "../repository";
 import type { ColumnExtraMetadata } from "../types/column-extra-metadata";
 import type { EntityExtraMetadata } from "../types/entity-extra-metadata";
+import { DynamoDbConnectionOptions } from "../types/connection-options";
 
 export class DynamodbConnection extends Connection<
 	DynamoDBClientConfig,
@@ -16,7 +17,7 @@ export class DynamodbConnection extends Connection<
 		return this._connectionInstance;
 	}
 
-	public constructor(options: BaseConnectionOptions<DynamoDBClientConfig>) {
+	public constructor(options: DynamoDbConnectionOptions) {
 		super(options);
 	}
 
@@ -24,7 +25,7 @@ export class DynamodbConnection extends Connection<
 	// eslint-disable-next-line require-await
 	public async connect() {
 		this._connectionInstance = new DynamoDBClient(
-			this.options.databaseConnectionConfig || {},
+			this.options.databaseConfig || {},
 		);
 	}
 
