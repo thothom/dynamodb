@@ -5,8 +5,7 @@ import {
 	SymbiosisErrorCodeEnum,
 } from "@techmmunity/symbiosis";
 import type { DatabaseEntity } from "@techmmunity/symbiosis/lib/types/database-entity";
-import { getTypeof } from "../../get-typeof";
-import { isEmptyObject } from "../../validation/is-empty-object";
+import { getTypeof, isEmptyObject } from "@techmmunity/utils";
 
 interface HandleArrayParams {
 	acc: Record<string, any>;

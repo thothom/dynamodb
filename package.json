@@ -1,6 +1,6 @@
 {
 	"name": "@techmmunity/symbiosis-dynamodb",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"main": "index.js",
 	"types": "index.d.ts",
 	"license": "Apache-2.0",
@@ -33,11 +33,12 @@
 	},
 	"dependencies": {
 		"@aws-sdk/client-dynamodb": "^3.36.0",
-		"@aws-sdk/util-dynamodb": "^3.36.0"
+		"@aws-sdk/util-dynamodb": "^3.36.0",
+		"@techmmunity/utils": "^1.1.0"
 	},
 	"devDependencies": {
 		"@techmmunity/eslint-config": "^5.0.1",
-		"@techmmunity/symbiosis": "^0.0.6",
+		"@techmmunity/symbiosis": "^0.0.9",
 		"@types/jest": "^27.0.1",
 		"@vercel/ncc": "^0.31.1",
 		"eslint": "^7.32.0",
@@ -54,7 +55,7 @@
 		"ts-node": "ts-node",
 		"test": "jest",
 		"test:cov": "jest --coverage",
-		"build": "ncc build src/index.ts -o dist -m",
+		"build": "ncc build src/index.ts -o dist -s -m",
 		"format": "eslint . --fix --quiet",
 		"lint": "eslint . --quiet",
 		"update-dependencies": "yarn upgrade-interactive --latest",

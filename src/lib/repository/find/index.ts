@@ -51,7 +51,7 @@ export const find = async <Entity>(
 
 	const { Items } = await connectionInstance.send(queryCommand);
 
-	const result = Items?.map(item => unmarshall(item));
+	const result = Items?.map(item => unmarshall(item)) || [];
 
 	return context.afterFind({
 		dataToReturn: result as Array<Entity>,

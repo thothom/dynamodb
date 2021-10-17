@@ -1,7 +1,6 @@
 import { SymbiosisError, SymbiosisErrorCodeEnum } from "@techmmunity/symbiosis";
+import { isEmptyObject } from "@techmmunity/utils";
 import { getConditionsExpression } from "./helpers/get-conditions-expression";
-import { isEmptyObject } from "../validation/is-empty-object";
-import { getCommonConditions } from "./helpers/get-common-conditions";
 import { KeysMap, ValuesMap } from "./helpers/map-where";
 
 interface GetKeyConditionExpressionParams {

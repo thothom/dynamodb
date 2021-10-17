@@ -1,4 +1,4 @@
-import { arrayUniqueValues } from "../array-unique-values";
+import { getArrayUniqueValues } from "@techmmunity/utils";
 import { KeysMap } from "./helpers/map-where";
 
 export const getExpressionAttributeNames = (keysMap: KeysMap) => {
@@ -7,7 +7,7 @@ export const getExpressionAttributeNames = (keysMap: KeysMap) => {
 		keys.push(...key.replace(/\[\]/g, "").split(".")),
 	);
 
-	const uniqueKeys = arrayUniqueValues(keys);
+	const uniqueKeys = getArrayUniqueValues(keys);
 
 	const keysEntriesToReturn = uniqueKeys.map(key => [`#${key}`, key]);
 
