@@ -1,6 +1,6 @@
 import { ArrayFindConditions } from "@techmmunity/symbiosis";
 import { DatabaseEntity } from "@techmmunity/symbiosis/lib/types/database-entity";
-import { getTypeof } from "../../get-typeof";
+import { getTypeof } from "@techmmunity/utils";
 
 export const getCommonConditions = (
 	arrayWhere: ArrayFindConditions<DatabaseEntity>,

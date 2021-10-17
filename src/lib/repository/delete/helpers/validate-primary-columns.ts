@@ -7,9 +7,9 @@ import {
 import type { ColumnMetadata } from "@techmmunity/symbiosis/lib/entity-manager/types/column-metadata";
 import type { EntityMetadata } from "@techmmunity/symbiosis/lib/entity-manager/types/entity-metadata";
 import type { DatabaseEntity } from "@techmmunity/symbiosis/lib/types/database-entity";
+import { getTypeof } from "@techmmunity/utils";
 import type { ColumnExtraMetadata } from "../../../types/column-extra-metadata";
 import type { EntityExtraMetadata } from "../../../types/entity-extra-metadata";
-import { getTypeof } from "../../../utils/get-typeof";
 
 interface ValidatePrimaryColumns {
 	where: FindConditions<DatabaseEntity>;

@@ -59,8 +59,10 @@ export const save = async <Entity>(
 		batchWriteItemCommand,
 	);
 
-	if (UnprocessedItems) {
-		const unsavedItems = UnprocessedItems[tableName].map(item =>
+	const unprocessedItems = UnprocessedItems?.[tableName];
+
+	if (unprocessedItems) {
+		const unsavedItems = unprocessedItems.map(item =>
 			context.entityManager.convertDatabaseToEntity({
 				entity: context.entity,
 				// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -76,15 +78,9 @@ export const save = async <Entity>(
 		});
 	}
 
-	const formattedData = arrayData.map(d =>
-		context.entityManager.convertDatabaseToEntity({
-			entity: context.entity,
-			data: d,
-		}),
-	);
-
 	return context.afterSave({
-		data: formattedData, // Dynamo doesn't return the new values, so we have to return the same data that we receive
+		// Dynamo doesn't return the new values, so we have to return the same data that we receive
+		data,
 		options: rawOptions,
 	});
 };
