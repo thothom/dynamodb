@@ -6,7 +6,7 @@ import {
 import type { ColumnMetadata } from "@techmmunity/symbiosis/lib/entity-manager/types/column-metadata";
 import type { EntityMetadata } from "@techmmunity/symbiosis/lib/entity-manager/types/entity-metadata";
 import type { DatabaseEntity } from "@techmmunity/symbiosis/lib/types/database-entity";
-import { getTypeof } from "@techmmunity/utils";
+import { cleanObj, getTypeof, isEmptyObject } from "@techmmunity/utils";
 import type { ColumnExtraMetadata } from "../../../types/column-extra-metadata";
 import type { EntityExtraMetadata } from "../../../types/entity-extra-metadata";
 
@@ -85,11 +85,17 @@ export const validatePrimaryColumns = ({
 	primaryColumns,
 	entityMetadata,
 }: ValidatePrimaryColumns) => {
-	const startFromKeys = Object.keys(startFrom);
+	if (!startFrom) return;
+
+	const cleanedStartFrom = cleanObj(startFrom);
+
+	if (isEmptyObject(cleanedStartFrom)) return;
+
+	const startFromKeys = Object.keys(cleanedStartFrom);
 
 	validateHasTheSameLength(primaryColumns, startFromKeys, entityMetadata);
 
 	validateAreTheSamePrimaryKeys(primaryColumns, startFromKeys, entityMetadata);
 
-	validateValues(startFrom);
+	validateValues(cleanedStartFrom);
 };

@@ -1,15 +1,21 @@
-import { getArrayUniqueValues } from "@techmmunity/utils";
 import { KeysMap } from "./helpers/map-where";
 
 export const getExpressionAttributeNames = (keysMap: KeysMap) => {
-	const keys: Array<string> = [];
-	keysMap.forEach((_, key) =>
-		keys.push(...key.replace(/\[\]/g, "").split(".")),
-	);
+	const objects: Array<Record<string, string>> = [];
 
-	const uniqueKeys = getArrayUniqueValues(keys);
+	keysMap.forEach((keyAlias, key) => {
+		const keysSplitted = key.replace(/\[\]/g, "").split(".");
+		const keysAliasesSplitted = keyAlias.replace(/\[\]/g, "").split(".");
 
-	const keysEntriesToReturn = uniqueKeys.map(key => [`#${key}`, key]);
+		const objKeyValue = Object.fromEntries(
+			keysAliasesSplitted.map((val, idx) => [val, keysSplitted[idx]]),
+		);
 
-	return Object.fromEntries(keysEntriesToReturn);
+		objects.push(objKeyValue);
+	});
+
+	return objects.reduce((acc, cur) => ({
+		...acc,
+		...cur,
+	}));
 };

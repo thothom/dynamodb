@@ -1,9 +1,4 @@
-const getValueAlias = (key: string) =>
-	key
-		.replace(/\./g, "_")
-		.replace(/\[\]/g, "")
-		.toLowerCase()
-		.replace(/[^a-zA-Z0-9]+(.)/g, (_, chr) => chr.toUpperCase());
+import { getAlias } from "../../get-alias";
 
 export const mapWhere = (arrayWhere: Array<Record<string, any>>) => {
 	const keysMap = new Map<string, string>();
@@ -16,7 +11,7 @@ export const mapWhere = (arrayWhere: Array<Record<string, any>>) => {
 					key,
 					key
 						.split(".")
-						.map(keySplitted => `#${keySplitted}`)
+						.map(keySplitted => getAlias(keySplitted, "#WHERE"))
 						.join("."),
 				);
 			}
@@ -31,7 +26,7 @@ export const mapWhere = (arrayWhere: Array<Record<string, any>>) => {
 				mapOfValuesWithSameKey?.set(
 					value,
 					// eslint-disable-next-line @typescript-eslint/no-magic-numbers
-					`:${getValueAlias(key)}${mapOfValuesWithSameKey.size + 1}`,
+					`${getAlias(key, ":WHERE")}${mapOfValuesWithSameKey.size + 1}`,
 				);
 			}
 		}),

@@ -5,6 +5,7 @@ import { unmarshall } from "@aws-sdk/util-dynamodb";
 import type { AfterFindOneParams } from "@techmmunity/symbiosis/lib/repository/methods/after-find-one";
 import type { BeforeFindOneParams } from "@techmmunity/symbiosis/lib/repository/methods/before-find-one";
 import type { DatabaseEntity } from "@techmmunity/symbiosis/lib/types/database-entity";
+import { getSelect } from "../../utils/get-select";
 import { getWhereProperties } from "../../utils/get-where-properties";
 
 // Used because of problems with `this` in extended classes
@@ -35,11 +36,25 @@ export const findOne = async <Entity>(
 
 	const { select, where } = conditions;
 
+	const {
+		ProjectionExpression,
+		ExpressionAttributeNames: ExpressionAttributeNamesSelect,
+	} = getSelect(select);
+
+	const {
+		ExpressionAttributeNames: ExpressionAttributeNamesWhere,
+		...whereProps
+	} = getWhereProperties(where);
+
 	const queryCommand = new QueryCommand({
 		TableName: tableName,
-		AttributesToGet: select,
+		ProjectionExpression,
 		Limit: 1,
-		...getWhereProperties(where),
+		ExpressionAttributeNames: {
+			...ExpressionAttributeNamesSelect,
+			...ExpressionAttributeNamesWhere,
+		},
+		...whereProps,
 	});
 
 	const { Items } = await connectionInstance.send(queryCommand);
