@@ -20,23 +20,23 @@ describe("getWhereProperties Util", () => {
 
 			expect(result).toStrictEqual({
 				ExpressionAttributeNames: {
-					"#abc": "abc",
-					"#bar": "bar",
-					"#def": "def",
-					"#foo": "foo",
-					"#ghi": "ghi",
-					"#jkl": "jkl",
-					"#xyz": "xyz",
+					"#WHEREabc": "abc",
+					"#WHEREbar": "bar",
+					"#WHEREdef": "def",
+					"#WHEREfoo": "foo",
+					"#WHEREghi": "ghi",
+					"#WHEREjkl": "jkl",
+					"#WHERExyz": "xyz",
 				},
 				ExpressionAttributeValues: {
-					":barAbcDef1": { N: "3" },
-					":barXyz1": { N: "2" },
-					":foo1": { N: "1" },
-					":ghiJkl1": { N: "4" },
+					":WHEREbarAbcDef1": { N: "3" },
+					":WHEREbarXyz1": { N: "2" },
+					":WHEREfoo1": { N: "1" },
+					":WHEREghiJkl1": { N: "4" },
 				},
 				FilterExpression: undefined,
 				KeyConditionExpression:
-					"(#foo = :foo1) and (#bar.#xyz = :barXyz1) and (#bar.#abc.#def = :barAbcDef1) and (#ghi[].#jkl = :ghiJkl1)",
+					"(#WHEREfoo = :WHEREfoo1) and (#WHEREbar.#WHERExyz = :WHEREbarXyz1) and (#WHEREbar.#WHEREabc.#WHEREdef = :WHEREbarAbcDef1) and (#WHEREghi[].#WHEREjkl = :WHEREghiJkl1)",
 			});
 		});
 	});
@@ -64,23 +64,24 @@ describe("getWhereProperties Util", () => {
 
 			expect(result).toStrictEqual({
 				ExpressionAttributeNames: {
-					"#abc": "abc",
-					"#bar": "bar",
-					"#def": "def",
-					"#foo": "foo",
-					"#ghi": "ghi",
-					"#jkl": "jkl",
-					"#xyz": "xyz",
+					"#WHEREabc": "abc",
+					"#WHEREbar": "bar",
+					"#WHEREdef": "def",
+					"#WHEREfoo": "foo",
+					"#WHEREghi": "ghi",
+					"#WHEREjkl": "jkl",
+					"#WHERExyz": "xyz",
 				},
 				ExpressionAttributeValues: {
-					":barAbcDef1": { N: "3" },
-					":barXyz1": { N: "2" },
-					":foo1": { N: "1" },
-					":ghiJkl1": { N: "4" },
+					":WHEREbarAbcDef1": { N: "3" },
+					":WHEREbarXyz1": { N: "2" },
+					":WHEREfoo1": { N: "1" },
+					":WHEREghiJkl1": { N: "4" },
 				},
 				FilterExpression:
-					"((#bar.#xyz = :barXyz1) and (#bar.#abc.#def = :barAbcDef1)) or ()",
-				KeyConditionExpression: "(#foo = :foo1) and (#ghi[].#jkl = :ghiJkl1)",
+					"((#WHEREbar.#WHERExyz = :WHEREbarXyz1) and (#WHEREbar.#WHEREabc.#WHEREdef = :WHEREbarAbcDef1)) or ()",
+				KeyConditionExpression:
+					"(#WHEREfoo = :WHEREfoo1) and (#WHEREghi[].#WHEREjkl = :WHEREghiJkl1)",
 			});
 		});
 	});

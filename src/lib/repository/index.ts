@@ -20,6 +20,7 @@ import {
 	SymbiosisError,
 	SymbiosisErrorCodeEnum,
 } from "@techmmunity/symbiosis";
+import { handleDatabaseError } from "../utils/handle-database-error";
 import { del } from "./delete";
 import { find } from "./find";
 import { findOne } from "./find-one";
@@ -66,7 +67,9 @@ export class DynamodbRepository<
 				data,
 				options,
 			},
-		);
+		).catch(err => {
+			throw handleDatabaseError(err);
+		});
 	}
 
 	public insert(
@@ -200,7 +203,9 @@ export class DynamodbRepository<
 				conditions,
 				options,
 			},
-		);
+		).catch(err => {
+			throw handleDatabaseError(err);
+		});
 	}
 
 	public findOne(
@@ -217,7 +222,9 @@ export class DynamodbRepository<
 				conditions,
 				options,
 			},
-		);
+		).catch(err => {
+			throw handleDatabaseError(err);
+		});
 	}
 
 	/**
@@ -243,7 +250,9 @@ export class DynamodbRepository<
 				where,
 				options,
 			},
-		);
+		).catch(err => {
+			throw handleDatabaseError(err);
+		});
 	}
 
 	public softDelete(

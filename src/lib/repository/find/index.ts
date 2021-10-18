@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 
-import { DynamoDBClient, QueryCommand } from "@aws-sdk/client-dynamodb";
+import { DynamoDBClient, ScanCommand } from "@aws-sdk/client-dynamodb";
 import { unmarshall } from "@aws-sdk/util-dynamodb";
 import type { EntityManager } from "@techmmunity/symbiosis";
 import type { AfterFindParams } from "@techmmunity/symbiosis/lib/repository/methods/after-find";
@@ -8,6 +8,7 @@ import type { BeforeFindParams } from "@techmmunity/symbiosis/lib/repository/met
 import type { DatabaseEntity } from "@techmmunity/symbiosis/lib/types/database-entity";
 import type { ColumnExtraMetadata } from "../../types/column-extra-metadata";
 import type { EntityExtraMetadata } from "../../types/entity-extra-metadata";
+import { getSelect } from "../../utils/get-select";
 import { getWhereProperties } from "../../utils/get-where-properties";
 import { getStartFrom } from "./helpers/get-start-from";
 
@@ -38,18 +39,32 @@ export const find = async <Entity>(
 
 	const { where, select, take, startFrom } = conditions;
 
-	const queryCommand = new QueryCommand({
+	const {
+		ProjectionExpression,
+		ExpressionAttributeNames: ExpressionAttributeNamesSelect,
+	} = getSelect(select);
+
+	const {
+		ExpressionAttributeNames: ExpressionAttributeNamesWhere,
+		...whereProps
+	} = getWhereProperties(where);
+
+	const scanCommand = new ScanCommand({
 		TableName: tableName,
-		AttributesToGet: select,
+		ProjectionExpression,
 		Limit: take,
 		ExclusiveStartKey: getStartFrom<Entity>({
 			startFrom,
 			context,
 		}),
-		...getWhereProperties(where),
+		ExpressionAttributeNames: {
+			...ExpressionAttributeNamesSelect,
+			...ExpressionAttributeNamesWhere,
+		},
+		...whereProps,
 	});
 
-	const { Items } = await connectionInstance.send(queryCommand);
+	const { Items } = await connectionInstance.send(scanCommand);
 
 	const result = Items?.map(item => unmarshall(item)) || [];
 
