@@ -1,1 +1,3 @@
-export type ColumnExtraMetadata = void;
+export interface ColumnExtraMetadata {
+	sortKey?: boolean;
+}

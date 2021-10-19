@@ -1,26 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 
-import { DynamoDBClient, ScanCommand } from "@aws-sdk/client-dynamodb";
+import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import { unmarshall } from "@aws-sdk/util-dynamodb";
-import type { EntityManager } from "@techmmunity/symbiosis";
-import type { AfterFindParams } from "@techmmunity/symbiosis/lib/repository/methods/after-find";
 import type { BeforeFindParams } from "@techmmunity/symbiosis/lib/repository/methods/before-find";
-import type { DatabaseEntity } from "@techmmunity/symbiosis/lib/types/database-entity";
-import type { ColumnExtraMetadata } from "../../types/column-extra-metadata";
-import type { EntityExtraMetadata } from "../../types/entity-extra-metadata";
+import type { Context } from "../../types/context";
+import { getFindCommand } from "../../utils/get-find-command";
 import { getSelect } from "../../utils/get-select";
 import { getWhereProperties } from "../../utils/get-where-properties";
 import { getStartFrom } from "./helpers/get-start-from";
-
-// Used because of problems with `this` in extended classes
-interface Context<Entity> {
-	beforeFind: (
-		params: BeforeFindParams<Entity>,
-	) => BeforeFindParams<DatabaseEntity>;
-	afterFind: (params: AfterFindParams<Entity>) => Array<Entity>;
-	entity: Entity;
-	entityManager: EntityManager<EntityExtraMetadata, ColumnExtraMetadata>;
-}
 
 interface Injectables {
 	tableName: string;
@@ -49,7 +36,13 @@ export const find = async <Entity>(
 		...whereProps
 	} = getWhereProperties(where);
 
-	const scanCommand = new ScanCommand({
+	const FindCommandClass = getFindCommand<Entity>({
+		where,
+		context,
+		skipSortKey: true,
+	});
+
+	const findCommand = new FindCommandClass({
 		TableName: tableName,
 		ProjectionExpression,
 		Limit: take,
@@ -64,7 +57,7 @@ export const find = async <Entity>(
 		...whereProps,
 	});
 
-	const { Items } = await connectionInstance.send(scanCommand);
+	const { Items } = await connectionInstance.send(findCommand);
 
 	const result = Items?.map(item => unmarshall(item)) || [];
 

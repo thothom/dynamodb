@@ -1,20 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 
-import { DynamoDBClient, QueryCommand } from "@aws-sdk/client-dynamodb";
+import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import { unmarshall } from "@aws-sdk/util-dynamodb";
-import type { AfterFindOneParams } from "@techmmunity/symbiosis/lib/repository/methods/after-find-one";
 import type { BeforeFindOneParams } from "@techmmunity/symbiosis/lib/repository/methods/before-find-one";
 import type { DatabaseEntity } from "@techmmunity/symbiosis/lib/types/database-entity";
+import type { Context } from "../../types/context";
+import { getFindCommand } from "../../utils/get-find-command";
 import { getSelect } from "../../utils/get-select";
 import { getWhereProperties } from "../../utils/get-where-properties";
-
-// Used because of problems with `this` in extended classes
-interface Context<Entity> {
-	beforeFindOne: (
-		params: BeforeFindOneParams<Entity>,
-	) => BeforeFindOneParams<DatabaseEntity>;
-	afterFindOne: (params: AfterFindOneParams<Entity>) => Entity;
-}
 
 interface Injectables {
 	tableName: string;
@@ -46,7 +39,13 @@ export const findOne = async <Entity>(
 		...whereProps
 	} = getWhereProperties(where);
 
-	const queryCommand = new QueryCommand({
+	const FindCommandClass = getFindCommand<Entity>({
+		where,
+		context,
+		skipSortKey: true,
+	});
+
+	const queryCommand = new FindCommandClass({
 		TableName: tableName,
 		ProjectionExpression,
 		Limit: 1,
@@ -64,7 +63,7 @@ export const findOne = async <Entity>(
 	const result = item ? unmarshall(item) : undefined;
 
 	return context.afterFindOne({
-		dataToReturn: result as Entity,
+		dataToReturn: result as DatabaseEntity,
 		conditions: rawConditions,
 		options: rawOptions,
 	});

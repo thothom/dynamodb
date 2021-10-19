@@ -3,26 +3,9 @@ import {
 	BatchWriteItemCommand,
 } from "@aws-sdk/client-dynamodb";
 import { marshall, unmarshall } from "@aws-sdk/util-dynamodb";
-import {
-	EntityManager,
-	SymbiosisError,
-	SymbiosisErrorCodeEnum,
-} from "@techmmunity/symbiosis";
-import type { AfterSaveParams } from "@techmmunity/symbiosis/lib/repository/methods/after-save";
+import { SymbiosisError, SymbiosisErrorCodeEnum } from "@techmmunity/symbiosis";
 import type { BeforeSaveParams } from "@techmmunity/symbiosis/lib/repository/methods/before-save";
-import type { DatabaseEntity } from "@techmmunity/symbiosis/lib/types/database-entity";
-import type { ColumnExtraMetadata } from "../../types/column-extra-metadata";
-import type { EntityExtraMetadata } from "../../types/entity-extra-metadata";
-
-// Used because of problems with `this` in extended classes
-interface Context<Entity> {
-	beforeSave: (
-		params: BeforeSaveParams<Entity>,
-	) => BeforeSaveParams<DatabaseEntity>;
-	afterSave: (params: AfterSaveParams) => Array<Entity> | Entity;
-	entityManager: EntityManager<EntityExtraMetadata, ColumnExtraMetadata>;
-	entity: Entity;
-}
+import type { Context } from "../../types/context";
 
 interface Injectables {
 	tableName: string;
