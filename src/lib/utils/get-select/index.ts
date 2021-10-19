@@ -13,8 +13,8 @@ export const getSelect = (select?: Array<string>) => {
 				.map(key => getAlias(key, "#SELECT"))
 				.join("."),
 		)
-		.join(",")
-		.replace(ARRAY_REGEX, "[n]");
+		.join(", ")
+		.replace(ARRAY_REGEX, "");
 
 	// eslint-disable-next-line @typescript-eslint/naming-convention
 	const ExpressionAttributeNames = select.reduce((acc, rawCur) => {

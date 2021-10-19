@@ -24,7 +24,7 @@ describe("getSelect Util", () => {
 					"#SELECTxyz": "xyz",
 				},
 				ProjectionExpression:
-					"#SELECTfoo,#SELECTbar.#SELECTxyz,#SELECTbar.#SELECTabc.#SELECTdef,#SELECTghi[n].#SELECTjkl",
+					"#SELECTfoo, #SELECTbar.#SELECTxyz, #SELECTbar.#SELECTabc.#SELECTdef, #SELECTghi.#SELECTjkl",
 			});
 		});
 	});
