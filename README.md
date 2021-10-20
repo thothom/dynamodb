@@ -35,30 +35,30 @@ This is a DynamoDB plugin for [@techmmunity/symbiosis](https://github.com/techmm
 With yarn
 
 ```
-yarn add @techmmunity/symbiosis @techmmunity/symbiosis-dynamodb
+yarn add @techmmunity/symbiosis reflect-metadata @techmmunity/symbiosis-dynamodb
 ```
 
 With npm
 
 ```
-npm i --save @techmmunity/symbiosis @techmmunity/symbiosis-dynamodb
+npm i --save @techmmunity/symbiosis reflect-metadata @techmmunity/symbiosis-dynamodb
 ```
 
 ## Usage
 
 ```ts
-import { DynamodbConnection } from "@techmmunity/symbiosis-dynamodb";
-import { Entity, Repository } from "@techmmunity/symbiosis";
+import { Connection,Repository } from "@techmmunity/symbiosis-dynamodb";
+import { Entity } from "@techmmunity/symbiosis";
 
 @Entity()
-class Entity {
+class FooEntity {
 	// ...
 }
 
-type EntityRepository = Repository<Entity>
+type FooRepository = Repository<FooEntity>
 
 const foo = async () => {
-	const connection = new DynamodbConnection({
+	const connection = new Connection({
 		// Connection options
 		entities: [...],
 		databaseConfig: {
@@ -68,7 +68,7 @@ const foo = async () => {
 
 	await connection.connect();
 
-	const repository = connection.getRepository<Entity>(Entity);
+	const repository = connection.getRepository<FooEntity>(Entity);
 
 	repository.save(...)
 	repository.find(...)

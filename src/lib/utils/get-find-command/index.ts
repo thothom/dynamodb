@@ -2,14 +2,19 @@ import { QueryCommand, ScanCommand } from "@aws-sdk/client-dynamodb";
 import { EntityManager, FindConditions } from "@techmmunity/symbiosis";
 import { DatabaseEntity } from "@techmmunity/symbiosis/lib/types/database-entity";
 import { getTypeof, isEmptyArray, isEmptyObject } from "@techmmunity/utils";
-import { ColumnExtraMetadata } from "../../types/column-extra-metadata";
-import { EntityExtraMetadata } from "../../types/entity-extra-metadata";
+import type { ColumnExtraMetadata } from "../../types/column-extra-metadata";
+import type { EntityExtraMetadata } from "../../types/entity-extra-metadata";
+import type { IndexExtraMetadata } from "../../types/index-extra-metadata";
 
 interface GetWhereCommandParams<Entity> {
 	where?: FindConditions<DatabaseEntity>;
 	context: {
 		entity: Entity;
-		entityManager: EntityManager<EntityExtraMetadata, ColumnExtraMetadata>;
+		entityManager: EntityManager<
+			EntityExtraMetadata,
+			ColumnExtraMetadata,
+			IndexExtraMetadata
+		>;
 	};
 	skipSortKey?: boolean;
 }

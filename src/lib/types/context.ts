@@ -10,6 +10,7 @@ import type { BeforeSaveParams } from "@techmmunity/symbiosis/lib/repository/met
 import type { DatabaseEntity } from "@techmmunity/symbiosis/lib/types/database-entity";
 import type { ColumnExtraMetadata } from "./column-extra-metadata";
 import type { EntityExtraMetadata } from "./entity-extra-metadata";
+import type { IndexExtraMetadata } from "./index-extra-metadata";
 
 // Used because of problems with `this` in extended classes
 export interface Context<Entity> {
@@ -24,11 +25,15 @@ export interface Context<Entity> {
 	beforeSave: (
 		params: BeforeSaveParams<Entity>,
 	) => BeforeSaveParams<DatabaseEntity>;
-	afterSave: (params: AfterSaveParams) => Array<Entity> | Entity;
+	afterSave: (params: AfterSaveParams) => any;
 	beforeDelete: (
 		params: BeforeDeleteParams<Entity>,
 	) => BeforeDeleteParams<DatabaseEntity>;
 	afterDelete: (params: AfterDeleteParams<Entity>) => Promise<number>;
-	entityManager: EntityManager<EntityExtraMetadata, ColumnExtraMetadata>;
+	entityManager: EntityManager<
+		EntityExtraMetadata,
+		ColumnExtraMetadata,
+		IndexExtraMetadata
+	>;
 	entity: Entity;
 }

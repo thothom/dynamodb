@@ -10,11 +10,16 @@ import type { DatabaseEntity } from "@techmmunity/symbiosis/lib/types/database-e
 import { getTypeof } from "@techmmunity/utils";
 import type { ColumnExtraMetadata } from "../../../types/column-extra-metadata";
 import type { EntityExtraMetadata } from "../../../types/entity-extra-metadata";
+import type { IndexExtraMetadata } from "../../../types/index-extra-metadata";
 
 interface ValidatePrimaryColumns {
 	where: FindConditions<DatabaseEntity>;
 	primaryColumns: Array<ColumnMetadata<ColumnExtraMetadata>>;
-	entityMetadata: EntityMetadata<EntityExtraMetadata, ColumnExtraMetadata>;
+	entityMetadata: EntityMetadata<
+		EntityExtraMetadata,
+		ColumnExtraMetadata,
+		IndexExtraMetadata
+	>;
 }
 
 const throwDefaultError = (extraDetails?: Array<any>) => {
@@ -32,7 +37,11 @@ const throwDefaultError = (extraDetails?: Array<any>) => {
 const validateHasTheSameLength = (
 	primaryColumns: Array<ColumnMetadata<ColumnExtraMetadata>>,
 	whereKeys: Array<string>,
-	entityMetadata: EntityMetadata<EntityExtraMetadata, ColumnExtraMetadata>,
+	entityMetadata: EntityMetadata<
+		EntityExtraMetadata,
+		ColumnExtraMetadata,
+		IndexExtraMetadata
+	>,
 ) => {
 	if (whereKeys.length !== primaryColumns.length) {
 		return throwDefaultError([
@@ -48,7 +57,11 @@ const validateHasTheSameLength = (
 const validateAreTheSamePrimaryKeys = (
 	primaryColumns: Array<ColumnMetadata<ColumnExtraMetadata>>,
 	whereKeys: Array<string>,
-	entityMetadata: EntityMetadata<EntityExtraMetadata, ColumnExtraMetadata>,
+	entityMetadata: EntityMetadata<
+		EntityExtraMetadata,
+		ColumnExtraMetadata,
+		IndexExtraMetadata
+	>,
 ) => {
 	const primaryColumnsKeys = primaryColumns.map(col => col.databaseName);
 
