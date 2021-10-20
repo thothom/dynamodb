@@ -4,13 +4,18 @@ import { DatabaseEntity } from "@techmmunity/symbiosis/lib/types/database-entity
 import { cleanObj, isEmptyObject } from "@techmmunity/utils";
 import type { ColumnExtraMetadata } from "../../../types/column-extra-metadata";
 import type { EntityExtraMetadata } from "../../../types/entity-extra-metadata";
+import type { IndexExtraMetadata } from "../../../types/index-extra-metadata";
 import { validatePrimaryColumns } from "./validate-primary-columns";
 
 export interface GetStartFromParams<Entity> {
 	startFrom?: Partial<DatabaseEntity>;
 	context: {
 		entity: Entity;
-		entityManager: EntityManager<EntityExtraMetadata, ColumnExtraMetadata>;
+		entityManager: EntityManager<
+			EntityExtraMetadata,
+			ColumnExtraMetadata,
+			IndexExtraMetadata
+		>;
 	};
 }
 

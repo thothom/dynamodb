@@ -16,26 +16,34 @@ import {
 	FindConditions,
 	FindOneOptions,
 	FindOptions,
-	Repository,
+	BaseRepository,
 	SymbiosisError,
 	SymbiosisErrorCodeEnum,
 } from "@techmmunity/symbiosis";
+import type { ColumnExtraMetadata } from "../types/column-extra-metadata";
+import type { EntityExtraMetadata } from "../types/entity-extra-metadata";
+import type { IndexExtraMetadata } from "../types/index-extra-metadata";
 import { handleDatabaseError } from "../utils/handle-database-error";
 import { del } from "./delete";
 import { find } from "./find";
 import { findOne } from "./find-one";
 import { save } from "./save";
 
-export class DynamodbRepository<
+export class Repository<Entity> extends BaseRepository<
 	Entity,
 	EntityExtraMetadata,
 	ColumnExtraMetadata,
-> extends Repository<Entity, EntityExtraMetadata, ColumnExtraMetadata> {
+	IndexExtraMetadata
+> {
 	private readonly tableName: string;
 
 	public constructor(
 		private readonly connectionInstance: DynamoDBClient,
-		entityManager: EntityManager<EntityExtraMetadata, ColumnExtraMetadata>,
+		entityManager: EntityManager<
+			EntityExtraMetadata,
+			ColumnExtraMetadata,
+			IndexExtraMetadata
+		>,
 		entity: Entity,
 	) {
 		super(entityManager, entity);
@@ -53,10 +61,10 @@ export class DynamodbRepository<
 	 * @param options Options for this operation
 	 * @returns The entity as it's saved on the database
 	 */
-	public save(
+	public save<Result = Array<Entity> | Entity>(
 		data: Array<ClassType<Entity>> | ClassType<Entity>,
 		options?: BaseQueryOptions,
-	): Promise<Array<Entity> | Entity> {
+	): Promise<Result> {
 		return save(
 			this as any,
 			{
@@ -72,10 +80,13 @@ export class DynamodbRepository<
 		});
 	}
 
-	public insert(
+	/**
+	 * ## NOT IMPLEMENTED!
+	 */
+	public insert<Result = Array<Entity> | Entity>(
 		_data: Array<ClassType<Entity>> | ClassType<Entity>,
 		_options?: BaseQueryOptions,
-	): Promise<Array<Entity> | Entity> {
+	): Promise<Result> {
 		// Delete this after the method is implemented
 		throw new SymbiosisError({
 			code: SymbiosisErrorCodeEnum.NOT_IMPLEMENTED,
@@ -109,11 +120,14 @@ export class DynamodbRepository<
 		 */
 	}
 
-	public update(
+	/**
+	 * ## NOT IMPLEMENTED!
+	 */
+	public update<Result = Array<Entity> | Entity>(
 		_conditions: FindConditions<Entity>,
 		_data: ClassType<Entity>,
 		_options?: BaseQueryOptions,
-	): Promise<Array<Entity> | Entity> {
+	): Promise<Result> {
 		// Delete this after the method is implemented
 		throw new SymbiosisError({
 			code: SymbiosisErrorCodeEnum.NOT_IMPLEMENTED,
@@ -149,11 +163,14 @@ export class DynamodbRepository<
 		 */
 	}
 
-	public upsert(
+	/**
+	 * ## NOT IMPLEMENTED!
+	 */
+	public upsert<Result = Array<Entity> | Entity>(
 		_conditions: FindConditions<Entity>,
 		_data: ClassType<Entity>,
 		_options?: BaseQueryOptions,
-	): Promise<Array<Entity> | Entity> {
+	): Promise<Result> {
 		// Delete this after the method is implemented
 		throw new SymbiosisError({
 			code: SymbiosisErrorCodeEnum.NOT_IMPLEMENTED,
@@ -255,6 +272,9 @@ export class DynamodbRepository<
 		});
 	}
 
+	/**
+	 * ## NOT IMPLEMENTED!
+	 */
 	public softDelete(
 		_where: FindConditions<Entity>,
 		_options?: BaseQueryOptions,
@@ -293,6 +313,9 @@ export class DynamodbRepository<
 		 */
 	}
 
+	/**
+	 * ## NOT IMPLEMENTED!
+	 */
 	public recover(
 		_where: FindConditions<Entity>,
 		_options?: BaseQueryOptions,
@@ -331,6 +354,9 @@ export class DynamodbRepository<
 		 */
 	}
 
+	/**
+	 * ## NOT IMPLEMENTED!
+	 */
 	public count(
 		_where: FindConditions<Entity>,
 		_options?: BaseQueryOptions,
@@ -369,6 +395,9 @@ export class DynamodbRepository<
 		 */
 	}
 
+	/**
+	 * ## NOT IMPLEMENTED!
+	 */
 	public performativeCount(
 		_where: FindConditions<Entity>,
 		_options?: BaseQueryOptions,
