@@ -24,7 +24,7 @@ export const find = async <Entity>(
 		options: rawOptions,
 	});
 
-	const { where, select, take, startFrom } = conditions;
+	const { where, select, take, startFrom, index } = conditions;
 
 	const {
 		ProjectionExpression,
@@ -39,6 +39,7 @@ export const find = async <Entity>(
 	const FindCommandClass = getFindCommand<Entity>({
 		where,
 		context,
+		index,
 		skipSortKey: true,
 	});
 
@@ -46,6 +47,7 @@ export const find = async <Entity>(
 		TableName: tableName,
 		ProjectionExpression,
 		Limit: take,
+		IndexName: index,
 		ExclusiveStartKey: getStartFrom<Entity>({
 			startFrom,
 			context,
