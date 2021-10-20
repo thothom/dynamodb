@@ -27,7 +27,7 @@ export const findOne = async <Entity>(
 		options: rawOptions,
 	});
 
-	const { select, where } = conditions;
+	const { select, where, index } = conditions;
 
 	const {
 		ProjectionExpression,
@@ -42,13 +42,14 @@ export const findOne = async <Entity>(
 	const FindCommandClass = getFindCommand<Entity>({
 		where,
 		context,
+		index,
 		skipSortKey: true,
 	});
-
 	const queryCommand = new FindCommandClass({
 		TableName: tableName,
 		ProjectionExpression,
 		Limit: 1,
+		IndexName: index,
 		ExpressionAttributeNames: {
 			...ExpressionAttributeNamesSelect,
 			...ExpressionAttributeNamesWhere,

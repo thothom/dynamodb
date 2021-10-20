@@ -17,16 +17,20 @@ interface GetWhereCommandParams<Entity> {
 		>;
 	};
 	skipSortKey?: boolean;
+	index?: string;
 }
 
 export const getFindCommand = <Entity>({
 	where,
 	context,
 	skipSortKey,
+	index,
 }: GetWhereCommandParams<Entity>) => {
 	if (!where || isEmptyObject(where) || isEmptyArray(where)) {
 		return ScanCommand;
 	}
+
+	if (index) return QueryCommand;
 
 	const arrayWhere = Array.isArray(where) ? where : [where];
 
