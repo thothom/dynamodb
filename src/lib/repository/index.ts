@@ -18,7 +18,6 @@ import {
 	FindOptions,
 	BaseRepository,
 	SymbiosisError,
-	SymbiosisErrorCodeEnum,
 } from "@techmmunity/symbiosis";
 import type { ColumnExtraMetadata } from "../types/column-extra-metadata";
 import type { EntityExtraMetadata } from "../types/entity-extra-metadata";
@@ -90,7 +89,7 @@ export class Repository<Entity> extends BaseRepository<
 	): Promise<Result> {
 		// Delete this after the method is implemented
 		throw new SymbiosisError({
-			code: SymbiosisErrorCodeEnum.NOT_IMPLEMENTED,
+			code: "NOT_IMPLEMENTED",
 			origin: "SYMBIOSIS",
 			details: ["Method `insert` is not implemented yet by this plugin"],
 			message: "Method not implemented",
@@ -131,7 +130,7 @@ export class Repository<Entity> extends BaseRepository<
 	): Promise<Result> {
 		// Delete this after the method is implemented
 		throw new SymbiosisError({
-			code: SymbiosisErrorCodeEnum.NOT_IMPLEMENTED,
+			code: "NOT_IMPLEMENTED",
 			origin: "SYMBIOSIS",
 			details: ["Method `update` is not implemented yet by this plugin"],
 			message: "Method not implemented",
@@ -268,7 +267,7 @@ export class Repository<Entity> extends BaseRepository<
 	): Promise<number> {
 		// Delete this after the method is implemented
 		throw new SymbiosisError({
-			code: SymbiosisErrorCodeEnum.NOT_IMPLEMENTED,
+			code: "NOT_IMPLEMENTED",
 			origin: "SYMBIOSIS",
 			details: ["Method `softDelete` is not implemented yet by this plugin"],
 			message: "Method not implemented",
@@ -309,7 +308,7 @@ export class Repository<Entity> extends BaseRepository<
 	): Promise<number> {
 		// Delete this after the method is implemented
 		throw new SymbiosisError({
-			code: SymbiosisErrorCodeEnum.NOT_IMPLEMENTED,
+			code: "NOT_IMPLEMENTED",
 			origin: "SYMBIOSIS",
 			details: ["Method `recover` is not implemented yet by this plugin"],
 			message: "Method not implemented",
@@ -350,7 +349,7 @@ export class Repository<Entity> extends BaseRepository<
 	): Promise<number> {
 		// Delete this after the method is implemented
 		throw new SymbiosisError({
-			code: SymbiosisErrorCodeEnum.NOT_IMPLEMENTED,
+			code: "NOT_IMPLEMENTED",
 			origin: "SYMBIOSIS",
 			details: ["Method `count` is not implemented yet by this plugin"],
 			message: "Method not implemented",
@@ -391,7 +390,7 @@ export class Repository<Entity> extends BaseRepository<
 	): Promise<number> {
 		// Delete this after the method is implemented
 		throw new SymbiosisError({
-			code: SymbiosisErrorCodeEnum.NOT_IMPLEMENTED,
+			code: "NOT_IMPLEMENTED",
 			origin: "SYMBIOSIS",
 			details: [
 				"Method `performativeCount` is not implemented yet by this plugin",

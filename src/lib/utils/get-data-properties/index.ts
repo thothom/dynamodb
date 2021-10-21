@@ -14,9 +14,9 @@ export const getDataProperties = <Entity = any>({
 	data,
 	context,
 }: GetDataPropertiesParams<Entity>) => {
-	const formattedData = formatWhere(data);
+	if (!data) return {};
 
-	if (!formattedData) return {};
+	const formattedData = formatWhere(data);
 
 	const { keysMap, valuesMap } = mapData(formattedData);
 

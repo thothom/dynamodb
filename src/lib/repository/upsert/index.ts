@@ -1,6 +1,6 @@
 import { DynamoDBClient, UpdateItemCommand } from "@aws-sdk/client-dynamodb";
 import { marshall, unmarshall } from "@aws-sdk/util-dynamodb";
-import { SymbiosisError, SymbiosisErrorCodeEnum } from "@techmmunity/symbiosis";
+import { SymbiosisError } from "@techmmunity/symbiosis";
 import type { BeforeUpsertParams } from "@techmmunity/symbiosis/lib/repository/methods/before-upsert";
 import type { Context } from "../../types/context";
 import { getDataProperties } from "../../utils/get-data-properties";
@@ -36,7 +36,7 @@ export const upsert = async <Entity>(
 
 	if (notPrimaryKeys) {
 		throw new SymbiosisError({
-			code: SymbiosisErrorCodeEnum.INVALID_PARAM,
+			code: "INVALID_PARAM",
 			origin: "SYMBIOSIS",
 			message: "Invalid params",
 			details: ["You only can upsert records by it's primary keys"],
@@ -74,8 +74,7 @@ export const upsert = async <Entity>(
 
 	if (!Attributes) {
 		throw new SymbiosisError({
-			code: SymbiosisErrorCodeEnum.INVALID_PARAM,
-			// Code: SymbiosisErrorCodeEnum.OPERATION_FAILED,
+			code: "OPERATION_FAILED",
 			origin: "DATABASE",
 			message: "Operation failed",
 			details: ["Fail to update item using the primary keys:", rawData],

@@ -1,8 +1,4 @@
-import {
-	SingleFindConditions,
-	SymbiosisError,
-	SymbiosisErrorCodeEnum,
-} from "@techmmunity/symbiosis";
+import { SingleFindConditions, SymbiosisError } from "@techmmunity/symbiosis";
 import type { ColumnMetadata } from "@techmmunity/symbiosis/lib/entity-manager/types/column-metadata";
 import type { EntityMetadata } from "@techmmunity/symbiosis/lib/entity-manager/types/entity-metadata";
 import type { DatabaseEntity } from "@techmmunity/symbiosis/lib/types/database-entity";
@@ -23,7 +19,7 @@ interface ValidatePrimaryColumns {
 
 const throwDefaultError = (extraDetails?: Array<any>) => {
 	throw new SymbiosisError({
-		code: SymbiosisErrorCodeEnum.INVALID_PARAM,
+		code: "INVALID_PARAM",
 		origin: "SYMBIOSIS",
 		message: "Invalid Params",
 		details: [

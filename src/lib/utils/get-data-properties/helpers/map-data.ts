@@ -1,33 +1,19 @@
 import { getAlias } from "../../get-alias";
 
-export const mapData = (data: Record<string, any>) => {
+export const mapData = (formattedData: Record<string, any>) => {
 	const keysMap = new Map<string, string>();
-	const valuesMap = new Map<string, Map<any, string>>();
+	const valuesMap = new Map<any, string>();
 
-	Object.entries(data).forEach(([key, value]) => {
-		if (!keysMap.get(key)) {
-			keysMap.set(
-				key,
-				key
-					.split(".")
-					.map(keySplitted => getAlias(keySplitted, "#UPDATE"))
-					.join("."),
-			);
-		}
+	Object.entries(formattedData).forEach(([key, value]) => {
+		keysMap.set(
+			key,
+			key
+				.split(".")
+				.map(keySplitted => getAlias(keySplitted, "#UPDATE"))
+				.join("."),
+		);
 
-		if (!valuesMap.get(key)) {
-			valuesMap.set(key, new Map<any, string>());
-		}
-
-		const mapOfValuesWithSameKey = valuesMap.get(key);
-
-		if (!mapOfValuesWithSameKey?.get(value)) {
-			mapOfValuesWithSameKey?.set(
-				value,
-				// eslint-disable-next-line @typescript-eslint/no-magic-numbers
-				`${getAlias(key, ":UPDATE")}${mapOfValuesWithSameKey.size + 1}`,
-			);
-		}
+		valuesMap.set(value, getAlias(key, ":UPDATE"));
 	});
 
 	return { keysMap, valuesMap };
@@ -39,6 +25,6 @@ export const mapData = (data: Record<string, any>) => {
 export type KeysMap = Map<string, string>;
 
 /**
- * Map<key, Map<value, valueAlias>>
+ * Map<value, valueAlias>
  */
-export type ValuesMap = Map<string, Map<any, string>>;
+export type ValuesMap = Map<any, string>;

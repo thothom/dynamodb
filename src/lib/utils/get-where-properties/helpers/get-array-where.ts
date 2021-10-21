@@ -1,8 +1,7 @@
 import {
 	FindConditions,
-	FindOperator,
+	isOperator,
 	SymbiosisError,
-	SymbiosisErrorCodeEnum,
 } from "@techmmunity/symbiosis";
 import type { DatabaseEntity } from "@techmmunity/symbiosis/lib/types/database-entity";
 import { getTypeof, isEmptyObject } from "@techmmunity/utils";
@@ -26,7 +25,7 @@ const handleArray = ({ acc, key, value }: HandleArrayParams) => {
 
 	if (typeOfFirstValue !== "object" || isEmptyObject(firstValue)) {
 		throw new SymbiosisError({
-			code: SymbiosisErrorCodeEnum.INVALID_PARAM,
+			code: "INVALID_PARAM",
 			origin: "SYMBIOSIS",
 			message: "Invalid params",
 			details: [
@@ -44,7 +43,7 @@ const handleArray = ({ acc, key, value }: HandleArrayParams) => {
 };
 
 const handleObject = ({ acc, key, value }: HandleObjectParams) => {
-	if (value instanceof FindOperator) {
+	if (isOperator(value)) {
 		acc[key] = value;
 
 		return;
@@ -71,6 +70,7 @@ const handleObject = ({ acc, key, value }: HandleObjectParams) => {
 			case "string":
 			case "number":
 			case "boolean":
+			case "class":
 				acc[`${key}.${subKey}`] = subValue;
 				break;
 

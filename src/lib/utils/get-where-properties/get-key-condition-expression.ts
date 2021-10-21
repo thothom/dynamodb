@@ -1,4 +1,4 @@
-import { SymbiosisError, SymbiosisErrorCodeEnum } from "@techmmunity/symbiosis";
+import { SymbiosisError } from "@techmmunity/symbiosis";
 import { isEmptyObject } from "@techmmunity/utils";
 import { getConditionsExpression } from "./helpers/get-conditions-expression";
 import { KeysMap, ValuesMap } from "./helpers/map-where";
@@ -20,7 +20,7 @@ export const getKeyConditionExpression = ({
 
 	if (isEmptyObject(commonConditions)) {
 		throw new SymbiosisError({
-			code: SymbiosisErrorCodeEnum.INVALID_PARAM,
+			code: "INVALID_PARAM",
 			origin: "SYMBIOSIS",
 			message: "Invalid params",
 			details: [
