@@ -113,7 +113,7 @@ const handleObject = ({ acc, key, value }: HandleObjectParams) => {
  * }
  * ```
  */
-const formatWhere = (where?: FindConditions<DatabaseEntity>) =>
+export const formatWhere = (where?: FindConditions<DatabaseEntity>) =>
 	Object.entries(where || {}).reduce((acc, [key, value]) => {
 		switch (getTypeof(value)) {
 			case "array":
