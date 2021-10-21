@@ -1,5 +1,6 @@
-import { MetadataUtil } from "@techmmunity/symbiosis";
+import { MetadataUtil, SymbiosisError } from "@techmmunity/symbiosis";
 import { ColumnMetadata } from "@techmmunity/symbiosis/lib/entity-manager/types/column-metadata";
+import { getTypeof } from "@techmmunity/utils";
 import { Context } from "../../../types/context";
 
 interface GetColumnMetadataParams {
@@ -10,8 +11,8 @@ interface GetColumnMetadataParams {
 export const getColumnMetadata = ({
 	key,
 	context,
-}: GetColumnMetadataParams): ColumnMetadata =>
-	key
+}: GetColumnMetadataParams): ColumnMetadata => {
+	const result = key
 		.replace(/\[\]/, "")
 		.split(".")
 		.reduce(
@@ -19,19 +20,27 @@ export const getColumnMetadata = ({
 			//@ts-ignore
 			(acc, cur) => {
 				const columnMetadata = context.entityManager.getColumnMetadata(
-					acc.entity,
+					acc,
 					cur,
 				);
 
 				if (MetadataUtil.isCustomMetadataType(columnMetadata.type)) {
-					return {
-						entity: columnMetadata.type,
-					};
+					return columnMetadata.type;
 				}
 
 				return columnMetadata;
 			},
-			{
-				entity: context.entity,
-			},
+			context.entity,
 		) as any;
+
+	if (getTypeof(result) === "class") {
+		throw new SymbiosisError({
+			code: "INVALID_PARAM",
+			origin: "SYMBIOSIS",
+			message: "Invalid column",
+			details: [`Invalid column: "${key}"`],
+		});
+	}
+
+	return result as ColumnMetadata;
+};

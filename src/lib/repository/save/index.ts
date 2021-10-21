@@ -3,7 +3,7 @@ import {
 	BatchWriteItemCommand,
 } from "@aws-sdk/client-dynamodb";
 import { marshall, unmarshall } from "@aws-sdk/util-dynamodb";
-import { SymbiosisError, SymbiosisErrorCodeEnum } from "@techmmunity/symbiosis";
+import { SymbiosisError } from "@techmmunity/symbiosis";
 import type { BeforeSaveParams } from "@techmmunity/symbiosis/lib/repository/methods/before-save";
 import type { Context } from "../../types/context";
 
@@ -54,7 +54,7 @@ export const save = async <Entity>(
 		);
 
 		throw new SymbiosisError({
-			code: SymbiosisErrorCodeEnum.UNKNOWN,
+			code: "UNKNOWN",
 			origin: "DATABASE",
 			message: "Fail to save the following items",
 			details: unsavedItems,

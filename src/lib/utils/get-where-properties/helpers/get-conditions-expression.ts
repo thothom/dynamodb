@@ -1,4 +1,4 @@
-import { FindOperator } from "@techmmunity/symbiosis";
+import { isOperator, SymbiosisError } from "@techmmunity/symbiosis";
 import { KeysMap, ValuesMap } from "./map-where";
 
 interface GetConditionsExpressionParams {
@@ -15,13 +15,33 @@ export const getConditionsExpression = ({
 	Object.entries(formattedWhere)
 		.map(([key, value]) => {
 			const keyAlias = keysMap.get(key)!;
-
-			if (value instanceof FindOperator) {
-				// Handle this
-				return "";
-			}
-
 			const valueAlias = valuesMap.get(key)!.get(value)!;
+
+			if (isOperator(value)) {
+				switch (value.type) {
+					case "between":
+						return `(${keyAlias} BETWEEN ${valueAlias}A AND ${valueAlias}B)`;
+					case "lessThan":
+						return `(${keyAlias} < ${valueAlias})`;
+					case "lessThanOrEqual":
+						return `(${keyAlias} <= ${valueAlias})`;
+					case "moreThan":
+						return `(${keyAlias} > ${valueAlias})`;
+					case "moreThanOrEqual":
+						return `(${keyAlias} >= ${valueAlias})`;
+					case "startsWith":
+						return `(begins_with(${keyAlias}, ${valueAlias}))`;
+					default:
+						throw new SymbiosisError({
+							code: "NOT_IMPLEMENTED",
+							origin: "SYMBIOSIS",
+							message: "Invalid FindOperator",
+							details: [
+								`Dynamodb doesn't support FindOperator "${value.type}"`,
+							],
+						});
+				}
+			}
 
 			return `(${keyAlias} = ${valueAlias})`;
 		})
