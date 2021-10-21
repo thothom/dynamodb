@@ -28,6 +28,7 @@ import { del } from "./delete";
 import { find } from "./find";
 import { findOne } from "./find-one";
 import { save } from "./save";
+import { upsert } from "./upsert";
 
 export class Repository<Entity> extends BaseRepository<
 	Entity,
@@ -164,46 +165,32 @@ export class Repository<Entity> extends BaseRepository<
 	}
 
 	/**
-	 * ## NOT IMPLEMENTED!
+	 * This function **UPSERT** a record based on it's **PRIMARY KEYS**.
+	 *
+	 * @param conditions Primary keys of the object to be updated
+	 * @param data Columns to be updated
+	 * @param options Options for this operation
+	 * @returns The updated record
 	 */
 	public upsert<Result = Array<Entity> | Entity>(
-		_conditions: FindConditions<Entity>,
-		_data: ClassType<Entity>,
-		_options?: BaseQueryOptions,
+		conditions: FindConditions<Entity>,
+		data: ClassType<Entity>,
+		options?: BaseQueryOptions,
 	): Promise<Result> {
-		// Delete this after the method is implemented
-		throw new SymbiosisError({
-			code: SymbiosisErrorCodeEnum.NOT_IMPLEMENTED,
-			origin: "SYMBIOSIS",
-			details: ["Method `upsert` is not implemented yet by this plugin"],
-			message: "Method not implemented",
+		return upsert(
+			this as any,
+			{
+				connectionInstance: this.connectionInstance,
+				tableName: this.tableName,
+			},
+			{
+				conditions,
+				data,
+				options,
+			},
+		).catch(err => {
+			throw handleDatabaseError(err);
 		});
-
-		/*
-		 * // TODO Uncomment this when method implemented
-		 *
-		 * const dataInDatabaseFormat = this.beforeUpsert({
-		 * 	conditions: _conditions,
-		 * 	data: _data,
-		 * 	options: _options,
-		 * });
-		 *
-		 * // ...
-		 *
-		 * // Do Plugin Stuff Here
-		 *
-		 * // ...
-		 *
-		 *
-		 * // Just an example, do not do this.
-		 * const dataFromDatabase = dataInDatabaseFormat;
-		 *
-		 * return this.afterUpsert({
-		 * 	data: dataFromDatabase,
-		 * 	conditions: _conditions,
-		 * 	options: _options,
-		 * });
-		 */
 	}
 
 	public find(
