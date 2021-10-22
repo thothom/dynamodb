@@ -25,11 +25,6 @@ export const getUpdateExpression = <Entity>({
 	};
 
 	Object.entries(formattedData).forEach(([key, value]) => {
-		const columnMetadata = getColumnMetadata({
-			key,
-			context,
-		});
-
 		const keyAlias = keysMap.get(key)!;
 		const valueAlias = valuesMap.get(value)!;
 
@@ -41,7 +36,9 @@ export const getUpdateExpression = <Entity>({
 					break;
 
 				case "append":
-					expressions.set.push(`list_append(${keyAlias}, ${valueAlias})`);
+					expressions.set.push(
+						`${keyAlias} = list_append(${keyAlias}, ${valueAlias})`,
+					);
 					break;
 
 				case "pop": {
@@ -69,7 +66,9 @@ export const getUpdateExpression = <Entity>({
 				}
 
 				case "ifNotExists":
-					expressions.set.push(`if_not_exists(${keyAlias}, ${valueAlias})`);
+					expressions.set.push(
+						`${keyAlias} = if_not_exists(${keyAlias}, ${valueAlias})`,
+					);
 					break;
 
 				case "remove":
@@ -88,13 +87,21 @@ export const getUpdateExpression = <Entity>({
 			return;
 		}
 
+		const columnMetadata = getColumnMetadata({
+			key,
+			context,
+		});
+
 		const onlyIfNotExists =
 			columnMetadata.autoGenerate &&
 			columnMetadata.autoGenerateOnlyOnEvents &&
-			columnMetadata.autoGenerateOnlyOnEvents.includes("save");
+			columnMetadata.autoGenerateOnlyOnEvents.includes("save") &&
+			!columnMetadata.autoGenerateOnlyOnEvents.includes("update");
 
 		if (onlyIfNotExists) {
-			expressions.set.push(`if_not_exists(${keyAlias}, ${valueAlias})`);
+			expressions.set.push(
+				`${keyAlias} = if_not_exists(${keyAlias}, ${valueAlias})`,
+			);
 
 			return;
 		}

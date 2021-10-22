@@ -1230,10 +1230,10 @@
     eslint-plugin-sonarjs "^0.10.0"
     typescript "^4.2.4"
 
-"@techmmunity/symbiosis@^0.0.16":
-  version "0.0.16"
-  resolved "https://registry.yarnpkg.com/@techmmunity/symbiosis/-/symbiosis-0.0.16.tgz#66c3c3c6d4e109e5c764995b83f13a1440ec2afd"
-  integrity sha512-23beY2QaIIEo6VYwWIF0BnD8Qf3JEQZbB5oKgWwNpENQUcA3xCTCo9yBW/OYoYx3KMvg/KxfmaZ/E0V0dzlH7A==
+"@techmmunity/symbiosis@^0.0.17":
+  version "0.0.17"
+  resolved "https://registry.yarnpkg.com/@techmmunity/symbiosis/-/symbiosis-0.0.17.tgz#aeb3d0eb3b009e4e3e6f869bb4ddfc02152154af"
+  integrity sha512-M6I7zrgV2WSeMTrC8csq6ELEsvFpzW30JNmF8e2Tt4L1ZPReU8PViufRyb94Gka2dN/MPUNq08LDoJtkJnMsWQ==
   dependencies:
     "@techmmunity/utils" "^1.1.0"
     change-case "^4.1.2"
@@ -1347,9 +1347,9 @@
   integrity sha1-7ihweulOEdK4J7y+UnC86n8+ce4=
 
 "@types/node@*":
-  version "16.11.2"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.11.2.tgz#31c249c136c3f9b35d4b60fb8e50e01a1f0cc9a5"
-  integrity sha512-w34LtBB0OkDTs19FQHXy4Ig/TOXI4zqvXS2Kk1PAsRKZ0I+nik7LlMYxckW0tSNGtvWmzB+mrCTbuEjuB9DVsw==
+  version "16.11.3"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.11.3.tgz#fad0b069ec205b0e81429c805d306d2c12e26be1"
+  integrity sha512-aIYL9Eemcecs1y77XzFGiSc+FdfN58k4J23UEe6+hynf4Wd9g4DzQPwIKL080vSMuubFqy2hWwOzCtJdc6vFKw==
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
@@ -1779,9 +1779,9 @@ camelcase@^6.2.0:
   integrity sha512-c7wVvbw3f37nuobQNtgsgG9POC9qMbNuMQmTCqZv23b6MIz0fcYpBiOlv9gEN/hdLdnZTDQhg6e9Dq5M1vKvfg==
 
 caniuse-lite@^1.0.30001265:
-  version "1.0.30001270"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001270.tgz#cc9c37a4ec5c1a8d616fc7bace902bb053b0cdea"
-  integrity sha512-TcIC7AyNWXhcOmv2KftOl1ShFAaHQYcB/EPL/hEyMrcS7ZX0/DvV1aoy6BzV0+16wTpoAyTMGDNAJfSqS/rz7A==
+  version "1.0.30001271"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001271.tgz#0dda0c9bcae2cf5407cd34cac304186616cc83e8"
+  integrity sha512-BBruZFWmt3HFdVPS8kceTBIguKxu4f99n5JNp06OlPD/luoAMIaIK5ieV5YjnBLH3Nysai9sxj9rpJj4ZisXOA==
 
 capital-case@^1.0.4:
   version "1.0.4"
@@ -1918,9 +1918,9 @@ combined-stream@^1.0.8:
     delayed-stream "~1.0.0"
 
 commander@^8.2.0:
-  version "8.2.0"
-  resolved "https://registry.yarnpkg.com/commander/-/commander-8.2.0.tgz#37fe2bde301d87d47a53adeff8b5915db1381ca8"
-  integrity sha512-LLKxDvHeL91/8MIyTAD5BFMNtoIwztGPMiM/7Bl8rIPmHCZXRxmSWr91h57dpOpnQ6jIUqEWdXE/uBYMfiVZDA==
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-8.3.0.tgz#4837ea1b2da67b9c616a67afbb0fafee567bca66"
+  integrity sha512-OkTL9umf+He2DZkUq8f8J9of7yL6RJKI24dVITBmNfZBmri9zYZQrKkuXiKhyfPSu8tUhnVBB1iKXevvnlR4Ww==
 
 concat-map@0.0.1:
   version "0.0.1"

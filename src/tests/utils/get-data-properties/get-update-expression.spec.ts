@@ -115,7 +115,7 @@ describe("getUpdateExpression", () => {
 			}
 
 			expect(result).toBe(
-				"SET #UPDATEfoo = :UPDATEfoo, #UPDATEbar = :UPDATEbar, #UPDATEfoobar = :UPDATEfoobar, list_append(#UPDATEbarfoo, :UPDATEbarfoo)",
+				"SET #UPDATEfoo = :UPDATEfoo, #UPDATEbar = :UPDATEbar, #UPDATEfoobar = :UPDATEfoobar, #UPDATEbarfoo = list_append(#UPDATEbarfoo, :UPDATEbarfoo)",
 			);
 		});
 
@@ -348,7 +348,7 @@ describe("getUpdateExpression", () => {
 			}
 
 			expect(result).toBe(
-				"SET #UPDATEfoo = :UPDATEfoo, #UPDATEbar = :UPDATEbar, if_not_exists(#UPDATEfoobar, :UPDATEfoobar)",
+				"SET #UPDATEfoo = :UPDATEfoo, #UPDATEbar = :UPDATEbar, #UPDATEfoobar = if_not_exists(#UPDATEfoobar, :UPDATEfoobar)",
 			);
 		});
 
@@ -434,7 +434,7 @@ describe("getUpdateExpression", () => {
 			}
 
 			expect(result).toBe(
-				"SET if_not_exists(#UPDATEfoo, :UPDATEfoo), #UPDATEbar = :UPDATEbar",
+				"SET #UPDATEfoo = if_not_exists(#UPDATEfoo, :UPDATEfoo), #UPDATEbar = :UPDATEbar",
 			);
 		});
 	});

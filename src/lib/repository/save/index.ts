@@ -1,20 +1,11 @@
-import {
-	DynamoDBClient,
-	BatchWriteItemCommand,
-} from "@aws-sdk/client-dynamodb";
+import { BatchWriteItemCommand } from "@aws-sdk/client-dynamodb";
 import { marshall, unmarshall } from "@aws-sdk/util-dynamodb";
 import { SymbiosisError } from "@techmmunity/symbiosis";
 import type { BeforeSaveParams } from "@techmmunity/symbiosis/lib/repository/methods/before-save";
 import type { Context } from "../../types/context";
 
-interface Injectables {
-	tableName: string;
-	connectionInstance: DynamoDBClient;
-}
-
 export const save = async <Entity>(
 	context: Context<Entity>, // Cannot destruct this!!!
-	{ tableName, connectionInstance }: Injectables,
 	{ data: rawData, options: rawOptions }: BeforeSaveParams<Entity>,
 ) => {
 	const { data } = context.beforeSave({
@@ -27,7 +18,7 @@ export const save = async <Entity>(
 	const batchWriteItemCommand = new BatchWriteItemCommand({
 		// eslint-disable-next-line @typescript-eslint/naming-convention
 		RequestItems: {
-			[tableName]: arrayData.map(d => ({
+			[context.tableName]: arrayData.map(d => ({
 				// eslint-disable-next-line @typescript-eslint/naming-convention
 				PutRequest: {
 					// eslint-disable-next-line @typescript-eslint/naming-convention
@@ -38,11 +29,11 @@ export const save = async <Entity>(
 	});
 
 	// eslint-disable-next-line @typescript-eslint/naming-convention
-	const { UnprocessedItems } = await connectionInstance.send(
+	const { UnprocessedItems } = await context.connectionInstance.send(
 		batchWriteItemCommand,
 	);
 
-	const unprocessedItems = UnprocessedItems?.[tableName];
+	const unprocessedItems = UnprocessedItems?.[context.tableName];
 
 	if (unprocessedItems) {
 		const unsavedItems = unprocessedItems.map(item =>
