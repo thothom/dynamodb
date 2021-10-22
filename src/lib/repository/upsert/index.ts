@@ -28,10 +28,10 @@ export const upsert = async <Entity>(
 	const primaryColumnsKeys = context.entityManager
 		.getEntityPrimaryColumns(context.entity)
 		.map(col => col.databaseName);
-	const dataKeys = Object.keys(conditions);
+	const conditionsKeys = Object.keys(conditions);
 
 	const notPrimaryKeys = primaryColumnsKeys.some(
-		key => !dataKeys.includes(key),
+		key => !conditionsKeys.includes(key),
 	);
 
 	if (notPrimaryKeys) {

@@ -18,6 +18,8 @@ import {
 	FindOptions,
 	BaseRepository,
 	SymbiosisError,
+	SaveData,
+	SingleSaveData,
 } from "@techmmunity/symbiosis";
 import type { ColumnExtraMetadata } from "../types/column-extra-metadata";
 import type { EntityExtraMetadata } from "../types/entity-extra-metadata";
@@ -62,7 +64,7 @@ export class Repository<Entity> extends BaseRepository<
 	 * @returns The entity as it's saved on the database
 	 */
 	public save<Result = Array<Entity> | Entity>(
-		data: Array<ClassType<Entity>> | ClassType<Entity>,
+		data: SaveData<Entity>,
 		options?: BaseQueryOptions,
 	): Promise<Result> {
 		return save(
@@ -173,7 +175,7 @@ export class Repository<Entity> extends BaseRepository<
 	 */
 	public upsert<Result = Array<Entity> | Entity>(
 		conditions: FindConditions<Entity>,
-		data: ClassType<Entity>,
+		data: SingleSaveData<Entity>,
 		options?: BaseQueryOptions,
 	): Promise<Result> {
 		return upsert(

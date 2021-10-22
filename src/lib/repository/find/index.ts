@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 
-import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
+import type { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import { unmarshall } from "@aws-sdk/util-dynamodb";
 import type { BeforeFindParams } from "@techmmunity/symbiosis/lib/repository/methods/before-find";
+import { isNotEmptyObject } from "@techmmunity/utils";
 import type { Context } from "../../types/context";
 import { getFindCommand } from "../../utils/get-find-command";
 import { getSelect } from "../../utils/get-select";
@@ -43,6 +44,11 @@ export const find = async <Entity>(
 		skipSortKey: true,
 	});
 
+	const ExpressionAttributeNames = {
+		...ExpressionAttributeNamesSelect,
+		...ExpressionAttributeNamesWhere,
+	};
+
 	const findCommand = new FindCommandClass({
 		TableName: tableName,
 		ProjectionExpression,
@@ -52,10 +58,9 @@ export const find = async <Entity>(
 			startFrom,
 			context,
 		}),
-		ExpressionAttributeNames: {
-			...ExpressionAttributeNamesSelect,
-			...ExpressionAttributeNamesWhere,
-		},
+		ExpressionAttributeNames: isNotEmptyObject(ExpressionAttributeNames)
+			? ExpressionAttributeNames
+			: undefined,
 		...whereProps,
 	});
 
