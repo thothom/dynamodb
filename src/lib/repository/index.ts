@@ -38,13 +38,6 @@ export class Repository<Entity> extends BaseRepository<
 	ColumnExtraMetadata,
 	IndexExtraMetadata
 > {
-	/**
-	 * Used in the "context" parameter
-	 */
-	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-	//@ts-ignore
-	private readonly tableName: string;
-
 	public constructor(
 		/**
 		 * Used in the "context" parameter
@@ -61,10 +54,6 @@ export class Repository<Entity> extends BaseRepository<
 		entity: Entity,
 	) {
 		super(entityManager, logger, entity);
-
-		const entityMetadata = this.entityManager.getEntityMetadata(entity);
-
-		this.tableName = entityMetadata.databaseName;
 	}
 
 	/**
