@@ -1,4 +1,5 @@
-import type { EntityManager } from "@techmmunity/symbiosis";
+import type { DynamoDBClient } from "@aws-sdk/client-dynamodb";
+import type { EntityManager, Logger } from "@techmmunity/symbiosis";
 import type { AfterDeleteParams } from "@techmmunity/symbiosis/lib/repository/methods/after-delete";
 import type { AfterFindParams } from "@techmmunity/symbiosis/lib/repository/methods/after-find";
 import type { AfterFindOneParams } from "@techmmunity/symbiosis/lib/repository/methods/after-find-one";
@@ -42,4 +43,7 @@ export interface Context<Entity> {
 		IndexExtraMetadata
 	>;
 	entity: Entity;
+	logger: Logger;
+	tableName: string;
+	connectionInstance: DynamoDBClient;
 }

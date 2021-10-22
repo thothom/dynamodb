@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 
-import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import { unmarshall } from "@aws-sdk/util-dynamodb";
 import type { BeforeFindOneParams } from "@techmmunity/symbiosis/lib/repository/methods/before-find-one";
 import type { DatabaseEntity } from "@techmmunity/symbiosis/lib/types/database-entity";
@@ -9,14 +8,8 @@ import { getFindCommand } from "../../utils/get-find-command";
 import { getSelect } from "../../utils/get-select";
 import { getWhereProperties } from "../../utils/get-where-properties";
 
-interface Injectables {
-	tableName: string;
-	connectionInstance: DynamoDBClient;
-}
-
 export const findOne = async <Entity>(
 	context: Context<Entity>, // Cannot destruct this!!!
-	{ tableName, connectionInstance }: Injectables,
 	{
 		conditions: rawConditions,
 		options: rawOptions,
@@ -46,7 +39,7 @@ export const findOne = async <Entity>(
 		skipSortKey: true,
 	});
 	const queryCommand = new FindCommandClass({
-		TableName: tableName,
+		TableName: context.tableName,
 		ProjectionExpression,
 		Limit: 1,
 		IndexName: index,
@@ -57,7 +50,7 @@ export const findOne = async <Entity>(
 		...whereProps,
 	});
 
-	const { Items } = await connectionInstance.send(queryCommand);
+	const { Items } = await context.connectionInstance.send(queryCommand);
 
 	const item = Items?.shift();
 

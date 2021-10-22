@@ -35,6 +35,7 @@ export class Connection extends BaseConnection<
 		return new Repository(
 			this.connectionInstance,
 			this.entityManager,
+			this.logger,
 			entity as Entity,
 		);
 	}

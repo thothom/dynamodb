@@ -20,6 +20,7 @@ import {
 	SymbiosisError,
 	SaveData,
 	SingleSaveData,
+	Logger,
 } from "@techmmunity/symbiosis";
 import type { ColumnExtraMetadata } from "../types/column-extra-metadata";
 import type { EntityExtraMetadata } from "../types/entity-extra-metadata";
@@ -37,18 +38,29 @@ export class Repository<Entity> extends BaseRepository<
 	ColumnExtraMetadata,
 	IndexExtraMetadata
 > {
+	/**
+	 * Used in the "context" parameter
+	 */
+	// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+	//@ts-ignore
 	private readonly tableName: string;
 
 	public constructor(
+		/**
+		 * Used in the "context" parameter
+		 */
+		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+		//@ts-ignore
 		private readonly connectionInstance: DynamoDBClient,
 		entityManager: EntityManager<
 			EntityExtraMetadata,
 			ColumnExtraMetadata,
 			IndexExtraMetadata
 		>,
+		logger: Logger,
 		entity: Entity,
 	) {
-		super(entityManager, entity);
+		super(entityManager, logger, entity);
 
 		const entityMetadata = this.entityManager.getEntityMetadata(entity);
 
@@ -67,17 +79,10 @@ export class Repository<Entity> extends BaseRepository<
 		data: SaveData<Entity>,
 		options?: BaseQueryOptions,
 	): Promise<Result> {
-		return save(
-			this as any,
-			{
-				connectionInstance: this.connectionInstance,
-				tableName: this.tableName,
-			},
-			{
-				data,
-				options,
-			},
-		).catch(err => {
+		return save(this as any, {
+			data,
+			options,
+		}).catch(err => {
 			throw handleDatabaseError(err);
 		});
 	}
@@ -178,18 +183,11 @@ export class Repository<Entity> extends BaseRepository<
 		data: SingleSaveData<Entity>,
 		options?: BaseQueryOptions,
 	): Promise<Result> {
-		return upsert(
-			this as any,
-			{
-				connectionInstance: this.connectionInstance,
-				tableName: this.tableName,
-			},
-			{
-				conditions,
-				data,
-				options,
-			},
-		).catch(err => {
+		return upsert(this as any, {
+			conditions,
+			data,
+			options,
+		}).catch(err => {
 			throw handleDatabaseError(err);
 		});
 	}
@@ -198,17 +196,10 @@ export class Repository<Entity> extends BaseRepository<
 		conditions: FindOptions<Entity>,
 		options?: BaseQueryOptions,
 	): Promise<Array<Entity>> {
-		return find(
-			this as any,
-			{
-				connectionInstance: this.connectionInstance,
-				tableName: this.tableName,
-			},
-			{
-				conditions,
-				options,
-			},
-		).catch(err => {
+		return find(this as any, {
+			conditions,
+			options,
+		}).catch(err => {
 			throw handleDatabaseError(err);
 		});
 	}
@@ -217,17 +208,10 @@ export class Repository<Entity> extends BaseRepository<
 		conditions: FindOneOptions<Entity>,
 		options?: BaseQueryOptions,
 	): Promise<Entity> {
-		return findOne(
-			this as any,
-			{
-				connectionInstance: this.connectionInstance,
-				tableName: this.tableName,
-			},
-			{
-				conditions,
-				options,
-			},
-		).catch(err => {
+		return findOne(this as any, {
+			conditions,
+			options,
+		}).catch(err => {
 			throw handleDatabaseError(err);
 		});
 	}
@@ -245,17 +229,10 @@ export class Repository<Entity> extends BaseRepository<
 		where: FindConditions<Entity>,
 		options?: BaseQueryOptions,
 	): Promise<number> {
-		return del(
-			this as any,
-			{
-				connectionInstance: this.connectionInstance,
-				tableName: this.tableName,
-			},
-			{
-				where,
-				options,
-			},
-		).catch(err => {
+		return del(this as any, {
+			where,
+			options,
+		}).catch(err => {
 			throw handleDatabaseError(err);
 		});
 	}

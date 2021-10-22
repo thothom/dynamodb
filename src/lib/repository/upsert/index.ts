@@ -1,18 +1,12 @@
-import { DynamoDBClient, UpdateItemCommand } from "@aws-sdk/client-dynamodb";
+import { UpdateItemCommand } from "@aws-sdk/client-dynamodb";
 import { marshall, unmarshall } from "@aws-sdk/util-dynamodb";
 import { SymbiosisError } from "@techmmunity/symbiosis";
 import type { BeforeUpsertParams } from "@techmmunity/symbiosis/lib/repository/methods/before-upsert";
 import type { Context } from "../../types/context";
 import { getDataProperties } from "../../utils/get-data-properties";
 
-interface Injectables {
-	tableName: string;
-	connectionInstance: DynamoDBClient;
-}
-
 export const upsert = async <Entity>(
 	context: Context<Entity>, // Cannot destruct this!!!
-	{ tableName, connectionInstance }: Injectables,
 	{
 		conditions: rawConditions,
 		data: rawData,
@@ -61,7 +55,7 @@ export const upsert = async <Entity>(
 
 	const updateItemCommand = new UpdateItemCommand({
 		// eslint-disable-next-line @typescript-eslint/naming-convention
-		TableName: tableName,
+		TableName: context.tableName,
 		// eslint-disable-next-line @typescript-eslint/naming-convention
 		Key: marshall(conditions),
 		// eslint-disable-next-line @typescript-eslint/naming-convention
@@ -70,7 +64,9 @@ export const upsert = async <Entity>(
 	});
 
 	// eslint-disable-next-line @typescript-eslint/naming-convention
-	const { Attributes } = await connectionInstance.send(updateItemCommand);
+	const { Attributes } = await context.connectionInstance.send(
+		updateItemCommand,
+	);
 
 	if (!Attributes) {
 		throw new SymbiosisError({
