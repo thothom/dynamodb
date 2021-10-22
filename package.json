@@ -1,6 +1,6 @@
 {
 	"name": "@techmmunity/symbiosis-dynamodb",
-	"version": "0.0.10",
+	"version": "0.0.11",
 	"main": "index.js",
 	"types": "index.d.ts",
 	"license": "Apache-2.0",
@@ -28,7 +28,7 @@
 		"techmmunity-symbiosis"
 	],
 	"peerDependencies": {
-		"@techmmunity/symbiosis": "^0.0.17",
+		"@techmmunity/symbiosis": "^0.0.18",
 		"reflect-metadata": "^0.1.13"
 	},
 	"dependencies": {
@@ -38,7 +38,7 @@
 	},
 	"devDependencies": {
 		"@techmmunity/eslint-config": "^5.0.1",
-		"@techmmunity/symbiosis": "^0.0.17",
+		"@techmmunity/symbiosis": "^0.0.18",
 		"@types/jest": "^27.0.1",
 		"@vercel/ncc": "^0.31.1",
 		"eslint": "^7.32.0",
