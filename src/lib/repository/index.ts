@@ -1,17 +1,13 @@
-/* eslint-disable @typescript-eslint/naming-convention */
-
 /**
  * ---------------------------------------------
  * // TODO Remove this after implement the methods!
  * ---------------------------------------------
  */
 /* eslint-disable sonarjs/no-duplicate-string */
-/* eslint-disable @typescript-eslint/no-unused-vars */
 
 import type { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import {
 	BaseQueryOptions,
-	ClassType,
 	EntityManager,
 	FindConditions,
 	FindOneOptions,
@@ -80,7 +76,7 @@ export class Repository<Entity> extends BaseRepository<
 	 * ## NOT IMPLEMENTED!
 	 */
 	public insert<Result = Array<Entity> | Entity>(
-		_data: Array<ClassType<Entity>> | ClassType<Entity>,
+		_data: SaveData<Entity>,
 		_options?: BaseQueryOptions,
 	): Promise<Result> {
 		// Delete this after the method is implemented
@@ -121,7 +117,7 @@ export class Repository<Entity> extends BaseRepository<
 	 */
 	public update<Result = Array<Entity> | Entity>(
 		_conditions: FindConditions<Entity>,
-		_data: ClassType<Entity>,
+		_data: SingleSaveData<Entity>,
 		_options?: BaseQueryOptions,
 	): Promise<Result> {
 		// Delete this after the method is implemented
