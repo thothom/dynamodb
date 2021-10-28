@@ -21,7 +21,7 @@ import { getUpdateExpression } from "../../../lib/utils/get-data-properties/get-
 describe("getUpdateExpression", () => {
 	// eslint-disable-next-line sonarjs/cognitive-complexity
 	describe("With simple entity", () => {
-		it("should work with simple values", () => {
+		it("should work with simple values", async () => {
 			@Entity()
 			class TestEntity {
 				@Column()
@@ -37,9 +37,10 @@ describe("getUpdateExpression", () => {
 				public barFoo: string;
 			}
 
-			const connection = new TestConnection({
+			const connection = new TestConnection("@techmmunity/utils", {
 				entities: [TestEntity],
 			});
+			await connection.load();
 
 			const repository = connection.getRepository(TestEntity);
 
@@ -70,7 +71,7 @@ describe("getUpdateExpression", () => {
 			);
 		});
 
-		it("should work with Append operator", () => {
+		it("should work with Append operator", async () => {
 			@Entity()
 			class TestEntity {
 				@Column()
@@ -86,9 +87,10 @@ describe("getUpdateExpression", () => {
 				public barFoo: Array<string>;
 			}
 
-			const connection = new TestConnection({
+			const connection = new TestConnection("@techmmunity/utils", {
 				entities: [TestEntity],
 			});
+			await connection.load();
 
 			const repository = connection.getRepository(TestEntity);
 
@@ -119,7 +121,7 @@ describe("getUpdateExpression", () => {
 			);
 		});
 
-		it("should work with Plus operator", () => {
+		it("should work with Plus operator", async () => {
 			@Entity()
 			class TestEntity {
 				@Column()
@@ -132,9 +134,10 @@ describe("getUpdateExpression", () => {
 				public fooBar: number;
 			}
 
-			const connection = new TestConnection({
+			const connection = new TestConnection("@techmmunity/utils", {
 				entities: [TestEntity],
 			});
+			await connection.load();
 
 			const repository = connection.getRepository(TestEntity);
 
@@ -164,7 +167,7 @@ describe("getUpdateExpression", () => {
 			);
 		});
 
-		it("should work with Minus operator", () => {
+		it("should work with Minus operator", async () => {
 			@Entity()
 			class TestEntity {
 				@Column()
@@ -177,9 +180,10 @@ describe("getUpdateExpression", () => {
 				public fooBar: number;
 			}
 
-			const connection = new TestConnection({
+			const connection = new TestConnection("@techmmunity/utils", {
 				entities: [TestEntity],
 			});
+			await connection.load();
 
 			const repository = connection.getRepository(TestEntity);
 
@@ -209,7 +213,7 @@ describe("getUpdateExpression", () => {
 			);
 		});
 
-		it("should work with Pop operator (single item)", () => {
+		it("should work with Pop operator (single item)", async () => {
 			@Entity()
 			class TestEntity {
 				@Column()
@@ -225,9 +229,10 @@ describe("getUpdateExpression", () => {
 				public barFoo: Array<string>;
 			}
 
-			const connection = new TestConnection({
+			const connection = new TestConnection("@techmmunity/utils", {
 				entities: [TestEntity],
 			});
+			await connection.load();
 
 			const repository = connection.getRepository(TestEntity);
 
@@ -258,7 +263,7 @@ describe("getUpdateExpression", () => {
 			);
 		});
 
-		it("should work with Pop operator (multiple items)", () => {
+		it("should work with Pop operator (multiple items)", async () => {
 			@Entity()
 			class TestEntity {
 				@Column()
@@ -274,9 +279,10 @@ describe("getUpdateExpression", () => {
 				public barFoo: Array<string>;
 			}
 
-			const connection = new TestConnection({
+			const connection = new TestConnection("@techmmunity/utils", {
 				entities: [TestEntity],
 			});
+			await connection.load();
 
 			const repository = connection.getRepository(TestEntity);
 
@@ -307,7 +313,7 @@ describe("getUpdateExpression", () => {
 			);
 		});
 
-		it("should work with IfNotExists operator", () => {
+		it("should work with IfNotExists operator", async () => {
 			@Entity()
 			class TestEntity {
 				@Column()
@@ -320,9 +326,10 @@ describe("getUpdateExpression", () => {
 				public fooBar: number;
 			}
 
-			const connection = new TestConnection({
+			const connection = new TestConnection("@techmmunity/utils", {
 				entities: [TestEntity],
 			});
+			await connection.load();
 
 			const repository = connection.getRepository(TestEntity);
 
@@ -352,7 +359,7 @@ describe("getUpdateExpression", () => {
 			);
 		});
 
-		it("should work with Remove operator", () => {
+		it("should work with Remove operator", async () => {
 			@Entity()
 			class TestEntity {
 				@Column()
@@ -365,9 +372,10 @@ describe("getUpdateExpression", () => {
 				public fooBar: number;
 			}
 
-			const connection = new TestConnection({
+			const connection = new TestConnection("@techmmunity/utils", {
 				entities: [TestEntity],
 			});
+			await connection.load();
 
 			const repository = connection.getRepository(TestEntity);
 
@@ -397,7 +405,7 @@ describe("getUpdateExpression", () => {
 			);
 		});
 
-		it("should work with auto-generated-columns", () => {
+		it("should work with auto-generated-columns", async () => {
 			@Entity()
 			class TestEntity {
 				@PrimaryGeneratedColumn()
@@ -407,9 +415,10 @@ describe("getUpdateExpression", () => {
 				public bar: number;
 			}
 
-			const connection = new TestConnection({
+			const connection = new TestConnection("@techmmunity/utils", {
 				entities: [TestEntity],
 			});
+			await connection.load();
 
 			const repository = connection.getRepository(TestEntity);
 
@@ -440,7 +449,7 @@ describe("getUpdateExpression", () => {
 	});
 
 	describe("With nested entity", () => {
-		it("should return mapped keys and values", () => {
+		it("should return mapped keys and values", async () => {
 			@Entity({ isSubEntity: true })
 			class SubTest1Entity {
 				@Column()
@@ -462,9 +471,10 @@ describe("getUpdateExpression", () => {
 				public fooBar: SubTest2Entity;
 			}
 
-			const connection = new TestConnection({
+			const connection = new TestConnection("@techmmunity/utils", {
 				entities: [TestEntity],
 			});
+			await connection.load();
 
 			const repository = connection.getRepository(TestEntity);
 
@@ -499,7 +509,7 @@ describe("getUpdateExpression", () => {
 	});
 
 	describe("General errors", () => {
-		it("should throw error with Min operator", () => {
+		it("should throw error with Min operator", async () => {
 			@Entity()
 			class TestEntity {
 				@Column()
@@ -512,9 +522,10 @@ describe("getUpdateExpression", () => {
 				public fooBar: number;
 			}
 
-			const connection = new TestConnection({
+			const connection = new TestConnection("@techmmunity/utils", {
 				entities: [TestEntity],
 			});
+			await connection.load();
 
 			const repository = connection.getRepository(TestEntity);
 
@@ -548,7 +559,7 @@ describe("getUpdateExpression", () => {
 			]);
 		});
 
-		it("should throw error with Pop operator not invoked with numbers", () => {
+		it("should throw error with Pop operator not invoked with numbers", async () => {
 			@Entity()
 			class TestEntity {
 				@Column()
@@ -564,9 +575,10 @@ describe("getUpdateExpression", () => {
 				public barFoo: Array<string>;
 			}
 
-			const connection = new TestConnection({
+			const connection = new TestConnection("@techmmunity/utils", {
 				entities: [TestEntity],
 			});
+			await connection.load();
 
 			const repository = connection.getRepository(TestEntity);
 

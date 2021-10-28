@@ -19,8 +19,8 @@ export class Connection extends BaseConnection<
 		return this._connectionInstance;
 	}
 
-	public constructor(options: DynamoDbConnectionOptions) {
-		super(options);
+	public constructor(options?: DynamoDbConnectionOptions) {
+		super("@techmmunity/symbiosis-dynamodb", options);
 	}
 
 	// Disabled because the "connect" method must return a promise
