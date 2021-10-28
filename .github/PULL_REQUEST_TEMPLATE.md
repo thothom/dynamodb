@@ -9,8 +9,8 @@ PR Of Documentation Update: N/A
 
 Please check if your PR fulfills the following requirements:
 
-- [ ] My contribution follows [the guidelines](https://github.com/techmmunity/easy-check/blob/master/CONTRIBUTING.md)
-- [ ] I followed GitFlow pattern to create the branch
+- [ ] My contribution follows [the guidelines](https://symbiosis.techmmunity.com.br/docs/create-plugin/first-steps)
+- [ ] I followed [GitFlow](https://github.com/techmmunity/git-magic/blob/master/docs/en/gitflow.md) pattern to create the branch
 - [ ] Tests for the changes have been added
 - [ ] I created a PR to add / update the documentation (or aren't necessary)
 - [ ] The changes has been added to `CHANGELOG.md`
