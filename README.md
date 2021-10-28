@@ -41,7 +41,7 @@ yarn add @techmmunity/symbiosis-dynamodb
 With npm
 
 ```
-npm i --save @techmmunity/symbiosis-dynamodb
+npm i @techmmunity/symbiosis-dynamodb
 ```
 
 ## Usage
