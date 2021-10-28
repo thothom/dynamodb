@@ -28,7 +28,7 @@
 		"techmmunity-symbiosis"
 	],
 	"peerDependencies": {
-		"@techmmunity/symbiosis": "^0.0.20",
+		"@techmmunity/symbiosis": "^0.0.21",
 		"reflect-metadata": "^0.1.13"
 	},
 	"dependencies": {
@@ -38,7 +38,7 @@
 	},
 	"devDependencies": {
 		"@techmmunity/eslint-config": "^5.0.1",
-		"@techmmunity/symbiosis": "^0.0.20",
+		"@techmmunity/symbiosis": "^0.0.21",
 		"@types/jest": "^27.0.1",
 		"@vercel/ncc": "^0.31.1",
 		"eslint": "^8.1.0",
