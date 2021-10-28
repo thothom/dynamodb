@@ -1,12 +1,12 @@
 {
 	"name": "@techmmunity/symbiosis-dynamodb",
-	"version": "0.0.12",
+	"version": "0.0.13",
 	"main": "index.js",
 	"types": "index.d.ts",
 	"license": "Apache-2.0",
 	"author": "Techmmunity",
 	"description": "Symbiosis Plugin For DynamoDB",
-	"homepage": "https://github.com/techmmunity/symbiosis-dynamodb#readme",
+	"homepage": "https://symbiosis.techmmunity.com.br/",
 	"bugs": {
 		"url": "https://github.com/techmmunity/symbiosis-dynamodb/issues"
 	},
@@ -38,7 +38,7 @@
 	},
 	"devDependencies": {
 		"@techmmunity/eslint-config": "^5.0.1",
-		"@techmmunity/symbiosis": "^0.0.22",
+		"@techmmunity/symbiosis": "^0.0.23",
 		"@types/jest": "^27.0.1",
 		"@vercel/ncc": "^0.31.1",
 		"eslint": "^8.1.0",
