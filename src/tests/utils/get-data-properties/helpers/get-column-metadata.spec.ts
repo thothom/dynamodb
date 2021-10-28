@@ -10,11 +10,16 @@ describe("getColumnMetadata", () => {
 			public foo: string;
 		}
 
-		const connection = new TestConnection({
-			entities: [TestEntity],
-		});
+		let repository: any;
 
-		const repository = connection.getRepository(TestEntity);
+		beforeAll(async () => {
+			const connection = new TestConnection("@techmmunity/utils", {
+				entities: [TestEntity],
+			});
+			await connection.load();
+
+			repository = connection.getRepository(TestEntity);
+		});
 
 		it("should return column metadata", () => {
 			let result: any;
@@ -51,11 +56,17 @@ describe("getColumnMetadata", () => {
 			public foo: SubTestEntity;
 		}
 
-		const connection = new TestConnection({
-			entities: [TestEntity],
-		});
+		let repository: any;
 
-		const repository = connection.getRepository(TestEntity);
+		// eslint-disable-next-line sonarjs/no-identical-functions
+		beforeAll(async () => {
+			const connection = new TestConnection("@techmmunity/utils", {
+				entities: [TestEntity],
+			});
+			await connection.load();
+
+			repository = connection.getRepository(TestEntity);
+		});
 
 		it("should return column metadata", () => {
 			let result: any;

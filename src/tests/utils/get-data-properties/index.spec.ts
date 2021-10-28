@@ -6,7 +6,7 @@ import { getDataProperties } from "../../../lib/utils/get-data-properties";
 
 describe("getDataProperties", () => {
 	describe("With simple entity", () => {
-		it("should work with simple values", () => {
+		it("should work with simple values", async () => {
 			@Entity()
 			class TestEntity {
 				@Column()
@@ -22,9 +22,10 @@ describe("getDataProperties", () => {
 				public barFoo: string;
 			}
 
-			const connection = new TestConnection({
+			const connection = new TestConnection("@techmmunity/utils", {
 				entities: [TestEntity],
 			});
+			await connection.load();
 
 			const repository = connection.getRepository(TestEntity);
 
@@ -69,7 +70,7 @@ describe("getDataProperties", () => {
 			});
 		});
 
-		it("should return an empty object without data", () => {
+		it("should return an empty object without data", async () => {
 			@Entity()
 			class TestEntity {
 				@Column()
@@ -85,9 +86,10 @@ describe("getDataProperties", () => {
 				public barFoo: string;
 			}
 
-			const connection = new TestConnection({
+			const connection = new TestConnection("@techmmunity/utils", {
 				entities: [TestEntity],
 			});
+			await connection.load();
 
 			const repository = connection.getRepository(TestEntity);
 
