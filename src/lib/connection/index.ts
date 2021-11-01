@@ -1,11 +1,10 @@
 import { BaseConnection } from "@techmmunity/symbiosis";
 import { DynamoDBClient, DynamoDBClientConfig } from "@aws-sdk/client-dynamodb";
-import type { CustomClass } from "@techmmunity/symbiosis/lib/entity-manager/types/metadata-type";
 import { Repository } from "../repository";
 import type { ColumnExtraMetadata } from "../types/column-extra-metadata";
 import type { EntityExtraMetadata } from "../types/entity-extra-metadata";
-import { DynamoDbConnectionOptions } from "../types/connection-options";
-import { IndexExtraMetadata } from "../types/index-extra-metadata";
+import type { IndexExtraMetadata } from "../types/index-extra-metadata";
+import type { DynamoDbConnectionOptions } from "../types/connection-options";
 
 export class Connection extends BaseConnection<
 	DynamoDBClientConfig,
@@ -31,8 +30,8 @@ export class Connection extends BaseConnection<
 		);
 	}
 
-	public getRepository<Entity>(entity: CustomClass) {
-		return new Repository(
+	public getRepository<Entity>(entity: any) {
+		return new Repository<Entity>(
 			this.connectionInstance,
 			this.entityManager,
 			this.logger,
