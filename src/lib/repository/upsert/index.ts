@@ -5,7 +5,7 @@ import type { BeforeUpsertParams } from "@techmmunity/symbiosis/lib/repository/m
 import type { Context } from "../../types/context";
 import { getDataProperties } from "../../utils/get-data-properties";
 
-export const update = async <Entity>(
+export const upsert = async <Entity>(
 	context: Context<Entity>, // Cannot destruct this!!!
 	{
 		conditions: rawConditions,
