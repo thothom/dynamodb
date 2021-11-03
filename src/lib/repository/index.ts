@@ -26,7 +26,7 @@ import { del } from "./delete";
 import { find } from "./find";
 import { findOne } from "./find-one";
 import { save } from "./save";
-import { update } from "./update";
+import { upsert } from "./upsert";
 
 export class Repository<Entity> extends BaseRepository<
 	Entity,
@@ -113,31 +113,9 @@ export class Repository<Entity> extends BaseRepository<
 	}
 
 	/**
-	 * This function updates a record based on it's **PRIMARY KEYS**.
-	 *
-	 * @param conditions Primary keys of the object to be updated
-	 * @param data Columns to be updated
-	 * @param options Options for this operation
-	 * @returns The updated record
-	 */
-	public update<Result = Array<Entity> | Entity>(
-		conditions: FindConditions<Entity>,
-		data: SingleSaveData<Entity>,
-		options?: BaseQueryOptions,
-	): Promise<Result> {
-		return update(this as any, {
-			conditions,
-			data,
-			options,
-		}).catch(err => {
-			throw handleDatabaseError(err);
-		});
-	}
-
-	/**
 	 * ## NOT IMPLEMENTED!
 	 */
-	public upsert<Result = Array<Entity> | Entity>(
+	public update<Result = Array<Entity> | Entity>(
 		_conditions: FindConditions<Entity>,
 		_data: SingleSaveData<Entity>,
 		_options?: BaseQueryOptions,
@@ -146,7 +124,7 @@ export class Repository<Entity> extends BaseRepository<
 		throw new SymbiosisError({
 			code: "NOT_IMPLEMENTED",
 			origin: "SYMBIOSIS",
-			details: ["Method `upsert` is not implemented yet by this plugin"],
+			details: ["Method `update` is not implemented yet by this plugin"],
 			message: "Method not implemented",
 		});
 
@@ -175,6 +153,28 @@ export class Repository<Entity> extends BaseRepository<
 		 * 	options: _options,
 		 * });
 		 */
+	}
+
+	/**
+	 * This function **UPSERT** a record based on it's **PRIMARY KEYS**.
+	 *
+	 * @param conditions Primary keys of the object to be updated
+	 * @param data Columns to be updated
+	 * @param options Options for this operation
+	 * @returns The updated record
+	 */
+	public upsert<Result = Array<Entity> | Entity>(
+		conditions: FindConditions<Entity>,
+		data: SingleSaveData<Entity>,
+		options?: BaseQueryOptions,
+	): Promise<Result> {
+		return upsert(this as any, {
+			conditions,
+			data,
+			options,
+		}).catch(err => {
+			throw handleDatabaseError(err);
+		});
 	}
 
 	public find(
