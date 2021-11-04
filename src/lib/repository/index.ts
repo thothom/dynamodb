@@ -53,8 +53,11 @@ export class Repository<Entity> extends BaseRepository<
 	}
 
 	/**
-	 * This function **CREATE** a new record if a record **WITH THE SAME ID** doesn't
+	 * - This function **CREATE** a new record if a record **WITH THE SAME ID** doesn't
 	 * exists, **BUT** also **REPLACE** a record if it has the same ID.
+	 *
+	 * - This function **DOES NOT** accept _SaveOperators_, if you want to use they,
+	 * use the **upsert** function instead
 	 *
 	 * @param data The entity data that you want to save to the database
 	 * @param options Options for this operation

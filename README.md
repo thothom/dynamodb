@@ -30,6 +30,9 @@
 
 This is a DynamoDB plugin for [@techmmunity/symbiosis](https://github.com/techmmunity/symbiosis).
 
+[![Discord Community](https://img.shields.io/badge/discord%20community-5865F2?style=for-the-badge&labelColor=5865F2&logo=discord&logoColor=ffffff)](https://discord.gg/TakYksUzzZ)
+[![Docs](https://img.shields.io/badge/📄%20documentation-01d2ce?style=for-the-badge)](https://symbiosis.techmmunity.com.br)
+
 ## Installation
 
 With yarn
@@ -54,6 +57,8 @@ DynamoDB has a very different way of modeling data compared to traditional SQL d
 
 ### Recommended Topics
 
+- [DynamoDB Introduction - Geeks For Geeks](https://www.geeksforgeeks.org/dynamodb-introduction/)
+- [DynamoDB Introduction](https://medium.com/imaginelearning/getting-started-with-dynamodb-d147ed9e629e)
 - [DynamoDB Data Modeling](https://codeburst.io/dynamodb-data-modeling-7f11950b25bf)
 - [An introduction to DynamoDB data modeling](https://blog.theodo.com/2021/04/introduction-to-dynamo-db-modeling/)
 - [Querying child relationships](https://stackoverflow.com/questions/63755975/modelling-parent-child-subchild-relationships-in-dynamodb)
