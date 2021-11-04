@@ -24,6 +24,7 @@ export const getExpressionAttributeValues = (valuesMap: ValuesMap) => {
 				}
 				case "append": {
 					valuesEntriesToReturn.push([valueAlias, value.values]);
+					valuesEntriesToReturn.push([":emptyList", []]);
 
 					return;
 				}

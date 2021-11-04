@@ -73,7 +73,7 @@ export const upsert = async <Entity>(
 			code: "OPERATION_FAILED",
 			origin: "DATABASE",
 			message: "Operation failed",
-			details: ["Fail to update item using the primary keys:", rawData],
+			details: ["Fail to update item using the primary keys:", rawConditions],
 		});
 	}
 

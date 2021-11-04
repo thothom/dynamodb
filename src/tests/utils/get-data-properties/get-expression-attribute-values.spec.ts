@@ -64,6 +64,8 @@ describe("getExpressionAttributeValues", () => {
 			expect(result).toStrictEqual({
 				// eslint-disable-next-line @typescript-eslint/naming-convention
 				":UPDATEbar": { L: [{ N: "1" }, { N: "2" }] },
+				// eslint-disable-next-line @typescript-eslint/naming-convention
+				":emptyList": { L: [] },
 			});
 		});
 

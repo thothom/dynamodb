@@ -1223,20 +1223,25 @@
     eslint-plugin-react-hooks "^4.2.1-alpha-4298ddbc5-20211023"
     eslint-plugin-sonarjs "^0.10.0"
 
-"@techmmunity/symbiosis@^0.0.25":
-  version "0.0.25"
-  resolved "https://registry.yarnpkg.com/@techmmunity/symbiosis/-/symbiosis-0.0.25.tgz#be1ad2c64a797b525dc146e0cdbb903c6b2d7b47"
-  integrity sha512-qGejrWxuPXBWOT4TjCds3Ie9jXiEMh19sh7eYUPS0AyalvHhCOlzZdyQA8fUg0XwLAGbfMltKUsk5KxiOvhoJQ==
+"@techmmunity/symbiosis@^0.0.26":
+  version "0.0.26"
+  resolved "https://registry.yarnpkg.com/@techmmunity/symbiosis/-/symbiosis-0.0.26.tgz#1c198dc854b37d00657793ff53ce33bc5a0cf154"
+  integrity sha512-WEt7CXR/ahsXKkHubmI4/cnaeCcqDw2DVZ5eZRk0w8KqcjIHRl0C8KmKpA9P8veXUdxu4TKXOSFyWfau9QfzUQ==
   dependencies:
     "@techmmunity/utils" "^1.5.0"
     change-case "^4.1.2"
     dayjs "^1.10.6"
     tiny-glob "^0.2.9"
 
-"@techmmunity/utils@^1.3.0", "@techmmunity/utils@^1.5.0":
+"@techmmunity/utils@^1.3.0":
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/@techmmunity/utils/-/utils-1.5.0.tgz#2a5014536fc553206ab1a1aec11bb4b78a58a922"
   integrity sha512-kZWJsXfpm+c/3SOw7C5BiEpGeuIEIfIuGSIXszOqOah8ne6uXQPlf3V20f5EY3jX9aWZfOCz7L5SV80wHdng+g==
+
+"@techmmunity/utils@^1.5.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@techmmunity/utils/-/utils-1.6.0.tgz#ca8e6cfa564236e7f3aac41bfdd431959a970042"
+  integrity sha512-u90x3wvPyIDEGgzWf9NL/8EoMdNPSPy/7gb3oY5NbXcnCLqLyoufpdEdU4OVQOzLV4OHzNhmk3Py57u+F5SRnQ==
 
 "@tootallnate/once@1":
   version "1.1.2"
