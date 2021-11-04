@@ -117,7 +117,7 @@ describe("getUpdateExpression", () => {
 			}
 
 			expect(result).toBe(
-				"SET #UPDATEfoo = :UPDATEfoo, #UPDATEbar = :UPDATEbar, #UPDATEfoobar = :UPDATEfoobar, #UPDATEbarfoo = list_append(#UPDATEbarfoo, :UPDATEbarfoo)",
+				"SET #UPDATEfoo = :UPDATEfoo, #UPDATEbar = :UPDATEbar, #UPDATEfoobar = :UPDATEfoobar, #UPDATEbarfoo = list_append(if_not_exists(#UPDATEbarfoo, :emptyList), :UPDATEbarfoo)",
 			);
 		});
 

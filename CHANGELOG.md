@@ -11,6 +11,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Fix types of not implemented repository methods
+### Fixed
+
+- Types of not implemented repository methods
+- `Append` on upsert
 
 ### Removed

@@ -37,7 +37,7 @@ export const getUpdateExpression = <Entity>({
 
 				case "append":
 					expressions.set.push(
-						`${keyAlias} = list_append(${keyAlias}, ${valueAlias})`,
+						`${keyAlias} = list_append(if_not_exists(${keyAlias}, :emptyList), ${valueAlias})`,
 					);
 					break;
 
