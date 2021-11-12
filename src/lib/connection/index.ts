@@ -30,6 +30,10 @@ export class Connection extends BaseConnection<
 		);
 	}
 
+	// Disabled because the "close" method must return a promise
+	// eslint-disable-next-line require-await
+	public async close() {}
+
 	public getRepository<Entity>(entity: any) {
 		return new Repository<Entity>(
 			this.connectionInstance,

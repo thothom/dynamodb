@@ -11,8 +11,8 @@
 - [ ] Add ordering support for `find`
   - https://stackoverflow.com/questions/9297326/is-it-possible-to-order-results-with-query-or-scan-in-dynamodb#answer-36883510
 - [ ] Remove block of "must have at least one property in common"
-  - It will add support for find with OR condition
+  - [ ] Fix bug: When ScanCommand, do NOT use KeyConditionExpression, only FilterExpression
+  - It will add support for find with OR condition using ScanCommand
   - Study about queries with OR operator (ConditionalOperator is DEPRECATED, use FilterExpression instead)
-- [ ] Fix bug: When ScanCommand, do NOT use KeyConditionExpression, only FilterExpression
 - [ ] Improve error handling
   - Custom error when missing index

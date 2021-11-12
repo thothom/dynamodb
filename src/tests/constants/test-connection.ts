@@ -8,6 +8,10 @@ export class TestConnection extends BaseConnection {
 		throw new Error("Method not implemented.");
 	}
 
+	public close(): Promise<void> {
+		throw new Error("Method not implemented.");
+	}
+
 	public getRepository(entity: any) {
 		return new TestRepository(this.entityManager, entity) as any;
 	}

@@ -11,6 +11,7 @@ import {
 	Pop,
 	PrimaryGeneratedColumn,
 	Remove,
+	SubEntity,
 	SymbiosisError,
 } from "@techmmunity/symbiosis";
 import { mapData } from "../../../lib/utils/get-data-properties/helpers/map-data";
@@ -450,13 +451,13 @@ describe("getUpdateExpression", () => {
 
 	describe("With nested entity", () => {
 		it("should return mapped keys and values", async () => {
-			@Entity({ isSubEntity: true })
+			@SubEntity()
 			class SubTest1Entity {
 				@Column()
 				public bar: string;
 			}
 
-			@Entity({ isSubEntity: true })
+			@SubEntity()
 			class SubTest2Entity {
 				@Column()
 				public barFoo: string;
