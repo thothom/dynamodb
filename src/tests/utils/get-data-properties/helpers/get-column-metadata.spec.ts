@@ -1,4 +1,9 @@
-import { Column, Entity, SymbiosisError } from "@techmmunity/symbiosis";
+import {
+	Column,
+	Entity,
+	SubEntity,
+	SymbiosisError,
+} from "@techmmunity/symbiosis";
 import { getColumnMetadata } from "../../../../lib/utils/get-data-properties/helpers/get-column-metadata";
 import { TestConnection } from "../../../constants/test-connection";
 
@@ -42,9 +47,7 @@ describe("getColumnMetadata", () => {
 	});
 
 	describe("With nested entity", () => {
-		@Entity({
-			isSubEntity: true,
-		})
+		@SubEntity()
 		class SubTestEntity {
 			@Column()
 			public subFoo: string;

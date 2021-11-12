@@ -95,7 +95,7 @@ export const getUpdateExpression = <Entity>({
 		const onlyIfNotExists =
 			columnMetadata.autoGenerate &&
 			columnMetadata.autoGenerateOnlyOnEvents &&
-			columnMetadata.autoGenerateOnlyOnEvents.includes("save") &&
+			columnMetadata.autoGenerateOnlyOnEvents.includes("insert") &&
 			!columnMetadata.autoGenerateOnlyOnEvents.includes("update");
 
 		if (onlyIfNotExists) {
