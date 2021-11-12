@@ -71,7 +71,7 @@ export class Repository<Entity> extends BaseRepository<
 			data,
 			options,
 		}).catch(err => {
-			throw handleDatabaseError(err);
+			throw handleDatabaseError(this as any, err);
 		});
 	}
 
@@ -176,7 +176,7 @@ export class Repository<Entity> extends BaseRepository<
 			data,
 			options,
 		}).catch(err => {
-			throw handleDatabaseError(err);
+			throw handleDatabaseError(this as any, err);
 		});
 	}
 
@@ -188,7 +188,7 @@ export class Repository<Entity> extends BaseRepository<
 			conditions,
 			options,
 		}).catch(err => {
-			throw handleDatabaseError(err);
+			throw handleDatabaseError(this as any, err);
 		});
 	}
 
@@ -200,7 +200,7 @@ export class Repository<Entity> extends BaseRepository<
 			conditions,
 			options,
 		}).catch(err => {
-			throw handleDatabaseError(err);
+			throw handleDatabaseError(this as any, err);
 		});
 	}
 
@@ -221,7 +221,7 @@ export class Repository<Entity> extends BaseRepository<
 			where,
 			options,
 		}).catch(err => {
-			throw handleDatabaseError(err);
+			throw handleDatabaseError(this as any, err);
 		});
 	}
 
