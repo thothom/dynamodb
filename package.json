@@ -8,11 +8,11 @@
 	"description": "Symbiosis Plugin For DynamoDB",
 	"homepage": "https://symbiosis.techmmunity.com.br/",
 	"bugs": {
-		"url": "https://github.com/techmmunity/symbiosis-dynamodb/issues"
+		"url": "https://github.com/techmmunity-symbiosis/dynamodb/issues"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/techmmunity/symbiosis-dynamodb.git"
+		"url": "git+https://github.com/techmmunity-symbiosis/dynamodb.git"
 	},
 	"keywords": [
 		"orm",
