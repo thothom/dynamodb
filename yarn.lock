@@ -554,9 +554,9 @@
     tslib "^2.3.0"
 
 "@aws-sdk/util-dynamodb@^3.38.0":
-  version "3.41.0"
-  resolved "https://registry.yarnpkg.com/@aws-sdk/util-dynamodb/-/util-dynamodb-3.41.0.tgz#73e6ce7792bd35c23c22d59a0eb044713df5587c"
-  integrity sha512-wFvxiAsx8weFOiObK/f33IpVrmyX+6+QovmLJay/4IRHq+tOhdiHnWzySJOhyqb4jiMYVpXX+kdFNsx2Z18P/g==
+  version "3.42.0"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/util-dynamodb/-/util-dynamodb-3.42.0.tgz#f4f468bec11f1a13d2c752e96e0435a72ddda565"
+  integrity sha512-71lJrdSouu4yHmLFjZM+8LYlQbGrZ940XC4Qv5qmp+pAEn/SzOkLJ48PxcIa8A0ibfhULfUgju+d7tok/gHanA==
   dependencies:
     tslib "^2.3.0"
 
