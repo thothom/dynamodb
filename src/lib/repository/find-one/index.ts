@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 
 import { unmarshall } from "@aws-sdk/util-dynamodb";
-import type { BeforeFindOneParams } from "@techmmunity/symbiosis/lib/repository/methods/before-find-one";
+import type { BeforeFindOneInput } from "@techmmunity/symbiosis/lib/repository/methods/find-one/before";
 import type { DatabaseEntity } from "@techmmunity/symbiosis/lib/types/database-entity";
 import type { Context } from "../../types/context";
 import { getFindCommand } from "../../utils/get-find-command";
@@ -13,7 +13,7 @@ export const findOne = async <Entity>(
 	{
 		conditions: rawConditions,
 		options: rawOptions,
-	}: BeforeFindOneParams<Entity>,
+	}: BeforeFindOneInput<Entity>,
 ) => {
 	const { conditions } = context.beforeFindOne({
 		conditions: rawConditions,

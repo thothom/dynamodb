@@ -1,7 +1,7 @@
 import { UpdateItemCommand } from "@aws-sdk/client-dynamodb";
 import { marshall, unmarshall } from "@aws-sdk/util-dynamodb";
 import { SymbiosisError } from "@techmmunity/symbiosis";
-import type { BeforeUpsertParams } from "@techmmunity/symbiosis/lib/repository/methods/before-upsert";
+import type { BeforeUpsertInput } from "@techmmunity/symbiosis/lib/repository/methods/upsert/before";
 import type { Context } from "../../types/context";
 import { getDataProperties } from "../../utils/get-data-properties";
 
@@ -11,7 +11,7 @@ export const upsert = async <Entity>(
 		conditions: rawConditions,
 		data: rawData,
 		options: rawOptions,
-	}: BeforeUpsertParams<Entity>,
+	}: BeforeUpsertInput<Entity>,
 ) => {
 	const { conditions, data } = context.beforeUpsert({
 		conditions: rawConditions,

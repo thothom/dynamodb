@@ -1,12 +1,12 @@
 import { DeleteItemCommand } from "@aws-sdk/client-dynamodb";
 import { marshall } from "@aws-sdk/util-dynamodb";
-import type { BeforeDeleteParams } from "@techmmunity/symbiosis/lib/repository/methods/before-delete";
+import type { BeforeDeleteInput } from "@techmmunity/symbiosis/lib/repository/methods/delete/before";
 import type { Context } from "../../types/context";
 import { validatePrimaryColumns } from "./helpers/validate-primary-columns";
 
 export const del = async <Entity>(
 	context: Context<Entity>, // Cannot destruct this!!!
-	{ where: rawWhere, options: rawOptions }: BeforeDeleteParams<Entity>,
+	{ where: rawWhere, options: rawOptions }: BeforeDeleteInput<Entity>,
 ) => {
 	const { where } = context.beforeDelete({
 		where: rawWhere,

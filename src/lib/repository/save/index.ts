@@ -1,14 +1,15 @@
 import { BatchWriteItemCommand } from "@aws-sdk/client-dynamodb";
 import { marshall, unmarshall } from "@aws-sdk/util-dynamodb";
 import { SymbiosisError } from "@techmmunity/symbiosis";
-import type { BeforeSaveParams } from "@techmmunity/symbiosis/lib/repository/methods/before-save";
+import type { BeforeSaveInput } from "@techmmunity/symbiosis/lib/repository/methods/save/before";
+import { DatabaseEntity } from "@techmmunity/symbiosis/lib/types/database-entity";
 import type { Context } from "../../types/context";
 
 export const save = async <Entity>(
 	context: Context<Entity>, // Cannot destruct this!!!
-	{ data: rawData, options: rawOptions }: BeforeSaveParams<Entity>,
+	{ data: rawData, options: rawOptions }: BeforeSaveInput<Entity>,
 ) => {
-	const { data } = context.beforeSave({
+	const { data, returnArray } = context.beforeSave({
 		data: rawData,
 		options: rawOptions,
 	});
@@ -54,7 +55,8 @@ export const save = async <Entity>(
 
 	return context.afterSave({
 		// Dynamo doesn't return the new values, so we have to return the same data that we receive
-		data,
+		data: [data as DatabaseEntity],
+		returnArray,
 		options: rawOptions,
 	});
 };

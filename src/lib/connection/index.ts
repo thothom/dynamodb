@@ -1,16 +1,12 @@
 import { BaseConnection } from "@techmmunity/symbiosis";
 import { DynamoDBClient, DynamoDBClientConfig } from "@aws-sdk/client-dynamodb";
 import { Repository } from "../repository";
-import type { ColumnExtraMetadata } from "../types/column-extra-metadata";
-import type { EntityExtraMetadata } from "../types/entity-extra-metadata";
-import { DynamoDbConnectionOptions } from "../types/connection-options";
-import { IndexExtraMetadata } from "../types/index-extra-metadata";
+import type { DynamoDbConnectionOptions } from "../types/connection-options";
+import type { ExtraMetadata } from "../types/extra-metadata";
 
 export class Connection extends BaseConnection<
 	DynamoDBClientConfig,
-	EntityExtraMetadata,
-	ColumnExtraMetadata,
-	IndexExtraMetadata
+	ExtraMetadata
 > {
 	private _connectionInstance: DynamoDBClient;
 
@@ -28,6 +24,13 @@ export class Connection extends BaseConnection<
 		this._connectionInstance = new DynamoDBClient(
 			this.options.databaseConfig || {},
 		);
+
+		return this;
+	}
+
+	// eslint-disable-next-line require-await
+	public async validate() {
+		this.basicValidate();
 	}
 
 	// Disabled because the "close" method must return a promise

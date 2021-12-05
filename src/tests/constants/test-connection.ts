@@ -1,10 +1,16 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { BaseConnection } from "@techmmunity/symbiosis";
 import { TestRepository } from "./test-repository";
 
 export class TestConnection extends BaseConnection {
-	public connect(): Promise<void> {
+	// eslint-disable-next-line require-await
+	public async connect(): Promise<this> {
+		throw new Error("Method not implemented.");
+	}
+
+	public validate(): Promise<void> {
 		throw new Error("Method not implemented.");
 	}
 

@@ -7,18 +7,13 @@ import type { ColumnMetadata } from "@techmmunity/symbiosis/lib/entity-manager/t
 import type { EntityMetadata } from "@techmmunity/symbiosis/lib/entity-manager/types/entity-metadata";
 import type { DatabaseEntity } from "@techmmunity/symbiosis/lib/types/database-entity";
 import { getTypeof } from "@techmmunity/utils";
-import type { ColumnExtraMetadata } from "../../../types/column-extra-metadata";
-import type { EntityExtraMetadata } from "../../../types/entity-extra-metadata";
-import type { IndexExtraMetadata } from "../../../types/index-extra-metadata";
+
+import type { ExtraMetadata } from "../../../types/extra-metadata";
 
 interface ValidatePrimaryColumns {
 	where: FindConditions<DatabaseEntity>;
-	primaryColumns: Array<ColumnMetadata<ColumnExtraMetadata>>;
-	entityMetadata: EntityMetadata<
-		EntityExtraMetadata,
-		ColumnExtraMetadata,
-		IndexExtraMetadata
-	>;
+	primaryColumns: Array<ColumnMetadata<ExtraMetadata["column"]>>;
+	entityMetadata: EntityMetadata<ExtraMetadata>;
 }
 
 const throwDefaultError = (extraDetails?: Array<any>) => {
@@ -34,13 +29,9 @@ const throwDefaultError = (extraDetails?: Array<any>) => {
 };
 
 const validateHasTheSameLength = (
-	primaryColumns: Array<ColumnMetadata<ColumnExtraMetadata>>,
+	primaryColumns: Array<ColumnMetadata<ExtraMetadata["column"]>>,
 	whereKeys: Array<string>,
-	entityMetadata: EntityMetadata<
-		EntityExtraMetadata,
-		ColumnExtraMetadata,
-		IndexExtraMetadata
-	>,
+	entityMetadata: EntityMetadata<ExtraMetadata>,
 ) => {
 	if (whereKeys.length !== primaryColumns.length) {
 		return throwDefaultError([
@@ -54,13 +45,9 @@ const validateHasTheSameLength = (
 };
 
 const validateAreTheSamePrimaryKeys = (
-	primaryColumns: Array<ColumnMetadata<ColumnExtraMetadata>>,
+	primaryColumns: Array<ColumnMetadata<ExtraMetadata["column"]>>,
 	whereKeys: Array<string>,
-	entityMetadata: EntityMetadata<
-		EntityExtraMetadata,
-		ColumnExtraMetadata,
-		IndexExtraMetadata
-	>,
+	entityMetadata: EntityMetadata<ExtraMetadata>,
 ) => {
 	const primaryColumnsKeys = primaryColumns.map(col => col.databaseName);
 
