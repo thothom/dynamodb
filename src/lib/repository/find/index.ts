@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 
 import { unmarshall } from "@aws-sdk/util-dynamodb";
-import type { BeforeFindParams } from "@techmmunity/symbiosis/lib/repository/methods/before-find";
+import type { BeforeFindInput } from "@techmmunity/symbiosis/lib/repository/methods/find/before";
 import { isNotEmptyObject } from "@techmmunity/utils";
 import type { Context } from "../../types/context";
 import { getFindCommand } from "../../utils/get-find-command";
@@ -11,7 +11,7 @@ import { getStartFrom } from "./helpers/get-start-from";
 
 export const find = async <Entity>(
 	context: Context<Entity>, // Cannot destruct this!!!
-	{ conditions: rawConditions, options: rawOptions }: BeforeFindParams<Entity>,
+	{ conditions: rawConditions, options: rawOptions }: BeforeFindInput<Entity>,
 ) => {
 	const { conditions } = context.beforeFind({
 		conditions: rawConditions,

@@ -18,9 +18,7 @@ import {
 	SingleSaveData,
 	Logger,
 } from "@techmmunity/symbiosis";
-import type { ColumnExtraMetadata } from "../types/column-extra-metadata";
-import type { EntityExtraMetadata } from "../types/entity-extra-metadata";
-import type { IndexExtraMetadata } from "../types/index-extra-metadata";
+import { ExtraMetadata } from "../types/extra-metadata";
 import { handleDatabaseError } from "../utils/handle-database-error";
 import { del } from "./delete";
 import { find } from "./find";
@@ -28,12 +26,7 @@ import { findOne } from "./find-one";
 import { save } from "./save";
 import { upsert } from "./upsert";
 
-export class Repository<Entity> extends BaseRepository<
-	Entity,
-	EntityExtraMetadata,
-	ColumnExtraMetadata,
-	IndexExtraMetadata
-> {
+export class Repository<Entity> extends BaseRepository<Entity, ExtraMetadata> {
 	public constructor(
 		/**
 		 * Used in the "context" parameter
@@ -41,11 +34,7 @@ export class Repository<Entity> extends BaseRepository<
 		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		//@ts-ignore
 		private readonly connectionInstance: DynamoDBClient,
-		entityManager: EntityManager<
-			EntityExtraMetadata,
-			ColumnExtraMetadata,
-			IndexExtraMetadata
-		>,
+		entityManager: EntityManager<ExtraMetadata>,
 		logger: Logger,
 		entity: Entity,
 	) {
