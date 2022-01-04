@@ -1231,10 +1231,10 @@
     eslint-plugin-react-hooks "^4.2.1-alpha-4298ddbc5-20211023"
     eslint-plugin-sonarjs "^0.11.0"
 
-"@techmmunity/symbiosis@^0.0.29":
-  version "0.0.29"
-  resolved "https://registry.yarnpkg.com/@techmmunity/symbiosis/-/symbiosis-0.0.29.tgz#a2dea87eb0d0da77917dcdfe731414fbbde002c8"
-  integrity sha512-ptphZ/4OdqvwlwS8F3LWEx4acEoV8DKWYnbGBu+OpIGP/fgSiz3HnSe3nVgeHEU4CqcJOI6ZThUK95N66Va2MQ==
+"@techmmunity/symbiosis@^0.0.30":
+  version "0.0.30"
+  resolved "https://registry.yarnpkg.com/@techmmunity/symbiosis/-/symbiosis-0.0.30.tgz#270e25a3d57dd8932795e0397b98c158db7a1810"
+  integrity sha512-VXKcsE9snSQEuyBJezjk+xyYZYcuKOeCx1QY+XHTin36Iv+cr4BGcxgLqUw3DiF1b99DYXemgMjWVedvvtTV7g==
   dependencies:
     "@techmmunity/utils" "^1.9.1"
     change-case "^4.1.2"
