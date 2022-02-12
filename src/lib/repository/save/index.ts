@@ -54,10 +54,12 @@ export const save = async <Entity>(
 		});
 	}
 
-	return context.afterSave({
-		// Dynamo doesn't return the new values, so we have to return the same data that we receive
-		data: [data as DatabaseEntity],
-		returnArray,
-		options: rawOptions,
-	});
+	return {
+		data: context.afterSave({
+			// Dynamo doesn't return the new values, so we have to return the same data that we receive
+			data: [data as DatabaseEntity],
+			returnArray,
+			options: rawOptions,
+		}),
+	};
 };

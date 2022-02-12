@@ -58,9 +58,11 @@ export const findOne = async <Entity>(
 
 	const result = item ? unmarshall(item) : undefined;
 
-	return context.afterFindOne({
-		dataToReturn: result as DatabaseEntity,
-		conditions: rawConditions,
-		options: rawOptions,
-	});
+	return {
+		data: context.afterFindOne({
+			dataToReturn: result as DatabaseEntity,
+			conditions: rawConditions,
+			options: rawOptions,
+		}),
+	};
 };

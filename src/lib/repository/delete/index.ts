@@ -34,9 +34,11 @@ export const del = async <Entity>(
 
 	await context.connectionInstance.send(deleteItemCommand);
 
-	return context.afterDelete({
-		dataToReturn: 1,
-		where: rawWhere,
-		options: rawOptions,
-	});
+	return {
+		data: await context.afterDelete({
+			dataToReturn: 1,
+			where: rawWhere,
+			options: rawOptions,
+		}),
+	};
 };
