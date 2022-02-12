@@ -1,12 +1,14 @@
-import { FindConditions } from "@techmmunity/symbiosis";
-import { DatabaseEntity } from "@techmmunity/symbiosis/lib/types/database-entity";
-import { getArrayWhere } from "./helpers/get-array-where";
+import type { FindConditions } from "@techmmunity/symbiosis";
+
 import { getExpressionAttributeNames } from "./get-expression-attribute-names";
 import { getExpressionAttributeValues } from "./get-expression-attribute-values";
 import { getFilterExpression } from "./get-filter-expression";
 import { getKeyConditionExpression } from "./get-key-condition-expression";
+import { getArrayWhere } from "./helpers/get-array-where";
 import { getCommonConditions } from "./helpers/get-common-conditions";
 import { mapWhere } from "./helpers/map-where";
+
+import type { DatabaseEntity } from "@techmmunity/symbiosis/lib/types/database-entity";
 
 export const getWhereProperties = (where?: FindConditions<DatabaseEntity>) => {
 	const arrayWhere = getArrayWhere(where);

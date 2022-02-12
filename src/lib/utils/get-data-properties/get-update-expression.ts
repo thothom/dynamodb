@@ -1,8 +1,10 @@
 import { isOperator, SymbiosisError } from "@techmmunity/symbiosis";
 import { getTypeof, isNotEmptyArray } from "@techmmunity/utils";
-import type { Context } from "../../types/context";
+
 import { getColumnMetadata } from "./helpers/get-column-metadata";
 import type { KeysMap, ValuesMap } from "./helpers/map-data";
+
+import type { Context } from "../../types/context";
 
 interface GetConditionsExpressionParams<Entity> {
 	formattedData: Record<string, any>;

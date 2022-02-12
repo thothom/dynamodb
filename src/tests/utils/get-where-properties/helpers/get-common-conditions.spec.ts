@@ -1,4 +1,5 @@
 import { In } from "@techmmunity/symbiosis";
+
 import { getCommonConditions } from "../../../../lib/utils/get-where-properties/helpers/get-common-conditions";
 
 describe("getCommonConditions Util", () => {

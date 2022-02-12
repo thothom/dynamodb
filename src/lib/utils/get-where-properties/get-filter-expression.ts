@@ -1,5 +1,5 @@
 import { getConditionsExpression } from "./helpers/get-conditions-expression";
-import { KeysMap, ValuesMap } from "./helpers/map-where";
+import type { KeysMap, ValuesMap } from "./helpers/map-where";
 
 interface GetFilterExpressionParams {
 	arrayWhere: Array<Record<string, any>>;

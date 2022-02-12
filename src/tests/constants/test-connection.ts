@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { BaseConnection } from "@techmmunity/symbiosis";
+
 import { TestRepository } from "./test-repository";
 
 export class TestConnection extends BaseConnection {

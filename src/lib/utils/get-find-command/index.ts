@@ -1,9 +1,9 @@
 import { QueryCommand, ScanCommand } from "@aws-sdk/client-dynamodb";
-import { EntityManager, FindConditions } from "@techmmunity/symbiosis";
-import { DatabaseEntity } from "@techmmunity/symbiosis/lib/types/database-entity";
+import type { EntityManager, FindConditions } from "@techmmunity/symbiosis";
 import { getTypeof, isEmptyArray, isEmptyObject } from "@techmmunity/utils";
 
 import type { ExtraMetadata } from "../../types/extra-metadata";
+import type { DatabaseEntity } from "@techmmunity/symbiosis/lib/types/database-entity";
 
 interface GetWhereCommandParams<Entity> {
 	where?: FindConditions<DatabaseEntity>;

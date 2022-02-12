@@ -1,4 +1,4 @@
-import { KeysMap } from "./helpers/map-where";
+import type { KeysMap } from "./helpers/map-where";
 
 export const getExpressionAttributeNames = (keysMap: KeysMap) => {
 	const objects: Array<Record<string, string>> = [];

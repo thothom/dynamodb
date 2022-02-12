@@ -1,7 +1,8 @@
 import { MetadataUtil, SymbiosisError } from "@techmmunity/symbiosis";
-import { ColumnMetadata } from "@techmmunity/symbiosis/lib/entity-manager/types/column-metadata";
 import { getTypeof } from "@techmmunity/utils";
-import { Context } from "../../../types/context";
+
+import type { Context } from "../../../types/context";
+import type { ColumnMetadata } from "@techmmunity/symbiosis/lib/entity-manager/types/column-metadata";
 
 interface GetColumnMetadataParams {
 	key: string;

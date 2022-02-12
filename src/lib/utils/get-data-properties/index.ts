@@ -1,9 +1,11 @@
-import { Context } from "../../types/context";
 import { formatWhere } from "../get-where-properties/helpers/get-array-where";
+
 import { getExpressionAttributeNames } from "./get-expression-attribute-names";
 import { getExpressionAttributeValues } from "./get-expression-attribute-values";
 import { getUpdateExpression } from "./get-update-expression";
 import { mapData } from "./helpers/map-data";
+
+import type { Context } from "../../types/context";
 
 interface GetDataPropertiesParams<Entity> {
 	data: Record<string, any>;

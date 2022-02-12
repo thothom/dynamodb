@@ -1,5 +1,6 @@
 import { isOperator, SymbiosisError } from "@techmmunity/symbiosis";
-import { KeysMap, ValuesMap } from "./map-where";
+
+import type { KeysMap, ValuesMap } from "./map-where";
 
 interface GetConditionsExpressionParams {
 	formattedWhere: Record<string, any>;

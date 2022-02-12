@@ -2,8 +2,10 @@ import { UpdateItemCommand } from "@aws-sdk/client-dynamodb";
 import { marshall, unmarshall } from "@aws-sdk/util-dynamodb";
 import { SymbiosisError } from "@techmmunity/symbiosis";
 import type { BeforeUpsertInput } from "@techmmunity/symbiosis/lib/repository/methods/upsert/before";
-import type { Context } from "../../types/context";
+
 import { getDataProperties } from "../../utils/get-data-properties";
+
+import type { Context } from "../../types/context";
 
 export const upsert = async <Entity>(
 	context: Context<Entity>, // Cannot destruct this!!!

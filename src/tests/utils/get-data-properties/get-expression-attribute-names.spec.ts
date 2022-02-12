@@ -1,7 +1,7 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 
-import { mapData } from "../../../lib/utils/get-data-properties/helpers/map-data";
 import { getExpressionAttributeNames } from "../../../lib/utils/get-data-properties/get-expression-attribute-names";
+import { mapData } from "../../../lib/utils/get-data-properties/helpers/map-data";
 import { formatWhere } from "../../../lib/utils/get-where-properties/helpers/get-array-where";
 
 describe("getExpressionAttributeNames", () => {
