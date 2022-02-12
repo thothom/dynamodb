@@ -1,9 +1,11 @@
 import { marshall } from "@aws-sdk/util-dynamodb";
-import { EntityManager } from "@techmmunity/symbiosis";
-import { DatabaseEntity } from "@techmmunity/symbiosis/lib/types/database-entity";
+import type { EntityManager } from "@techmmunity/symbiosis";
 import { cleanObj, isEmptyObject } from "@techmmunity/utils";
-import { ExtraMetadata } from "../../../types/extra-metadata";
+
 import { validatePrimaryColumns } from "./validate-primary-columns";
+
+import type { ExtraMetadata } from "../../../types/extra-metadata";
+import type { DatabaseEntity } from "@techmmunity/symbiosis/lib/types/database-entity";
 
 export interface GetStartFromParams<Entity> {
 	startFrom?: Partial<DatabaseEntity>;

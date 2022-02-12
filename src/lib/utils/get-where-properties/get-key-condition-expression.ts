@@ -1,7 +1,8 @@
 import { SymbiosisError } from "@techmmunity/symbiosis";
 import { isEmptyObject } from "@techmmunity/utils";
+
 import { getConditionsExpression } from "./helpers/get-conditions-expression";
-import { KeysMap, ValuesMap } from "./helpers/map-where";
+import type { KeysMap, ValuesMap } from "./helpers/map-where";
 
 interface GetKeyConditionExpressionParams {
 	arrayWhere: Array<Record<string, any>>;

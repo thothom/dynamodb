@@ -1,12 +1,8 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 
-import {
-	Entity,
-	PrimaryColumn,
-	Column,
-	BaseConnectionOptions,
-	Logger,
-} from "@techmmunity/symbiosis";
+import type { BaseConnectionOptions } from "@techmmunity/symbiosis";
+import { Entity, PrimaryColumn, Column, Logger } from "@techmmunity/symbiosis";
+
 import { TestConnection } from "../constants/test-connection";
 
 describe("Connection", () => {

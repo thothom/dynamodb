@@ -1,31 +1,32 @@
 import type { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import type { EntityManager, Logger } from "@techmmunity/symbiosis";
 import type { AfterDeleteParams } from "@techmmunity/symbiosis/lib/repository/methods/delete/after";
-import type { AfterFindParams } from "@techmmunity/symbiosis/lib/repository/methods/find/after";
-import type { AfterFindOneParams } from "@techmmunity/symbiosis/lib/repository/methods/find-one/after";
-import type { AfterSaveParams } from "@techmmunity/symbiosis/lib/repository/methods/save/after";
-import type { AfterUpsertParams } from "@techmmunity/symbiosis/lib/repository/methods/upsert/after";
 import type {
 	BeforeDeleteInput,
 	BeforeDeleteOutput,
 } from "@techmmunity/symbiosis/lib/repository/methods/delete/before";
-import type {
-	BeforeFindInput,
-	BeforeFindOutput,
-} from "@techmmunity/symbiosis/lib/repository/methods/find/before";
+import type { AfterFindOneParams } from "@techmmunity/symbiosis/lib/repository/methods/find-one/after";
 import type {
 	BeforeFindOneInput,
 	BeforeFindOneOutput,
 } from "@techmmunity/symbiosis/lib/repository/methods/find-one/before";
+import type { AfterFindParams } from "@techmmunity/symbiosis/lib/repository/methods/find/after";
+import type {
+	BeforeFindInput,
+	BeforeFindOutput,
+} from "@techmmunity/symbiosis/lib/repository/methods/find/before";
+import type { AfterSaveParams } from "@techmmunity/symbiosis/lib/repository/methods/save/after";
 import type {
 	BeforeSaveInput,
 	BeforeSaveOutput,
 } from "@techmmunity/symbiosis/lib/repository/methods/save/before";
+import type { AfterUpsertParams } from "@techmmunity/symbiosis/lib/repository/methods/upsert/after";
 import type {
 	BeforeUpsertInput,
 	BeforeUpsertOutput,
 } from "@techmmunity/symbiosis/lib/repository/methods/upsert/before";
-import { ExtraMetadata } from "./extra-metadata";
+
+import type { ExtraMetadata } from "./extra-metadata";
 
 // Used because of problems with `this` in extended classes
 export interface Context<Entity> {

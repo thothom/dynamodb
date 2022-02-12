@@ -1,14 +1,14 @@
-import {
+import type {
 	FindConditions,
 	SingleFindConditions,
-	SymbiosisError,
 } from "@techmmunity/symbiosis";
-import type { ColumnMetadata } from "@techmmunity/symbiosis/lib/entity-manager/types/column-metadata";
-import type { EntityMetadata } from "@techmmunity/symbiosis/lib/entity-manager/types/entity-metadata";
-import type { DatabaseEntity } from "@techmmunity/symbiosis/lib/types/database-entity";
+import { SymbiosisError } from "@techmmunity/symbiosis";
 import { getTypeof } from "@techmmunity/utils";
 
 import type { ExtraMetadata } from "../../../types/extra-metadata";
+import type { ColumnMetadata } from "@techmmunity/symbiosis/lib/entity-manager/types/column-metadata";
+import type { EntityMetadata } from "@techmmunity/symbiosis/lib/entity-manager/types/entity-metadata";
+import type { DatabaseEntity } from "@techmmunity/symbiosis/lib/types/database-entity";
 
 interface ValidatePrimaryColumns {
 	where: FindConditions<DatabaseEntity>;

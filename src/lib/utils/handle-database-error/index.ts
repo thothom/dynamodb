@@ -1,5 +1,6 @@
 import { SymbiosisError } from "@techmmunity/symbiosis";
-import { Context } from "../../types/context";
+
+import type { Context } from "../../types/context";
 
 export const handleDatabaseError = (context: Context<any>, err: any) => {
 	const message = err.message;

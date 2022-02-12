@@ -4,8 +4,10 @@ import {
 	SubEntity,
 	SymbiosisError,
 } from "@techmmunity/symbiosis";
-import { getColumnMetadata } from "../../../../lib/utils/get-data-properties/helpers/get-column-metadata";
+
 import { TestConnection } from "../../../constants/test-connection";
+
+import { getColumnMetadata } from "../../../../lib/utils/get-data-properties/helpers/get-column-metadata";
 
 describe("getColumnMetadata", () => {
 	describe("With simple entity", () => {

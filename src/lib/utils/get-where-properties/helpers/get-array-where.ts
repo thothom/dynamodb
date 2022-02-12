@@ -1,10 +1,8 @@
-import {
-	FindConditions,
-	isOperator,
-	SymbiosisError,
-} from "@techmmunity/symbiosis";
-import type { DatabaseEntity } from "@techmmunity/symbiosis/lib/types/database-entity";
+import type { FindConditions } from "@techmmunity/symbiosis";
+import { isOperator, SymbiosisError } from "@techmmunity/symbiosis";
 import { getTypeof, isEmptyObject } from "@techmmunity/utils";
+
+import type { DatabaseEntity } from "@techmmunity/symbiosis/lib/types/database-entity";
 
 interface HandleArrayParams {
 	acc: Record<string, any>;

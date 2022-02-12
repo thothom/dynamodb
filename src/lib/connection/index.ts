@@ -1,6 +1,9 @@
+import type { DynamoDBClientConfig } from "@aws-sdk/client-dynamodb";
+import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import { BaseConnection } from "@techmmunity/symbiosis";
-import { DynamoDBClient, DynamoDBClientConfig } from "@aws-sdk/client-dynamodb";
+
 import { Repository } from "../repository";
+
 import type { DynamoDbConnectionOptions } from "../types/connection-options";
 import type { ExtraMetadata } from "../types/extra-metadata";
 

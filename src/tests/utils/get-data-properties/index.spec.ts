@@ -1,7 +1,9 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 
 import { Column, Entity } from "@techmmunity/symbiosis";
+
 import { TestConnection } from "../../constants/test-connection";
+
 import { getDataProperties } from "../../../lib/utils/get-data-properties";
 
 describe("getDataProperties", () => {

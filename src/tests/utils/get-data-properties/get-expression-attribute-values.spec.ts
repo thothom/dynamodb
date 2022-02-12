@@ -10,8 +10,9 @@ import {
 	Remove,
 	SymbiosisError,
 } from "@techmmunity/symbiosis";
-import { mapData } from "../../../lib/utils/get-data-properties/helpers/map-data";
+
 import { getExpressionAttributeValues } from "../../../lib/utils/get-data-properties/get-expression-attribute-values";
+import { mapData } from "../../../lib/utils/get-data-properties/helpers/map-data";
 import { formatWhere } from "../../../lib/utils/get-where-properties/helpers/get-array-where";
 
 describe("getExpressionAttributeValues", () => {

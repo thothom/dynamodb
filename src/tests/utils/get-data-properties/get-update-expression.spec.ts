@@ -14,10 +14,12 @@ import {
 	SubEntity,
 	SymbiosisError,
 } from "@techmmunity/symbiosis";
+
+import { TestConnection } from "../../constants/test-connection";
+
+import { getUpdateExpression } from "../../../lib/utils/get-data-properties/get-update-expression";
 import { mapData } from "../../../lib/utils/get-data-properties/helpers/map-data";
 import { formatWhere } from "../../../lib/utils/get-where-properties/helpers/get-array-where";
-import { TestConnection } from "../../constants/test-connection";
-import { getUpdateExpression } from "../../../lib/utils/get-data-properties/get-update-expression";
 
 describe("getUpdateExpression", () => {
 	// eslint-disable-next-line sonarjs/cognitive-complexity

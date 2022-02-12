@@ -2,8 +2,9 @@ import { BatchWriteItemCommand } from "@aws-sdk/client-dynamodb";
 import { marshall, unmarshall } from "@aws-sdk/util-dynamodb";
 import { SymbiosisError } from "@techmmunity/symbiosis";
 import type { BeforeSaveInput } from "@techmmunity/symbiosis/lib/repository/methods/save/before";
-import { DatabaseEntity } from "@techmmunity/symbiosis/lib/types/database-entity";
+
 import type { Context } from "../../types/context";
+import type { DatabaseEntity } from "@techmmunity/symbiosis/lib/types/database-entity";
 
 export const save = async <Entity>(
 	context: Context<Entity>, // Cannot destruct this!!!

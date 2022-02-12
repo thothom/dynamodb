@@ -1,8 +1,10 @@
 import { DeleteItemCommand } from "@aws-sdk/client-dynamodb";
 import { marshall } from "@aws-sdk/util-dynamodb";
 import type { BeforeDeleteInput } from "@techmmunity/symbiosis/lib/repository/methods/delete/before";
-import type { Context } from "../../types/context";
+
 import { validatePrimaryColumns } from "./helpers/validate-primary-columns";
+
+import type { Context } from "../../types/context";
 
 export const del = async <Entity>(
 	context: Context<Entity>, // Cannot destruct this!!!

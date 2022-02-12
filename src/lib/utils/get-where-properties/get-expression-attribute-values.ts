@@ -1,6 +1,7 @@
 import { marshall } from "@aws-sdk/util-dynamodb";
 import { isOperator, SymbiosisError } from "@techmmunity/symbiosis";
-import { ValuesMap } from "./helpers/map-where";
+
+import type { ValuesMap } from "./helpers/map-where";
 
 export const getExpressionAttributeValues = (valuesMap: ValuesMap) => {
 	const valuesEntriesToReturn: Array<[string, any]> = [];
