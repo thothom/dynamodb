@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 
 import { unmarshall } from "@aws-sdk/util-dynamodb";
+import type { ClassType } from "@techmmunity/symbiosis";
 import type { BeforeFindInput } from "@techmmunity/symbiosis/lib/repository/methods/find/before";
 import { isNotEmptyObject } from "@techmmunity/utils";
 
@@ -60,13 +61,22 @@ export const find = async <Entity>(
 		...whereProps,
 	});
 
-	const { Items } = await context.connectionInstance.send(findCommand);
+	const { Items, LastEvaluatedKey } = await context.connectionInstance.send(
+		findCommand,
+	);
 
 	const result = Items?.map(item => unmarshall(item)) || [];
 
-	return context.afterFind({
-		dataToReturn: result as Array<Entity>,
-		conditions: rawConditions,
-		options: rawOptions,
-	});
+	return {
+		data: context.afterFind({
+			dataToReturn: result as Array<Entity>,
+			conditions: rawConditions,
+			options: rawOptions,
+		}),
+		...(LastEvaluatedKey
+			? {
+					cursor: unmarshall(LastEvaluatedKey) as ClassType<Entity>,
+			  }
+			: {}),
+	};
 };

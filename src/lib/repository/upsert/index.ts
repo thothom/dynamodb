@@ -79,9 +79,11 @@ export const upsert = async <Entity>(
 		});
 	}
 
-	return context.afterUpsert({
-		conditions: rawConditions,
-		data: unmarshall(Attributes),
-		options: rawOptions,
-	});
+	return {
+		data: context.afterUpsert({
+			conditions: rawConditions,
+			data: unmarshall(Attributes),
+			options: rawOptions,
+		}),
+	};
 };
