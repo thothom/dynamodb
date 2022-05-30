@@ -16,8 +16,8 @@ import type {
 	SingleSaveData,
 	ArraySaveData,
 	Logger,
-} from "@techmmunity/symbiosis";
-import { BaseRepository, SymbiosisError } from "@techmmunity/symbiosis";
+} from "@thothom/core";
+import { BaseRepository, ThothError } from "@thothom/core";
 
 import { del } from "./delete";
 import { find } from "./find";
@@ -102,9 +102,9 @@ export class Repository<Entity> extends BaseRepository<Entity, ExtraMetadata> {
 		_options?: BaseQueryOptions,
 	): Promise<InsertOutput<Array<Entity> | Entity>> {
 		// Delete this after the method is implemented
-		throw new SymbiosisError({
+		throw new ThothError({
 			code: "NOT_IMPLEMENTED",
-			origin: "SYMBIOSIS",
+			origin: "THOTHOM",
 			details: ["Method `insert` is not implemented yet by this plugin"],
 			message: "Method not implemented",
 		});
@@ -143,9 +143,9 @@ export class Repository<Entity> extends BaseRepository<Entity, ExtraMetadata> {
 		_options?: BaseQueryOptions,
 	): Promise<UpdateOutput<Entity>> {
 		// Delete this after the method is implemented
-		throw new SymbiosisError({
+		throw new ThothError({
 			code: "NOT_IMPLEMENTED",
-			origin: "SYMBIOSIS",
+			origin: "THOTHOM",
 			details: ["Method `update` is not implemented yet by this plugin"],
 			message: "Method not implemented",
 		});
@@ -252,9 +252,9 @@ export class Repository<Entity> extends BaseRepository<Entity, ExtraMetadata> {
 		_options?: BaseQueryOptions,
 	): Promise<SoftDeleteOutput> {
 		// Delete this after the method is implemented
-		throw new SymbiosisError({
+		throw new ThothError({
 			code: "NOT_IMPLEMENTED",
-			origin: "SYMBIOSIS",
+			origin: "THOTHOM",
 			details: ["Method `softDelete` is not implemented yet by this plugin"],
 			message: "Method not implemented",
 		});
@@ -293,9 +293,9 @@ export class Repository<Entity> extends BaseRepository<Entity, ExtraMetadata> {
 		_options?: BaseQueryOptions,
 	): Promise<RecoverOutput> {
 		// Delete this after the method is implemented
-		throw new SymbiosisError({
+		throw new ThothError({
 			code: "NOT_IMPLEMENTED",
-			origin: "SYMBIOSIS",
+			origin: "THOTHOM",
 			details: ["Method `recover` is not implemented yet by this plugin"],
 			message: "Method not implemented",
 		});
@@ -334,9 +334,9 @@ export class Repository<Entity> extends BaseRepository<Entity, ExtraMetadata> {
 		_options?: BaseQueryOptions,
 	): Promise<CountOutput> {
 		// Delete this after the method is implemented
-		throw new SymbiosisError({
+		throw new ThothError({
 			code: "NOT_IMPLEMENTED",
-			origin: "SYMBIOSIS",
+			origin: "THOTHOM",
 			details: ["Method `count` is not implemented yet by this plugin"],
 			message: "Method not implemented",
 		});
@@ -375,9 +375,9 @@ export class Repository<Entity> extends BaseRepository<Entity, ExtraMetadata> {
 		_options?: BaseQueryOptions,
 	): Promise<PerformativeCountOutput> {
 		// Delete this after the method is implemented
-		throw new SymbiosisError({
+		throw new ThothError({
 			code: "NOT_IMPLEMENTED",
-			origin: "SYMBIOSIS",
+			origin: "THOTHOM",
 			details: [
 				"Method `performativeCount` is not implemented yet by this plugin",
 			],

@@ -1,8 +1,8 @@
-import type { FindConditions } from "@techmmunity/symbiosis";
-import { isOperator, SymbiosisError } from "@techmmunity/symbiosis";
+import type { FindConditions } from "@thothom/core";
+import { isOperator, ThothError } from "@thothom/core";
 import { getTypeof, isEmptyObject } from "@techmmunity/utils";
 
-import type { DatabaseEntity } from "@techmmunity/symbiosis/lib/types/database-entity";
+import type { DatabaseEntity } from "@thothom/core/lib/types/database-entity";
 
 interface HandleArrayParams {
 	acc: Record<string, any>;
@@ -22,12 +22,12 @@ const handleArray = ({ acc, key, value }: HandleArrayParams) => {
 	const typeOfFirstValue = getTypeof(firstValue);
 
 	if (typeOfFirstValue !== "object" || isEmptyObject(firstValue)) {
-		throw new SymbiosisError({
+		throw new ThothError({
 			code: "INVALID_PARAM",
-			origin: "SYMBIOSIS",
+			origin: "THOTHOM",
 			message: "Invalid params",
 			details: [
-				'Invalid array filter. If you want to filter by what an array includes and not by it\'s children, you must you the `Includes` find operator, which is exported by "@techmmunity/symbiosis"',
+				'Invalid array filter. If you want to filter by what an array includes and not by it\'s children, you must you the `Includes` find operator, which is exported by "@thothom/core"',
 			],
 		});
 	}

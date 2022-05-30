@@ -1,26 +1,26 @@
 <div align="center">
 
-<img src="https://github.com/techmmunity-symbiosis/symbiosis/raw/master/resources/logo.gif" width="300" height="300">
+<img src="https://github.com/thothom/core/raw/master/resources/logo.gif" width="300" height="300">
 
-# Techmmunity - Symbiosis DynamoDB
+# ThothOM DynamoDB
 
 <a href="https://github.com/techmmunity/eslint-config">
 	<img src="https://img.shields.io/badge/style%20guide-Techmmunity-01d2ce?style=for-the-badge" alt="Style Guide: Techmmunity">
 </a>
-<a href="https://www.codefactor.io/repository/github/techmmunity-symbiosis/dynamodb">
-	<img src="https://www.codefactor.io/repository/github/techmmunity-symbiosis/dynamodb/badge?style=for-the-badge" alt="CodeFactor">
+<a href="https://www.codefactor.io/repository/github/thothom/dynamodb">
+	<img src="https://www.codefactor.io/repository/github/thothom/dynamodb/badge?style=for-the-badge" alt="CodeFactor">
 </a>
-<a href="https://coveralls.io/github/techmmunity-symbiosis/dynamodb?branch=master">
-	<img src="https://img.shields.io/coveralls/github/techmmunity-symbiosis/dynamodb/master?style=for-the-badge" alt="Coveralls">
+<a href="https://coveralls.io/github/thothom/dynamodb?branch=master">
+	<img src="https://img.shields.io/coveralls/github/thothom/dynamodb/master?style=for-the-badge" alt="Coveralls">
 </a>
-<a href="https://github.com/techmmunity-symbiosis/dynamodb/actions/workflows/coverage.yml">
-	<img src="https://img.shields.io/github/workflow/status/techmmunity-symbiosis/dynamodb/tests?label=tests&logo=github&style=for-the-badge" alt="Tests">
+<a href="https://github.com/thothom/dynamodb/actions/workflows/coverage.yml">
+	<img src="https://img.shields.io/github/workflow/status/thothom/dynamodb/tests?label=tests&logo=github&style=for-the-badge" alt="Tests">
 </a>
-<a href="https://www.npmjs.com/package/@techmmunity/symbiosis-dynamodb">
-	<img src="https://img.shields.io/npm/v/@techmmunity/symbiosis-dynamodb.svg?color=CC3534&style=for-the-badge" alt="Npm">
+<a href="https://www.npmjs.com/package/@thothom/dynamodb">
+	<img src="https://img.shields.io/npm/v/@thothom/dynamodb.svg?color=CC3534&style=for-the-badge" alt="Npm">
 </a>
-<a href="https://www.npmjs.com/package/@techmmunity/symbiosis-dynamodb">
-	<img src="https://img.shields.io/npm/dw/@techmmunity/symbiosis-dynamodb.svg?style=for-the-badge" alt="Downloads">
+<a href="https://www.npmjs.com/package/@thothom/dynamodb">
+	<img src="https://img.shields.io/npm/dw/@thothom/dynamodb.svg?style=for-the-badge" alt="Downloads">
 </a>
 
 <br>
@@ -28,28 +28,28 @@
 
 </div>
 
-This is a DynamoDB plugin for [@techmmunity/symbiosis](https://github.com/techmmunity-symbiosis/symbiosis).
+This is a DynamoDB plugin for [@thothom/core](https://github.com/thothom/core).
 
 [![Discord Community](https://img.shields.io/badge/discord%20community-5865F2?style=for-the-badge&labelColor=5865F2&logo=discord&logoColor=ffffff)](https://discord.gg/TakYksUzzZ)
-[![Docs](https://img.shields.io/badge/📄%20documentation-01d2ce?style=for-the-badge)](https://symbiosis.techmmunity.com.br)
+[![Docs](https://img.shields.io/badge/📄%20documentation-01d2ce?style=for-the-badge)](https://thothom.com)
 
 ## Installation
 
 With yarn
 
 ```
-yarn add @techmmunity/symbiosis-dynamodb
+yarn add @thothom/dynamodb
 ```
 
 With npm
 
 ```
-npm i @techmmunity/symbiosis-dynamodb
+npm i @thothom/dynamodb
 ```
 
 ## Usage
 
-Please, check [the docs](https://symbiosis.techmmunity.com.br/docs/plugins/dynamodb) for more information.
+Please, check [the docs](https://thothom.com/docs/plugins/dynamodb) for more information.
 
 ## Warning
 

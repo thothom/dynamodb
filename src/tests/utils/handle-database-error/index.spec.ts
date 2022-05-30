@@ -1,4 +1,4 @@
-import { SymbiosisError } from "@techmmunity/symbiosis";
+import { ThothError } from "@thothom/core";
 
 import { handleDatabaseError } from "../../../lib/utils/handle-database-error";
 
@@ -9,11 +9,11 @@ describe("handleDatabaseError", () => {
 		tableName: "foo_bar",
 	};
 
-	describe("With SymbiosisError", () => {
+	describe("With ThothError", () => {
 		it("should return the same error", () => {
 			let result: any;
 
-			const error = new SymbiosisError({
+			const error = new ThothError({
 				code: "AUTOMATION_FAILED",
 				origin: "DATABASE",
 				message: "Foo",
@@ -43,7 +43,7 @@ describe("handleDatabaseError", () => {
 			}
 
 			expect(result).toStrictEqual(
-				new SymbiosisError({
+				new ThothError({
 					code: "OPERATION_FAILED",
 					origin: "DATABASE",
 					message: "Table not found",
@@ -64,7 +64,7 @@ describe("handleDatabaseError", () => {
 			}
 
 			expect(result).toStrictEqual(
-				new SymbiosisError({
+				new ThothError({
 					code: "UNKNOWN",
 					origin: "DATABASE",
 					message: "Unknown error",

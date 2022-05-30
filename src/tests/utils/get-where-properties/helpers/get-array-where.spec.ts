@@ -1,4 +1,4 @@
-import { In } from "@techmmunity/symbiosis";
+import { In } from "@thothom/core";
 
 import { getArrayWhere } from "../../../../lib/utils/get-where-properties/helpers/get-array-where";
 

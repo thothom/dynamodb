@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 
 import { unmarshall } from "@aws-sdk/util-dynamodb";
-import type { ClassType } from "@techmmunity/symbiosis";
-import type { BeforeFindInput } from "@techmmunity/symbiosis/lib/repository/methods/find/before";
+import type { ClassType } from "@thothom/core";
+import type { BeforeFindInput } from "@thothom/core/lib/repository/methods/find/before";
 import { isNotEmptyObject } from "@techmmunity/utils";
 
 import { getStartFrom } from "./helpers/get-start-from";

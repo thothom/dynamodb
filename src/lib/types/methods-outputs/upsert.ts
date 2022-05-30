@@ -1,3 +1,3 @@
-import type { BaseUpsertOutput } from "@techmmunity/symbiosis";
+import type { BaseUpsertOutput } from "@thothom/core";
 
 export type UpsertOutput<T> = BaseUpsertOutput<T>;

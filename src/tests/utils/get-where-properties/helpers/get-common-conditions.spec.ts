@@ -1,4 +1,4 @@
-import { In } from "@techmmunity/symbiosis";
+import { In } from "@thothom/core";
 
 import { getCommonConditions } from "../../../../lib/utils/get-where-properties/helpers/get-common-conditions";
 

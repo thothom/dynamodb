@@ -1,7 +1,7 @@
 import { UpdateItemCommand } from "@aws-sdk/client-dynamodb";
 import { marshall, unmarshall } from "@aws-sdk/util-dynamodb";
-import { SymbiosisError } from "@techmmunity/symbiosis";
-import type { BeforeUpsertInput } from "@techmmunity/symbiosis/lib/repository/methods/upsert/before";
+import { ThothError } from "@thothom/core";
+import type { BeforeUpsertInput } from "@thothom/core/lib/repository/methods/upsert/before";
 
 import { getDataProperties } from "../../utils/get-data-properties";
 
@@ -31,9 +31,9 @@ export const upsert = async <Entity>(
 	);
 
 	if (notPrimaryKeys) {
-		throw new SymbiosisError({
+		throw new ThothError({
 			code: "INVALID_PARAM",
-			origin: "SYMBIOSIS",
+			origin: "THOTHOM",
 			message: "Invalid params",
 			details: ["You only can upsert records by it's primary keys"],
 		});
@@ -71,7 +71,7 @@ export const upsert = async <Entity>(
 	);
 
 	if (!Attributes) {
-		throw new SymbiosisError({
+		throw new ThothError({
 			code: "OPERATION_FAILED",
 			origin: "DATABASE",
 			message: "Operation failed",

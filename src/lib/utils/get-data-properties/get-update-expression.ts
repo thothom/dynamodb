@@ -1,4 +1,4 @@
-import { isOperator, SymbiosisError } from "@techmmunity/symbiosis";
+import { isOperator, ThothError } from "@thothom/core";
 import { getTypeof, isNotEmptyArray } from "@techmmunity/utils";
 
 import { getColumnMetadata } from "./helpers/get-column-metadata";
@@ -47,9 +47,9 @@ export const getUpdateExpression = <Entity>({
 					const [val] = value.values;
 
 					if (getTypeof(val) !== "number") {
-						throw new SymbiosisError({
+						throw new ThothError({
 							code: "INVALID_PARAM",
-							origin: "SYMBIOSIS",
+							origin: "THOTHOM",
 							message: "Invalid param",
 							details: [
 								"Dynamodb only accept remove items from lists by it's indexes",
@@ -78,9 +78,9 @@ export const getUpdateExpression = <Entity>({
 					break;
 
 				default:
-					throw new SymbiosisError({
+					throw new ThothError({
 						code: "NOT_IMPLEMENTED",
-						origin: "SYMBIOSIS",
+						origin: "THOTHOM",
 						message: "Invalid SaveOperator",
 						details: [`Dynamodb doesn't support SaveOperator "${value.type}"`],
 					});

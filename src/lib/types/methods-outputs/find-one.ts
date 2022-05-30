@@ -1,3 +1,3 @@
-import type { BaseFindOneOutput } from "@techmmunity/symbiosis";
+import type { BaseFindOneOutput } from "@thothom/core";
 
 export type FindOneOutput<T> = BaseFindOneOutput<T>;

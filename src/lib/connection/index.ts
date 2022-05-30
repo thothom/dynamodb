@@ -1,6 +1,6 @@
 import type { DynamoDBClientConfig } from "@aws-sdk/client-dynamodb";
 import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
-import { BaseConnection } from "@techmmunity/symbiosis";
+import { BaseConnection } from "@thothom/core";
 
 import { Repository } from "../repository";
 
@@ -18,7 +18,7 @@ export class Connection extends BaseConnection<
 	}
 
 	public constructor(options?: DynamoDbConnectionOptions) {
-		super("@techmmunity/symbiosis-dynamodb", options);
+		super("@thothom/dynamodb", options);
 	}
 
 	// Disabled because the "connect" method must return a promise

@@ -1,8 +1,8 @@
-import { MetadataUtil, SymbiosisError } from "@techmmunity/symbiosis";
+import { MetadataUtil, ThothError } from "@thothom/core";
 import { getTypeof } from "@techmmunity/utils";
 
 import type { Context } from "../../../types/context";
-import type { ColumnMetadata } from "@techmmunity/symbiosis/lib/entity-manager/types/column-metadata";
+import type { ColumnMetadata } from "@thothom/core/lib/entity-manager/types/column-metadata";
 
 interface GetColumnMetadataParams {
 	key: string;
@@ -35,9 +35,9 @@ export const getColumnMetadata = ({
 		) as any;
 
 	if (getTypeof(result) === "class") {
-		throw new SymbiosisError({
+		throw new ThothError({
 			code: "INVALID_PARAM",
-			origin: "SYMBIOSIS",
+			origin: "THOTHOM",
 			message: "Invalid column",
 			details: [`Invalid column: "${key}"`],
 		});

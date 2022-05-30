@@ -1,11 +1,11 @@
 import { marshall } from "@aws-sdk/util-dynamodb";
-import type { EntityManager } from "@techmmunity/symbiosis";
+import type { EntityManager } from "@thothom/core";
 import { cleanObj, isEmptyObject } from "@techmmunity/utils";
 
 import { validatePrimaryColumns } from "./validate-primary-columns";
 
 import type { ExtraMetadata } from "../../../types/extra-metadata";
-import type { DatabaseEntity } from "@techmmunity/symbiosis/lib/types/database-entity";
+import type { DatabaseEntity } from "@thothom/core/lib/types/database-entity";
 
 export interface GetStartFromParams<Entity> {
 	startFrom?: Partial<DatabaseEntity>;

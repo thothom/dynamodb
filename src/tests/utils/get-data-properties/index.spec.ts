@@ -1,6 +1,6 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 
-import { Column, Entity } from "@techmmunity/symbiosis";
+import { Column, Entity } from "@thothom/core";
 
 import { TestConnection } from "../../constants/test-connection";
 
