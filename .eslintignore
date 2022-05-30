@@ -10,6 +10,9 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
+# Jest
+jest.config.cjs
+
 # OS
 .DS_Store
 

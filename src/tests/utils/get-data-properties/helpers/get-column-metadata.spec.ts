@@ -1,9 +1,4 @@
-import {
-	Column,
-	Entity,
-	SubEntity,
-	SymbiosisError,
-} from "@techmmunity/symbiosis";
+import { Column, Entity, SubEntity, ThothError } from "@thothom/core";
 
 import { TestConnection } from "../../../constants/test-connection";
 
@@ -104,7 +99,7 @@ describe("getColumnMetadata", () => {
 				result = err;
 			}
 
-			expect(result instanceof SymbiosisError).toBeTruthy();
+			expect(result instanceof ThothError).toBeTruthy();
 			expect(result.details).toStrictEqual(['Invalid column: "foo"']);
 		});
 	});

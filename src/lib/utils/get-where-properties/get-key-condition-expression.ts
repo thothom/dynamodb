@@ -1,4 +1,4 @@
-import { SymbiosisError } from "@techmmunity/symbiosis";
+import { ThothError } from "@thothom/core";
 import { isEmptyObject } from "@techmmunity/utils";
 
 import { getConditionsExpression } from "./helpers/get-conditions-expression";
@@ -20,9 +20,9 @@ export const getKeyConditionExpression = ({
 	if (!arrayWhere) return;
 
 	if (isEmptyObject(commonConditions)) {
-		throw new SymbiosisError({
+		throw new ThothError({
 			code: "INVALID_PARAM",
-			origin: "SYMBIOSIS",
+			origin: "THOTHOM",
 			message: "Invalid params",
 			details: [
 				"To make queries with OR condition with DynamoDB, you need to have at least 1 property in common between the conditions",

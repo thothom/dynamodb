@@ -12,8 +12,8 @@ import {
 	PrimaryGeneratedColumn,
 	Remove,
 	SubEntity,
-	SymbiosisError,
-} from "@techmmunity/symbiosis";
+	ThothError,
+} from "@thothom/core";
 
 import { TestConnection } from "../../constants/test-connection";
 
@@ -553,9 +553,9 @@ describe("getUpdateExpression", () => {
 				result = err;
 			}
 
-			expect(result instanceof SymbiosisError).toBeTruthy();
+			expect(result instanceof ThothError).toBeTruthy();
 			expect(result.code).toBe("NOT_IMPLEMENTED");
-			expect(result.origin).toBe("SYMBIOSIS");
+			expect(result.origin).toBe("THOTHOM");
 			expect(result.message).toBe("Invalid SaveOperator");
 			expect(result.details).toStrictEqual([
 				'Dynamodb doesn\'t support SaveOperator "min"',
@@ -607,9 +607,9 @@ describe("getUpdateExpression", () => {
 				result = err;
 			}
 
-			expect(result instanceof SymbiosisError).toBeTruthy();
+			expect(result instanceof ThothError).toBeTruthy();
 			expect(result.code).toBe("INVALID_PARAM");
-			expect(result.origin).toBe("SYMBIOSIS");
+			expect(result.origin).toBe("THOTHOM");
 			expect(result.message).toBe("Invalid param");
 			expect(result.details).toStrictEqual([
 				"Dynamodb only accept remove items from lists by it's indexes",

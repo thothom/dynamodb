@@ -1,10 +1,10 @@
 import { BatchWriteItemCommand } from "@aws-sdk/client-dynamodb";
 import { marshall, unmarshall } from "@aws-sdk/util-dynamodb";
-import { SymbiosisError } from "@techmmunity/symbiosis";
-import type { BeforeSaveInput } from "@techmmunity/symbiosis/lib/repository/methods/save/before";
+import { ThothError } from "@thothom/core";
+import type { BeforeSaveInput } from "@thothom/core/lib/repository/methods/save/before";
 
 import type { Context } from "../../types/context";
-import type { DatabaseEntity } from "@techmmunity/symbiosis/lib/types/database-entity";
+import type { DatabaseEntity } from "@thothom/core/lib/types/database-entity";
 
 export const save = async <Entity>(
 	context: Context<Entity>, // Cannot destruct this!!!
@@ -46,7 +46,7 @@ export const save = async <Entity>(
 			}),
 		);
 
-		throw new SymbiosisError({
+		throw new ThothError({
 			code: "UNKNOWN",
 			origin: "DATABASE",
 			message: "Fail to save the following items",

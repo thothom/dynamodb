@@ -1,7 +1,7 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 
-import type { BaseConnectionOptions } from "@techmmunity/symbiosis";
-import { Entity, PrimaryColumn, Column, Logger } from "@techmmunity/symbiosis";
+import type { BaseConnectionOptions } from "@thothom/core";
+import { Entity, PrimaryColumn, Column, Logger } from "@thothom/core";
 
 import { TestConnection } from "../constants/test-connection";
 

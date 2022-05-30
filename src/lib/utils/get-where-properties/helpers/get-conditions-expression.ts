@@ -1,4 +1,4 @@
-import { isOperator, SymbiosisError } from "@techmmunity/symbiosis";
+import { isOperator, ThothError } from "@thothom/core";
 
 import type { KeysMap, ValuesMap } from "./map-where";
 
@@ -33,9 +33,9 @@ export const getConditionsExpression = ({
 					case "startsWith":
 						return `(begins_with(${keyAlias}, ${valueAlias}))`;
 					default:
-						throw new SymbiosisError({
+						throw new ThothError({
 							code: "NOT_IMPLEMENTED",
-							origin: "SYMBIOSIS",
+							origin: "THOTHOM",
 							message: "Invalid FindOperator",
 							details: [
 								`Dynamodb doesn't support FindOperator "${value.type}"`,

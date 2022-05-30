@@ -1,3 +1,3 @@
-import type { BaseCountOutput } from "@techmmunity/symbiosis";
+import type { BaseCountOutput } from "@thothom/core";
 
 export type CountOutput = BaseCountOutput;

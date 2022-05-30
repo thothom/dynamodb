@@ -1,14 +1,11 @@
-import type {
-	FindConditions,
-	SingleFindConditions,
-} from "@techmmunity/symbiosis";
-import { SymbiosisError } from "@techmmunity/symbiosis";
 import { getTypeof } from "@techmmunity/utils";
+import type { FindConditions, SingleFindConditions } from "@thothom/core";
+import { ThothError } from "@thothom/core";
 
 import type { ExtraMetadata } from "../../../types/extra-metadata";
-import type { ColumnMetadata } from "@techmmunity/symbiosis/lib/entity-manager/types/column-metadata";
-import type { EntityMetadata } from "@techmmunity/symbiosis/lib/entity-manager/types/entity-metadata";
-import type { DatabaseEntity } from "@techmmunity/symbiosis/lib/types/database-entity";
+import type { ColumnMetadata } from "@thothom/core/lib/entity-manager/types/column-metadata";
+import type { EntityMetadata } from "@thothom/core/lib/entity-manager/types/entity-metadata";
+import type { DatabaseEntity } from "@thothom/core/lib/types/database-entity";
 
 interface ValidatePrimaryColumns {
 	where: FindConditions<DatabaseEntity>;
@@ -17,9 +14,9 @@ interface ValidatePrimaryColumns {
 }
 
 const throwDefaultError = (extraDetails?: Array<any>) => {
-	throw new SymbiosisError({
+	throw new ThothError({
 		code: "INVALID_PARAM",
-		origin: "SYMBIOSIS",
+		origin: "THOTHOM",
 		message: "Invalid Params",
 		details: [
 			"To delete a item in DynamoDB, you must specify ALL AND ONLY the primary columns.",

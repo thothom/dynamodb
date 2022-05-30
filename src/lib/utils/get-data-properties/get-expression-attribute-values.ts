@@ -1,5 +1,5 @@
 import { marshall } from "@aws-sdk/util-dynamodb";
-import { isOperator, SymbiosisError } from "@techmmunity/symbiosis";
+import { isOperator, ThothError } from "@thothom/core";
 
 import type { ValuesMap } from "./helpers/map-data";
 
@@ -33,9 +33,9 @@ export const getExpressionAttributeValues = (valuesMap: ValuesMap) => {
 				case "pop":
 					return;
 				default:
-					throw new SymbiosisError({
+					throw new ThothError({
 						code: "NOT_IMPLEMENTED",
-						origin: "SYMBIOSIS",
+						origin: "THOTHOM",
 						message: "Invalid SaveOperator",
 						details: [`Dynamodb doesn't support SaveOperator "${value.type}"`],
 					});

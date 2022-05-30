@@ -1,4 +1,4 @@
-import type { BaseExtraMetadata } from "@techmmunity/symbiosis";
+import type { BaseExtraMetadata } from "@thothom/core";
 
 import type { ColumnExtraMetadata } from "./column";
 import type { EntityExtraMetadata } from "./entity";

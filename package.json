@@ -1,18 +1,19 @@
 {
-	"name": "@techmmunity/symbiosis-dynamodb",
-	"version": "0.0.18",
+	"name": "@thothom/dynamodb",
+	"version": "0.0.1",
 	"main": "index.js",
 	"types": "index.d.ts",
 	"license": "Apache-2.0",
 	"author": "Techmmunity",
-	"description": "Symbiosis Plugin For DynamoDB",
-	"homepage": "https://symbiosis.techmmunity.com.br/",
+	"type": "module",
+	"description": "ThothOM Plugin For DynamoDB",
+	"homepage": "https://thothom.com/",
 	"bugs": {
-		"url": "https://github.com/techmmunity-symbiosis/dynamodb/issues"
+		"url": "https://github.com/thothom/dynamodb/issues"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/techmmunity-symbiosis/dynamodb.git"
+		"url": "git+https://github.com/thothom/dynamodb.git"
 	},
 	"keywords": [
 		"orm",
@@ -25,38 +26,38 @@
 		"database",
 		"data-mapper",
 		"object-mapper",
-		"techmmunity-symbiosis"
+		"thothom"
 	],
 	"peerDependencies": {
-		"@techmmunity/symbiosis": "^0.0.30",
+		"@thothom/core": "^0.0.1",
 		"reflect-metadata": "^0.1.13"
 	},
 	"dependencies": {
-		"@aws-sdk/client-dynamodb": "^3.51.0",
-		"@aws-sdk/util-dynamodb": "^3.51.0",
+		"@aws-sdk/client-dynamodb": "^3.100.0",
+		"@aws-sdk/util-dynamodb": "^3.100.0",
 		"@techmmunity/utils": "^1.3.0"
 	},
 	"devDependencies": {
-		"@techmmunity/eslint-config": "^5.2.2",
-		"@techmmunity/symbiosis": "^0.0.31",
-		"@types/jest": "^27.0.1",
-		"@vercel/ncc": "^0.33.2",
-		"eslint": "^8.9.0",
-		"husky": "^7.0.1",
-		"jest": "^27.5.1",
-		"lint-staged": "^12.3.3",
-		"prettier": "^2.3.2",
+		"@techmmunity/eslint-config": "^5.2.3",
+		"@thothom/core": "^0.0.1",
+		"@types/jest": "^27.5.1",
+		"@vercel/ncc": "^0.34.0",
+		"eslint": "^8.16.0",
+		"husky": "^8.0.1",
+		"jest": "^28.1.0",
+		"lint-staged": "^12.4.2",
+		"prettier": "^2.6.2",
 		"reflect-metadata": "^0.1.13",
-		"ts-jest": "^27.1.3",
-		"ts-node": "^10.5.0",
-		"typescript": "^4.5.5"
+		"ts-jest": "^28.0.3",
+		"ts-node": "^10.8.0",
+		"typescript": "^4.7.2"
 	},
 	"scripts": {
 		"prepare": "husky install",
 		"ts-node": "ts-node",
 		"test": "jest",
 		"test:cov": "jest --coverage",
-		"build": "ncc build src/index.ts -o dist -s -m -e @aws-sdk/client-dynamodb -e @aws-sdk/util-dynamodb -e @techmmunity/utils",
+		"build": "ncc build src/index.ts -o dist -s -m -e @thothom/core -e @aws-sdk/client-dynamodb -e @aws-sdk/util-dynamodb -e @techmmunity/utils",
 		"build:dev": "ncc build src/index.ts -o dist -s -m",
 		"format": "eslint . --fix --quiet",
 		"lint": "eslint . --quiet",

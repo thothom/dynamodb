@@ -1,3 +1,3 @@
-import type { BasePerformativeCountOutput } from "@techmmunity/symbiosis";
+import type { BasePerformativeCountOutput } from "@thothom/core";
 
 export type PerformativeCountOutput = BasePerformativeCountOutput;

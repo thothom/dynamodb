@@ -20,5 +20,5 @@
 		"skipLibCheck": true,
 		"types": ["node", "jest", "reflect-metadata"]
 	},
-	"include": ["src/**/*.ts", "jest.config.js"]
+	"include": ["src/**/*.ts"]
 }

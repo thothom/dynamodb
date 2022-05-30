@@ -1,6 +1,6 @@
 import { DeleteItemCommand } from "@aws-sdk/client-dynamodb";
 import { marshall } from "@aws-sdk/util-dynamodb";
-import type { BeforeDeleteInput } from "@techmmunity/symbiosis/lib/repository/methods/delete/before";
+import type { BeforeDeleteInput } from "@thothom/core/lib/repository/methods/delete/before";
 
 import { validatePrimaryColumns } from "./helpers/validate-primary-columns";
 

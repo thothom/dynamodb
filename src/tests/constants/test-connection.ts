@@ -1,7 +1,7 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-import { BaseConnection } from "@techmmunity/symbiosis";
+import { BaseConnection } from "@thothom/core";
 
 import { TestRepository } from "./test-repository";
 

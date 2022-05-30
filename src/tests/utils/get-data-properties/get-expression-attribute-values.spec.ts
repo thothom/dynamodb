@@ -8,8 +8,8 @@ import {
 	Plus,
 	Pop,
 	Remove,
-	SymbiosisError,
-} from "@techmmunity/symbiosis";
+	ThothError,
+} from "@thothom/core";
 
 import { getExpressionAttributeValues } from "../../../lib/utils/get-data-properties/get-expression-attribute-values";
 import { mapData } from "../../../lib/utils/get-data-properties/helpers/map-data";
@@ -210,9 +210,9 @@ describe("getExpressionAttributeValues", () => {
 				result = err;
 			}
 
-			expect(result instanceof SymbiosisError).toBeTruthy();
+			expect(result instanceof ThothError).toBeTruthy();
 			expect(result.code).toBe("NOT_IMPLEMENTED");
-			expect(result.origin).toBe("SYMBIOSIS");
+			expect(result.origin).toBe("THOTHOM");
 			expect(result.message).toBe("Invalid SaveOperator");
 			expect(result.details).toStrictEqual([
 				'Dynamodb doesn\'t support SaveOperator "min"',
